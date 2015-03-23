@@ -1,0 +1,176 @@
+html,body,#page {
+    box-sizing: border-box;
+    color: #34495E;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+}
+nav {
+    height: 55px;
+    position: fixed;
+    width: 100%;
+}
+h1{
+	font-size: 28px;
+}
+h2{
+	font-size: 18px;
+}
+p{
+	font-size: 14px;
+	color: #858f9f;
+}
+.section-head p{
+	font-size: 18px;
+	color: #737d8d;
+}
+.navbar-default{
+	background-color: #1ab394;
+	border-bottom: 2px solid #1ab394;
+}
+.navbar-collapse{
+	background-color:#34495E;
+	height: 55px !important; 
+}
+.navbar-default legend {
+    border: 2px solid #1ab394;
+    height: 1px;
+    position: absolute;
+    right: 203px;
+    top: 53px;
+    transition: all 0.8s ease 0s;
+    width: 65px;
+}
+.navbar-nav{
+	float: right;
+    height: 55px;
+    position: absolute;
+    right: 20px;
+    z-index: 20;
+}
+.logo {
+    height: 52px;
+    margin-left: 28px;
+    margin-top: 1px;
+    position: absolute;
+    z-index: 20;
+}
+nav ul li.active a{
+	background-color: transparent!important;
+	color:#1ab394!important;
+}
+nav ul li:focus a{
+	background-color: transparent!important;
+	color:#1ab394!important;
+}
+nav ul li a{
+	padding-bottom: 18px!important;
+	padding-top: 18px!important;
+	color:#ffffed!important;
+}
+span.icons{
+	color: #c5c5c5;
+    display: inline-block;
+    font-size: 20px;
+    width: 48px;
+    height:48px;
+}
+.fa-gamepad{
+	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-19-48.png');
+}
+.fa-plat{
+	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-03-48.png');
+}
+.fa-action{
+	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-21-48.png');
+}
+.fa-instance{
+	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-34-48.png');
+}
+.navbar-collapse{
+	padding-right:20px!important;
+}
+.navbar-transparent .navbar-nav .active a {
+    color:#1AB394;
+    background-color: transparent;
+}
+#header{
+	background: url("https://farm4.staticflickr.com/3904/14327833686_a89caa3cc3_b.jpg") no-repeat fixed 0 0 / cover rgba(0, 0, 0, 0);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+	/*-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	-o-transition: all 0.1s;
+	transition: all 0.1s;*/
+}
+.header-overlay{
+	background-color: #34495E;
+	opacity: 0.5;
+	width:100%;
+	height: 100%
+}
+section {
+    margin:70px 0;
+    text-align: center;
+    width:100%;
+	position: relative;
+}
+/*section:nth-child(2n+1){
+	background-color: #ECECEC;
+}*/
+.introduce{
+	bottom: 0;
+    height: 65%;
+    margin-top: -50%;
+    position: absolute;
+}
+.section-head p{
+	margin: 0 auto;
+	width: 75%;
+}
+.row-2{
+	margin-top: 50px;
+}
+.row-2 h3{
+	color:#1AB394;
+}
+.row-3{
+	height:33%;
+	width: 300px;
+}
+.row-3 h2{
+	text-align: left;
+}
+.left .row-3{
+	float: left;
+}
+.right .row-3{
+	float: right;
+}
+.contains{
+	border-bottom: 1px solid #eee;
+    height: 100%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    width: 1170px;
+}
+.underline {
+    border-top: 4px solid #0099e6;
+}
+.underline {
+    display: inline-block;
+    height: 1px;
+    margin-top: 21px;
+    width: 160px;
+}
+#footer{
+    font-size: 12px;
+    margin: 20px auto;
+    text-align: center;
+}

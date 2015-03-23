@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="base">
+<head>
+	<title>Daylight's Blog</title>
+    <meta name="fragment" content="!" />
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="">
+    <meta charset="utf-8">
+    <base href="/">
+    <link rel="shortcut icon" href="/img/small_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/style/main.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div id="navbar-collapse-1" class="navbar-collapse">
+            <a class="logo">
+                DayLight
+            </a>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a class="scroll" href="#header">Home</a></li>
+                <li class=""><a class="scroll" href="#about">About Us</a></li>
+                <li class=""><a class="scroll" href="#services">Services</a></li>
+            </ul>
+            <legend></legend>
+        </div>
+    </nav>
+    <header id="header" style="background-position:50% 0;">
+        <div class="header-overlay"></div>
+    </header>
+    <div ng-include="base_tmp" ng-controller="baseCtrl">
+        <script src="/base/require.js" defer async="true" data-main="base/main"></script>
+    </div>
+    <footer>
+    </footer>
+    <script type="text/javascript">
+    $(document).scroll(function(){
+        var t = document.documentElement.scrollTop;
+        if(t<document.body.clientHeight){
+            $("#header").css("background-position","50% -"+t/10+"px");  
+        }
+    });
+    var lr = $("#navbar-collapse-1 legend")[0].offsetLeft;
+    var lw = $("#navbar-collapse-1 legend")[0].offsetWidth;
+    console.log(lr)
+    $("#navbar-collapse-1 ul li").hover(function(){
+        var r = this.offsetLeft;
+        var w = this.offsetWidth;
+        $("#navbar-collapse-1 legend").css("left",r+(w-lw)/2);
+    },function(){
+        $("#navbar-collapse-1 legend").css("left",lr);
+    });
+
+    </script>  
+</body>
+</html>
