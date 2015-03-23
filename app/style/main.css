@@ -10,16 +10,34 @@ html,body,#page {
     font-weight: 300;
     letter-spacing: -0.01em;
 }
+ul, ol {
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+a:focus,button:focus{
+  outline:none;
+  blr:expression(this.onFocus=this.blur());
+}
 nav {
     height: 55px;
     position: fixed;
     width: 100%;
 }
-h1{
-	font-size: 28px;
+h1 {
+    font-size: 36px;
+    letter-spacing: 8px;
+    line-height: 36px;
+    margin: 2px 0;
+    text-transform: uppercase;
 }
 h2{
 	font-size: 18px;
+}
+h6{
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin: 2px 0;
+    text-transform: uppercase;
 }
 p{
 	font-size: 14px;
@@ -54,9 +72,13 @@ p{
     z-index: 20;
 }
 .logo {
+    color: #fff;
+    font-family: "Comic Sans MS";
+    font-size: 25px;
     height: 52px;
     margin-left: 28px;
     margin-top: 1px;
+    padding: 6px;
     position: absolute;
     z-index: 20;
 }
@@ -80,27 +102,12 @@ span.icons{
     width: 48px;
     height:48px;
 }
-.fa-gamepad{
-	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-19-48.png');
-}
-.fa-plat{
-	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-03-48.png');
-}
-.fa-action{
-	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-21-48.png');
-}
-.fa-instance{
-	background-image: url('https://cdn1.iconfinder.com/data/icons/devices-7/128/devices-34-48.png');
-}
-.navbar-collapse{
-	padding-right:20px!important;
-}
 .navbar-transparent .navbar-nav .active a {
     color:#1AB394;
     background-color: transparent;
 }
 #header{
-	background: url("https://farm4.staticflickr.com/3904/14327833686_a89caa3cc3_b.jpg") no-repeat fixed 0 0 / cover rgba(0, 0, 0, 0);
+    background-color:#3f4446;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -110,16 +117,64 @@ span.icons{
 	transition: all 0.1s;*/
 }
 .header-overlay{
-	background-color: #34495E;
-	opacity: 0.5;
+	background: url("../imgs/bground.jpg") no-repeat fixed 0 0 / cover rgba(0, 0, 0, 0);
+	opacity: 0.3;
 	width:100%;
-	height: 100%
+	height: 100%;
+    position:absolute;
+}
+.welcome{
+    position: absolute;
+    top: 27%;
+    width: 100%;
+    z-index: 10;
+}
+.wel-1{
+    color: #fff;
+    float: none;
+    margin: 0 30% 0 20%;
+    min-height: 300px;
+}
+.intro {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.05) !important;
+    height: 260px;
+    padding: 30px;
+    width: auto; 
+    max-width: 450px;
+    filter:Alpha(opacity=5); background:#fff; /*　使用IE专属滤镜实现IE背景透明*/ }
+.intro p{ 
+    position:relative;
+    color: #e8e8e8;
+}
+.intro ul.social-links li, #home ul.social-links li a {
+    padding: 4px;
+}
+ul.social-links{
+    padding:0;
+}
+ul.social-links li {
+    padding: 5px 15px 0 0;
+}
+ul.social-links li, ul.social-links li a {
+    color: #e8e8e8 !important;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 18px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+ul.social-links li:hover, ul.social-links li:hover a{
+    transform: scale(1.1);
 }
 section {
     margin:70px 0;
     text-align: center;
     width:100%;
-	position: relative;
 }
 /*section:nth-child(2n+1){
 	background-color: #ECECEC;
@@ -133,6 +188,10 @@ section {
 .section-head p{
 	margin: 0 auto;
 	width: 75%;
+}
+.row{
+    margin-left:0!important;
+    margin-right:0!important;
 }
 .row-2{
 	margin-top: 50px;
@@ -158,7 +217,6 @@ section {
     height: 100%;
     margin: 0 auto;
     padding-bottom: 50px;
-    width: 1170px;
 }
 .underline {
     border-top: 4px solid #0099e6;

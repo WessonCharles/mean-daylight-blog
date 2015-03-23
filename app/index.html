@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/style/animate.css" rel="stylesheet">
     <link href="/style/main.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
@@ -19,7 +20,7 @@
     <nav>
         <div id="navbar-collapse-1" class="navbar-collapse">
             <a class="logo">
-                DayLight
+                DayLight's Blog
             </a>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a class="scroll" href="#header">Home</a></li>
@@ -31,6 +32,30 @@
     </nav>
     <header id="header" style="background-position:50% 0;">
         <div class="header-overlay"></div>
+        <div class="row welcome">
+            <div class="col-sm-6 wel-1">
+                <h1>Welcome to Daylight's Blog</h1>
+                <div class="intro">
+                    <p>喜欢前端
+                    <br>
+                        喜欢炫酷的设计
+                    <br>    
+                        喜欢动漫
+                    <br>    
+                        喜欢摄影艺术
+                    <br>    
+                        喜欢英文</p>
+                    <h6>follow me:</h6>
+                    <ul class="social-links" style="margin-left:-3px;">
+                        <li><a href="Twitter" target="_blank"><i class="fa fa-twitter fa-1x"></i></a></li> <!-- Change # with your twitter link -->
+                        <li><a href="Behance.com" target="_blank"><i class="fa fa-github fa-1x"></i></a></li> <!-- Change # with your behance link -->
+                        <li><a href="Dribbble.com" target="_blank"><i class="fa fa-instagram fa-1x"></i></a></li> <!-- Change # with your dribbble link -->
+                        <li><a href="http://google.com" target="_blank"><i class="fa fa-google-plus fa-1x"></i></a></li> <!-- Change # with your googleplus link -->
+                        <li><a href="LinkedIn.com" target="_blank"><i class="fa fa-weibo fa-1x"></i></a></li> <!-- Change # with your linked link -->
+                      </ul>
+                </div> 
+            </div>
+        </div>
     </header>
     <div ng-include="base_tmp" ng-controller="baseCtrl">
         <script src="/base/require.js" defer async="true" data-main="base/main"></script>
@@ -41,7 +66,7 @@
     $(document).scroll(function(){
         var t = document.documentElement.scrollTop;
         if(t<document.body.clientHeight){
-            $("#header").css("background-position","50% -"+t/10+"px");  
+            $("#header .header-overlay").css("background-position","50% -"+t/10+"px");  
         }
     });
     var lr = $("#navbar-collapse-1 legend")[0].offsetLeft;

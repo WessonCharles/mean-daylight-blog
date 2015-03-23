@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('infinite_pro');
+var debug = require('debug')('daylight');
 var app = require('../app');
 var config = require('../config');
 
