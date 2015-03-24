@@ -22,6 +22,7 @@
             <a class="logo">
                 DayLight's Blog
             </a>
+            <i class="loading"></i>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a class="scroll" href="#header">Home</a></li>
                 <li class=""><a class="scroll" href="#about">About Us</a></li>
@@ -67,6 +68,12 @@
         var t = document.documentElement.scrollTop;
         if(t<document.body.clientHeight){
             $("#header .header-overlay").css("background-position","50% -"+t/10+"px");  
+            $("nav").removeClass("scroll");
+        }else{
+            $("nav").addClass("scroll");
+            setTimeout(function(){
+                $("nav i.loading").stop();
+            },1000);
         }
     });
     var lr = $("#navbar-collapse-1 legend")[0].offsetLeft;
