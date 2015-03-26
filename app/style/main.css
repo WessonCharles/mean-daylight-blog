@@ -5,10 +5,17 @@ html,body,#page {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Open Sans",sans-serif;
-    font-size: 16px;
+    font-family: "GillSans",Arial,sans-serif;
+    font-size: 1em;
     font-weight: 300;
     letter-spacing: -0.01em;
+    -webkit-transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -o-transition: all 0.6s ease 0s;
+    transition: all 0.6s ease 0s;
+}
+#wrap{
+    position: relative;
 }
 ul, ol {
     margin-bottom: 10px;
@@ -24,6 +31,179 @@ nav {
     width: 100%;
     z-index: 15;
 }
+/*适配*/
+nav .navbar-collapse ul{
+    display: block;
+}
+nav i.menu-btn{
+    color: #fff;
+    display: none;
+    font-size: 2em;
+    position: absolute;
+    right: 14px;
+    top: 9px;
+    cursor: pointer;
+}
+body.active nav i.menu-btn,
+nav.scroll i.menu-btn{
+    color:#3b3b3b;
+}
+.main{
+    position: relative;
+    -webkit-transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -o-transition: all 0.6s ease 0s;
+    transition: all 0.6s ease 0s;
+}
+@media (max-width:720px){
+    nav .navbar-collapse ul{
+        display: none;
+    }
+    nav i.menu-btn{
+        color: #fff;
+        display: block;
+        font-size: 2em;
+        position: absolute;
+        right: 14px;
+        top: 9px;
+        cursor: pointer;
+    }
+    .slide{
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: fixed;
+        right: -10.25em;
+        top: 55px;
+        width: 10.25em;
+        z-index: 99;
+        display:block;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+        background-color: #fff; 
+    }
+    .slide.scroll{
+        box-shadow: -2px 5px 5px #dedede;
+    }
+    body.active .main{
+        right:10.25em;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+    body.active .slide{
+        right:0;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+}
+@media screen and (min-width:720px) and (max-width:960px){
+    nav .navbar-collapse ul{
+        display: none;
+    }
+    nav i.menu-btn{
+        color: #fff;
+        display: block;
+        font-size: 2em;
+        position: absolute;
+        right: 14px;
+        top: 9px;
+        cursor: pointer;
+    }
+    .slide{
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: fixed;
+        right: -10.25em;
+        top: 55px;
+        width: 10.25em;
+        z-index: 99;
+        display:block;
+        background-color: #fff; 
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+    .slide.scroll{
+        box-shadow: -2px 5px 5px #dedede;
+    }
+    body.active .main{
+        right:10.25em;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+    body.active .slide{
+        right:0;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+}
+
+@media screen and (min-width:960px) and (max-width:1180px){
+    nav .navbar-collapse ul{
+        display: none;
+    }
+    nav i.menu-btn{
+        color: #fff;
+        display: block;
+        font-size: 2em;
+        position: absolute;
+        right: 14px;
+        top: 9px;
+        cursor: pointer;
+    }
+    .slide{
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: fixed;
+        right: -10.25em;
+        top: 55px;
+        width: 10.25em;
+        z-index: 99;
+        display:block;
+        background-color: #fff; 
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+    .slide.scroll{
+        box-shadow: -2px 5px 5px #dedede;
+    }
+    body.active .main{
+        right:10.25em;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+    body.active .slide{
+        right:0;
+        -webkit-transition: all 0.6s ease 0s;
+        -moz-transition: all 0.6s ease 0s;
+        -o-transition: all 0.6s ease 0s;
+        transition: all 0.6s ease 0s;
+    }
+}
+@media screen and (min-width:1180px){
+
+}
+
 i.loading{
     background: url("../imgs/daylight_blank.gif") no-repeat scroll 50% center transparent;
     display: inline-block;
@@ -42,6 +222,65 @@ nav.scroll .logo{
 nav.scroll i.loading{
     background: url("../imgs/daylight.gif") no-repeat scroll 50% center #fff;
 }
+.sub-arrow {
+    padding-left: 0.500em;
+    vertical-align: middle;
+    font-size: 0.714em;
+}
+li ul.sub-menu{
+    position: absolute;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    margin-bottom: 0;
+    background-color:#fff;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    list-style:none;
+    padding:0;
+}
+nav ul li.active a{
+    background-color: transparent!important;
+}
+nav ul li:focus a,nav ul li:hover a{
+    background-color: transparent!important;
+}
+nav ul.sub-menu > li > a {
+    background-color: #f6f6f6;
+    color: #555 !important;
+    display: block;
+    font-size: 1em;
+    padding: 6px 46px 6px 24px !important;
+}
+nav ul li a{
+    color:#fff!important;
+}
+nav.scroll ul li a{
+    color:#3b3b3b!important;
+}
+nav ul.sub-menu > li > a {
+    background-color: #f6f6f6;
+    display: block;
+    font-size: 0.786em;
+    padding: 0.5rem 1rem;
+}
+nav ul li:hover a{
+    text-decoration: underline;
+}
+nav ul li:hover ul.sub-menu{
+    display:block;
+}
+nav ul li:hover ul.sub-menu li a{
+    text-decoration: none!important;
+}
+ul.sub-menu li:hover a{
+    background-color:#0093ec!important;
+    color:#fff!important; 
+}
 h1 {
     font-family: Helvetica;
     font-size: 3em;
@@ -49,7 +288,7 @@ h1 {
     margin: 2px 0;
 }
 h2{
-	font-size: 18px;
+	font-size: 0.9em;
 }
 h6{
     font-size: 12px;
@@ -58,11 +297,11 @@ h6{
     text-transform: uppercase;
 }
 p{
-	font-size: 14px;
+	font-size: 0.89em;
 	color: #858f9f;
 }
 .section-head p{
-	font-size: 18px;
+	font-size: 0.89em;
 	color: #737d8d;
 }
 .navbar-default{
@@ -99,24 +338,6 @@ p{
     position: absolute;
     z-index: 20;
 }
-nav ul li.active a{
-	background-color: transparent!important;
-	color:#1ab394!important;
-}
-nav ul li:focus a,nav ul li:hover a{
-	background-color: transparent!important;
-	color:#1ab394!important;
-}
-nav ul li a{
-	color: #ffffed !important;
-    font-family: Helvetica;
-    font-size: 1.2em;
-    padding-bottom: 18px !important;
-    padding-top: 18px !important;
-}
-nav.scroll ul li a{
-    color:#3b3b3b!important;
-}
 span.icons{
 	color: #c5c5c5;
     display: inline-block;
@@ -129,21 +350,23 @@ span.icons{
     background-color: transparent;
 }
 #header{
-    background-color:#363842;
-    height: 100%;
+    background-image:linear-gradient(to bottom, #333 -53%, #565656 150%);;
     overflow: hidden;
     position: relative;
-	/*-webkit-transition: all 0.1s;
-	-moz-transition: all 0.1s;
-	-o-transition: all 0.1s;
-	transition: all 0.1s;*/
+    -webkit-transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -o-transition: all 0.6s ease 0s;
+    transition: all 0.6s ease 0s;
 }
 .header-overlay{
 	background: url("../imgs/bground.jpg") no-repeat fixed 0 0 / cover rgba(0, 0, 0, 0);
 	opacity: 0.3;
 	width:100%;
-	height: 100%;
-    position:absolute;
+	height: 35em;
+    -webkit-transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -o-transition: all 0.6s ease 0s;
+    transition: all 0.6s ease 0s;
 }
 .welcome{
     position: absolute;

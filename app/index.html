@@ -14,68 +14,161 @@
     <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/style/animate.css" rel="stylesheet">
     <link href="/style/main.css" rel="stylesheet">
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="/style/mix.css" media="only screen and (min-width:720px)"> -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <nav>
-        <div id="navbar-collapse-1" class="navbar-collapse">
-            <a class="logo">
-                DayLight's Blog
-            </a>
-            <i class="loading"></i>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a class="scroll" href="#header">Home</a></li>
-                <li class=""><a class="scroll" href="#about">About Us</a></li>
-                <li class=""><a class="scroll" href="#services">Services</a></li>
-            </ul>
-            <legend></legend>
-        </div>
-    </nav>
-    <header id="header" style="background-position:50% 0;">
-        <div class="header-overlay"></div>
-        <div class="row welcome">
-            <div class="col-sm-6 wel-1">
-                <h1>Welcome to Daylight's Blog</h1>
-                <div class="intro">
-                    <p>喜欢前端
-                    <br>
-                        喜欢炫酷的设计
-                    <br>    
-                        喜欢动漫
-                    <br>    
-                        喜欢摄影艺术
-                    <br>    
-                        喜欢英文</p>
-                    <h6>follow me:</h6>
-                    <ul class="social-links" style="margin-left:-3px;">
-                        <li><a href="Twitter" target="_blank"><i class="fa fa-twitter fa-1x"></i></a></li> <!-- Change # with your twitter link -->
-                        <li><a href="Behance.com" target="_blank"><i class="fa fa-github fa-1x"></i></a></li> <!-- Change # with your behance link -->
-                        <li><a href="Dribbble.com" target="_blank"><i class="fa fa-instagram fa-1x"></i></a></li> <!-- Change # with your dribbble link -->
-                        <li><a href="http://google.com" target="_blank"><i class="fa fa-google-plus fa-1x"></i></a></li> <!-- Change # with your googleplus link -->
-                        <li><a href="LinkedIn.com" target="_blank"><i class="fa fa-weibo fa-1x"></i></a></li> <!-- Change # with your linked link -->
-                      </ul>
-                </div> 
+            <div id="navbar-collapse-1" class="navbar-collapse">
+                <a class="logo">
+                    DayLight's Blog
+                </a>
+                <i class="loading"></i>
+                <i class="menu-btn fa fa-bars"></i>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a class="scroll" href="#header">技术&经验
+                            <span class="sub-arrow">
+                                <i class="fa fa-chevron-down"></i>
+                            </span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="">Html&Css</a></li>
+                            <li><a href="">Javascript</a></li>
+                            <li><a href="">AngularJs</a></li>
+                            <li><a href="">NodeJs</a></li>
+                            <li><a href="">Mongodb</a></li>
+                            <li><a href="">Ionic</a></li>
+                            <li><a href="">Git</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a class="scroll" href="#about">兴趣爱好
+                            <span class="sub-arrow">
+                                <i class="fa fa-chevron-down"></i>
+                            </span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="">英语</a></li>
+                            <li><a href="">经济学</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a class="scroll" href="#services">读书&学习
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="scroll" href="#services">素材&影像
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="scroll" href="#services">闲言碎语
+                        </a>
+                    </li>
+                </ul>
+                <legend></legend>
             </div>
-        </div>
-    </header>
-    <div ng-include="base_tmp" ng-controller="baseCtrl">
-        <script src="/base/require.js" defer async="true" data-main="base/main"></script>
+        </nav>
+    <div class="slide">
+        <ul class="nav navbar-nav navbar-right">
+                <li class="active">
+                    <a class="scroll" href="#header">技术&经验
+                        <span class="sub-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="">Html&Css</a></li>
+                        <li><a href="">Javascript</a></li>
+                        <li><a href="">AngularJs</a></li>
+                        <li><a href="">NodeJs</a></li>
+                        <li><a href="">Mongodb</a></li>
+                        <li><a href="">Ionic</a></li>
+                        <li><a href="">Git</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a class="scroll" href="#about">兴趣爱好
+                        <span class="sub-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="">英语</a></li>
+                        <li><a href="">经济学</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a class="scroll" href="#services">读书&学习
+                    </a>
+                </li>
+                <li class="">
+                    <a class="scroll" href="#services">素材&影像
+                    </a>
+                </li>
+                <li class="">
+                    <a class="scroll" href="#services">闲言碎语
+                    </a>
+                </li>
+            </ul>
     </div>
-    <footer>
-    </footer>
+    <div class="main">
+        <header id="header" style="background-position:50% 0;">
+            <div class="header-overlay"></div>
+            <div class="row welcome">
+                <div class="col-sm-6 wel-1">
+                    <h1>Welcome to Daylight's Blog</h1>
+                    <div class="intro">
+                        <p>喜欢前端
+                        <br>
+                            喜欢炫酷的设计
+                        <br>    
+                            喜欢动漫
+                        <br>    
+                            喜欢摄影艺术
+                        <br>    
+                            喜欢英文</p>
+                        <h6>follow me:</h6>
+                        <ul class="social-links" style="margin-left:-3px;">
+                            <li><a href="Twitter" target="_blank"><i class="fa fa-twitter fa-1x"></i></a></li> <!-- Change # with your twitter link -->
+                            <li><a href="Behance.com" target="_blank"><i class="fa fa-github fa-1x"></i></a></li> <!-- Change # with your behance link -->
+                            <li><a href="Dribbble.com" target="_blank"><i class="fa fa-instagram fa-1x"></i></a></li> <!-- Change # with your dribbble link -->
+                            <li><a href="http://google.com" target="_blank"><i class="fa fa-google-plus fa-1x"></i></a></li> <!-- Change # with your googleplus link -->
+                            <li><a href="LinkedIn.com" target="_blank"><i class="fa fa-weibo fa-1x"></i></a></li> <!-- Change # with your linked link -->
+                          </ul>
+                    </div> 
+                </div>
+            </div>
+        </header>
+        <div ng-include="base_tmp" ng-controller="baseCtrl">
+            <script src="/base/require.js" defer async="true" data-main="base/main"></script>
+        </div>
+        <footer>
+        </footer>
+   </div> 
     <script type="text/javascript">
     $(document).scroll(function(){
         var t = document.documentElement.scrollTop;
-        if(t<document.body.clientHeight){
-            $("#header .header-overlay").css("background-position","50% -"+t/10+"px");  
-            $("nav").removeClass("scroll");
+        if(t<$("#header")[0].offsetHeight){
+            $("#header .header-overlay").css("background-position","50% -"+t/5+"px");  
+            $("nav,.slide").removeClass("scroll");
         }else{
-            $("nav").addClass("scroll");
-            setTimeout(function(){
-                $("nav i.loading").stop();
-            },1000);
+            $("nav,.slide").addClass("scroll");
         }
     });
+
+    $("nav .menu-btn").click(function(){
+        console.log("!")
+        var m = $(this);
+        if($("body").hasClass("active")){
+            $("body").removeClass("active");
+            m.removeClass("fa-times").addClass("fa-bars");
+        }else{
+            $("body").addClass("active");
+            m.addClass("fa-times").removeClass("fa-bars");
+        }   
+    })
+
     var lr = $("#navbar-collapse-1 legend")[0].offsetLeft;
     var lw = $("#navbar-collapse-1 legend")[0].offsetWidth;
     console.log(lr)
