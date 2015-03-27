@@ -24,6 +24,10 @@ require.config({
 
 window.name = "NG_DEFER_BOOTSTRAP!";
 
+var url = window.location.pathname;
+var load_route_module = url=="/"?"dl_base/dl_base_routes":"dl_"+url.slice(1,url.length)+"/dl_"+url.slice(1,url.length)+"_routes";
+
+
 require([
     'angular',
     'angularRoute',
@@ -31,6 +35,8 @@ require([
     'jqueryui',
     'bootstrap',
     'app',
+    'dl_base/dl_base_routes',
+    'dl_tech/dl_tech_routes'
     ], function(angular, app, routes) {
     angular.element().ready(function() {
         angular.resumeBootstrap(['base']);
