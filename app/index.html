@@ -13,137 +13,95 @@
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/style/animate.css" rel="stylesheet">
-    <link href="/style/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/template.css">
+    <!-- <link href="/style/main.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="/style/mix.css" media="only screen and (min-width:720px)"> -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <div class="main">
-        <nav>
-            <div id="navbar-collapse-1" class="navbar-collapse">
-                <a class="logo"  href="/">
-                    DayLight's Blog
-                </a>
-                <i class="loading"></i>
-                <i class="menu-btn fa fa-bars"></i>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="">
-                        <a class="scroll" href="/">主页
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a class="scroll" href="/tech">技术&经验
-                            <span class="sub-arrow">
-                                <i class="fa fa-chevron-down"></i>
-                            </span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="/tech/html-css">Html&Css</a></li>
-                            <li><a href="/tech/javascript">Javascript</a></li>
-                            <li><a href="/tech/angularjs">AngularJs</a></li>
-                            <li><a href="/tech/nodejs">NodeJs</a></li>
-                            <li><a href="/tech/mongodb">Mongodb</a></li>
-                            <li><a href="/tech/ionic">Ionic</a></li>
-                            <li><a href="/tech/git">Git</a></li>
+        <header class="header  push-down-45">
+            <div class="container">
+                <div class="logo  pull-left">
+                    <a href="/">
+                        DayLight's Blog
+                    </a>
+                </div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button data-target="#readable-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <nav role="navigation" class="navbar  navbar-default">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div id="readable-navbar-collapse" class="collapse  navbar-collapse">
+                        <ul class="navigation nav navbar-nav navbar-right">
+                            <li class="active">
+                                <a class="scroll" href="/">主页
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="scroll" href="/tech">技术&经验
+                                    <span class="sub-arrow">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="/tech/html-css">Html&Css</a></li>
+                                    <li><a href="/tech/javascript">Javascript</a></li>
+                                    <li><a href="/tech/angularjs">AngularJs</a></li>
+                                    <li><a href="/tech/nodejs">NodeJs</a></li>
+                                    <li><a href="/tech/mongodb">Mongodb</a></li>
+                                    <li><a href="/tech/ionic">Ionic</a></li>
+                                    <li><a href="/tech/git">Git</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="scroll" href="/hobby">兴趣爱好
+                                    <span class="sub-arrow">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="/hobby/english">英语</a></li>
+                                    <li><a href="/hobby/economy">经济学</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="scroll" href="/read-learn">读书&学习
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="scroll" href="/sucai-photo">素材&影像
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="scroll" href="/nonsense">闲言碎语
+                                </a>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/hobby">兴趣爱好
-                            <span class="sub-arrow">
-                                <i class="fa fa-chevron-down"></i>
-                            </span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="/hobby/english">英语</a></li>
-                            <li><a href="/hobby/economy">经济学</a></li>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+                <div class="hidden-xs  hidden-sm">
+                    <a class="search__container  js--toggle-search-mode" href="#"> <span class="glyphicon  glyphicon-search"></span> </a>
+                    <div class="social">
+                        <a class="social__container" href="#"> <span class="glyphicon  glyphicon-heart"></span> </a>
+                        <ul class="social__dropdown">
+                            <li>
+                                <a class="social__container" target="_blank" href="https://www.facebook.com/ProteusThemes"> <span class="zocial-facebook"></span> </a>
+                            </li>
+                            <li>
+                                <a class="social__container" target="_blank" href="https://twitter.com/ProteusNetCom"> <span class="zocial-twitter"></span> </a>
+                            </li>
+                            <li>
+                                <a class="social__container" target="_blank" href="http://www.specificfeeds.com/follow"> <span class="zocial-rss"></span> </a>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/read-learn">读书&学习
-                        </a>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/sucai-photo">素材&影像
-                        </a>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/nonsense">闲言碎语
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="slide">
-            <ul class="nav">
-                    <li class="">
-                        <a class="scroll" href="/">主页
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a class="scroll" href="/tech">技术&经验
-                            <span class="sub-arrow">
-                                <i class="fa fa-chevron-down"></i>
-                            </span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="/tech/html-css">Html&Css</a></li>
-                            <li><a href="/tech/javascript">Javascript</a></li>
-                            <li><a href="/tech/angularjs">AngularJs</a></li>
-                            <li><a href="/tech/nodejs">NodeJs</a></li>
-                            <li><a href="/tech/mongodb">Mongodb</a></li>
-                            <li><a href="/tech/ionic">Ionic</a></li>
-                            <li><a href="/tech/git">Git</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/hobby">兴趣爱好
-                            <span class="sub-arrow">
-                                <i class="fa fa-chevron-down"></i>
-                            </span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="/hobby/english">英语</a></li>
-                            <li><a href="/hobby/economy">经济学</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/read-learn">读书&学习
-                        </a>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/sucai-photo">素材&影像
-                        </a>
-                    </li>
-                    <li class="">
-                        <a class="scroll" href="/nonsense">闲言碎语
-                        </a>
-                    </li>
-                </ul>
-        </div>
-        <header id="header">
-            <div class="header-overlay"></div>
-            <div class="row welcome">
-                <div class="col-sm-6 wel-1">
-                    <h1>Welcome to Daylight's Blog</h1>
-                    <div class="intro">
-                        <p>喜欢前端
-                        <br>
-                            喜欢炫酷的设计
-                        <br>    
-                            喜欢动漫
-                        <br>    
-                            喜欢摄影艺术
-                        <br>    
-                            喜欢英文</p>
-                        <h6>follow me:</h6>
-                        <ul class="social-links" style="margin-left:-3px;">
-                            <li><a href="Twitter" target="_blank"><i class="fa fa-twitter fa-1x"></i></a></li> <!-- Change # with your twitter link -->
-                            <li><a href="Behance.com" target="_blank"><i class="fa fa-github fa-1x"></i></a></li> <!-- Change # with your behance link -->
-                            <li><a href="Dribbble.com" target="_blank"><i class="fa fa-instagram fa-1x"></i></a></li> <!-- Change # with your dribbble link -->
-                            <li><a href="http://google.com" target="_blank"><i class="fa fa-google-plus fa-1x"></i></a></li> <!-- Change # with your googleplus link -->
-                            <li><a href="LinkedIn.com" target="_blank"><i class="fa fa-weibo fa-1x"></i></a></li> <!-- Change # with your linked link -->
-                          </ul>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </header>
