@@ -498,6 +498,9 @@ pre code {
 	padding-left:15px;
 	padding-right:15px
 }
+.main{
+	padding-top: 120px;
+}
 .container:after,.container:before {
 	content:" ";
 	display:table
@@ -506,8 +509,8 @@ pre code {
 	clear:both
 }
 .row {
-	margin-left:-15px;
-	margin-right:-15px
+	margin-left:0px;
+	margin-right:0px
 }
 .row:after,.row:before {
 	content:" ";
@@ -4423,7 +4426,7 @@ body.search-mode .search-panel {
 	height:auto;
 	-webkit-filter:blur(5px);
 	filter:blur(5px);
-	filter:url(../assets/blur.svg#blur);
+	filter:url(../imgs/blur.svg#blur);
 	-webkit-transform:scale(1.05);
 	-ms-transform:scale(1.05);
 	transform:scale(1.05);
