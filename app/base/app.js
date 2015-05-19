@@ -13,11 +13,18 @@ define([
         'dl_base.dl_base_controllers',
         'dl_tech.dl_tech_controllers'
     ])
-    .controller('baseCtrl', function($scope, $http,$rootScope, $route, $location) {
+    .controller('baseCtrl', function($scope, $http,$rootScope,$route, $location) {
         $rootScope.language_switch = function(language){
             $rootScope.language = language;
         }
         $scope.base_tmp='/base/html/body.html';
-        $rootScope.app = 'base';
+        if($location.url().split("/")[1]){
+            $rootScope.app = $location.url().split("/")[1];    
+        }else{
+            $rootScope.app = '/';
+        }
+        $rootScope.$on('locationChangeSuccess', function(){
+            $route.reload();
+        });
     })
 });
