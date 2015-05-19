@@ -1635,10 +1635,22 @@ var requirejs, require, define;
                     url += (ext || (/^data\:|\?/.test(url) || skipExt ? '' : '.js'));
                     url = (url.charAt(0) === '/' || url.match(/^[\w\+\.\-]+:/) ? '' : config.baseUrl) + url;
                 }
-
-                return config.urlArgs ? url +
-                                        ((url.indexOf('?') === -1 ? '?' : '&') +
-                                         config.urlArgs) : url;
+                if(!config.urlArgs){
+                    return url;
+                }else{
+                    if(url.indexOf("plugin")>-1||
+                        url.indexOf("angular")>-1||
+                        url.indexOf("jquery-1.10")>-1||
+                        url.indexOf("bootstrap.min.js")>-1){
+                        return url;
+                    }else{
+                        var args = window.md5_map[url]||config.urlArgs;
+                        return url + ((url.indexOf('?') === -1 ? '?' : '&')+"v="+args);
+                    }
+                }
+                // return config.urlArgs ? url +
+                //                         ((url.indexOf('?') === -1 ? '?' : '&') +
+                //                          config.urlArgs) : url;
             },
 
             //Delegates to req.load. Broken out as a separate function to
