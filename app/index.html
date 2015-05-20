@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="base">
 <head>
-	<title>Daylight's Blog</title>
+	<title>Chqiangs's Blog</title>
     <meta name="fragment" content="!" />
     <META HTTP-EQUIV="pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
@@ -10,101 +10,44 @@
     <base href="/">
     <link rel="shortcut icon" href="/img/small_logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/style/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/template.css">
+    <script>
+        var require = {
+           urlArgs: 'v='+new Date().getTime()
+        };
+    </script>
+    <script src="md5-map.js"></script>
     <!-- <link href="/style/main.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="/style/mix.css" media="only screen and (min-width:720px)"> -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-    <header class="header  push-down-45">
-        <div class="container">
-            <div class="logo  pull-left">
-                <a href="/">
-                    DayLight's Blog
-                </a>
-            </div>
-        <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button data-target="#readable-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <nav role="navigation" class="navbar  navbar-default">
-            <!-- Collect the nav links, forms, and other content for toggling -->
-                <div id="readable-navbar-collapse" class="collapse  navbar-collapse">
-                    <ul class="navigation nav navbar-nav navbar-right">
-                        <li class="active">
-                            <a class="scroll" href="/">主页
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="scroll" href="/tech">技术&经验
-                                <span class="sub-arrow">
-                                    <i class="fa fa-chevron-down"></i>
-                                </span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="/tech/html-css">Html&Css</a></li>
-                                <li><a href="/tech/javascript">Javascript</a></li>
-                                <li><a href="/tech/angularjs">AngularJs</a></li>
-                                <li><a href="/tech/nodejs">NodeJs</a></li>
-                                <li><a href="/tech/mongodb">Mongodb</a></li>
-                                <li><a href="/tech/ionic">Ionic</a></li>
-                                <li><a href="/tech/git">Git</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a class="scroll" href="/hobby">兴趣爱好
-                                <span class="sub-arrow">
-                                    <i class="fa fa-chevron-down"></i>
-                                </span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="/hobby/english">英语</a></li>
-                                <li><a href="/hobby/economy">经济学</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a class="scroll" href="/read-learn">读书&学习
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="scroll" href="/sucai-photo">素材&影像
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="scroll" href="/nonsense">闲言碎语
-                            </a>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-            <div class="hidden-xs  hidden-sm">
-                <a class="search__container  js--toggle-search-mode" href="#"> <span class="glyphicon  glyphicon-search"></span> </a>
-                <div class="social">
-                    <a class="social__container" href="#"> <span class="glyphicon  glyphicon-heart"></span> </a>
-                    <ul class="social__dropdown">
-                        <li>
-                            <a class="social__container" target="_blank" href="https://www.facebook.com/ProteusThemes"> <span class="zocial-facebook"></span> </a>
-                        </li>
-                        <li>
-                            <a class="social__container" target="_blank" href="https://twitter.com/ProteusNetCom"> <span class="zocial-twitter"></span> </a>
-                        </li>
-                        <li>
-                            <a class="social__container" target="_blank" href="http://www.specificfeeds.com/follow"> <span class="zocial-rss"></span> </a>
-                        </li>
-                    </ul>
+    <div ng-include="'base/html/head.html'"></div>
+    <div class="slider main">
+        <div class="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="shade"></div>
+                <div class="carousel-caption">
+                <blockquote class="blockquote__alternative">
+                    <h3 style="color:#ccc;">To see the world, things dangerous to come to,to see behind walls, to draw closer,to find each other and to feel ,that is the Purpose of LIFE.</h3>
+                    <p style="color: #eee; position: absolute; width: 100%; right: -25%; bottom: -25%;">开拓视野，冲破艰险，看见世界，身临其境， 贴近彼此，感受生活， 这就是生活的目的</p>
+                </blockquote>
+                    <!-- <div class="slider__container">
+                    <h3 class="slider__subtitle">We are not just bloggers</h3>
+                    <h1 class="slider__title">We will change the world</h1>
+                    <a class="btn  btn-primary" href="http://themeforest.net/item/readable-blog-template-focused-on-readability/7499064?ref=ProteusThemes">Buy Theme</a> &nbsp; &nbsp;
+                    <a class="btn  btn-transparent" href="features.html">Read More</a>
+                    </div> -->
                 </div>
             </div>
         </div>
-    </header>
-    <div ng-controller="baseCtrl" class="container main">
+        </div>
+    </div>
+    <div ng-controller="baseCtrl" class="container">
         <div class="row">
             <div ng-include="base_tmp">
                 <script src="base/require.js" defer async="true" data-main="base/main"></script>
@@ -118,17 +61,18 @@
     <script type="text/javascript">
     // $(document).scroll(function(){
     //     var t = document.documentElement.scrollTop||document.body.scrollTop;
-    //     if(t<$("#header")[0].offsetHeight){
-    //         var top = 35;
-    //         if($(window)[0].outerWidth<720){
-    //             top = 100;
-    //         }else if($(window)[0].outerWidth<960){
-    //             top = 150;
-    //         }else if($(window)[0].outerWidth<1180){
-    //             top = 50;
-    //         }
-    //         console.log(top)
-    //         $("#header .header-overlay").css("background-position","50% "+(top+t/20)+"%");  
+    //     var bg = $(".slider .carousel-inner .active");
+    //     if(t<bg[0].offsetHeight){
+    //         // var top = 35;
+    //         // if($(window)[0].outerWidth<720){
+    //         //     top = 100;
+    //         // }else if($(window)[0].outerWidth<960){
+    //         //     top = 150;
+    //         // }else if($(window)[0].outerWidth<1180){
+    //         //     top = 50;
+    //         // }
+    //         // console.log(top)
+    //         bg.css("background-position","75% "+(t/5)+"%");  
     //         $("nav,.slide").removeClass("scroll");
     //     }else{
     //         $("nav,.slide").addClass("scroll");

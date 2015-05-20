@@ -18,7 +18,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var fmm = require('./file-md5-map');
 
 var debug = require("debug")("daylight");
 var app = express();
@@ -54,6 +54,7 @@ for(var i=0;i<app_list.length;i++){
     var app_route = require('./app/base/'+app_list[i]+'/server_route');
     app_route(app);
 }
+fmm();
 
 
 // catch 404 and forward to error handler

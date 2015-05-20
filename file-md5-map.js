@@ -4,9 +4,9 @@ var fs = require('fs'),
     Url = require('url');
 
 
-// module.exports = function(){
+module.exports = function(){
 	explorer(__dirname+"/app",{});
-// }
+}
 
 
 function createmd5(data){
@@ -31,15 +31,18 @@ function explorer(path,finalcode){
 						return;
 					}
 			        if(stat.isDirectory()){
-		        		console.log(path+"/"+file+"/");
+		        		// console.log(path+"/"+file+"/");
 		            	explorer(path+"/"+file,finalcode);	
 			        }else{
-			        	console.log(path+"/"+file);
+			        	// console.log(path+"/"+file);
 			        	var origCode = fs.readFileSync(path+"/"+file, 'utf8');
-			        	var key = path.split("daylight/")[1]?('/'+path.split("daylight/")[1]+'/'+file):("/"+file);
-			        	if(key.split("/").length==2||key.indexOf("static")>-1){
-			        		key = '/base/..'+key; 
+			        	var key = path.split(__dirname+"/app")[1]?('/'+path.split(__dirname+"/app")[1]+'/'+file):("/"+file);
+			        	if(key.split("/").length==2||key.indexOf("static")>-1||key.indexOf("bower_components")>-1){
+			        		key = 'base/..'+"/"+key.split("//")[1]; 
+			        	}else{
+			        		key = key.split("//")[1];
 			        	}
+			        	console.log(key)
 			        	finalcode[key] = createmd5(origCode);
 			        	fs.writeFileSync(__dirname+"/app/md5-map.js", "window.md5_map = "+JSON.stringify(finalcode), 'utf8');
 			        }
