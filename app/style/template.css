@@ -499,7 +499,7 @@ pre code {
 	padding-right:15px
 }
 .main{
-	padding-top: 120px;
+	padding-top: 70px;
 }
 .container:after,.container:before {
 	content:" ";
@@ -2943,7 +2943,8 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 }
 }.container>.navbar-collapse,.container>.navbar-header {
 	margin-right:-15px;
-	margin-left:-15px
+	margin-left:-15px;
+	float: right;
 }
 @media (min-width:992px) {
 	.container>.navbar-collapse,.container>.navbar-header {
@@ -3282,7 +3283,33 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	display:block
 }
 .carousel-inner>.active {
-	left:0
+	background-image: url("../imgs/slide.png");
+	background-repeat: no-repeat;
+	background-position: 75% 0;
+	background-attachment: fixed;
+    height: 420px;
+    left: 0;
+    position: relative;
+    background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+  	backface-visibility: inherit;
+  	transform: inherit!important;/*关于position-attament 在chrome失效的问题  只要加上倒数两句就可以了*/
+}
+.carousel-inner>.active .shade{
+	background: -moz-linear-gradient(left center , #272622 37%, transparent 150%);
+	background: -webkit-linear-gradient(left, #272622 37%, transparent 150%); 
+	background: -o-linear-gradient(left,  #272622 37%, transparent 150%);  
+	background: -ms-linear-gradient(left,  #272622 37%, transparent 150%); 
+	background: linear-gradient(left,  #272622 37%, transparent 150%);   
+	/*background-color: #272622;*/
+	position: absolute;
+	left: 0;
+	top: 0;
+	right:0;
+	bottom: 0;
+	opacity: 0.8;
 }
 .carousel-inner>.next,.carousel-inner>.prev {
 	position:absolute;
@@ -3418,8 +3445,8 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	font-size:30px
 }
 .carousel-caption {
-	left:20%;
-	right:20%;
+	left:5%;
+	right:35%;
 	padding-bottom:30px
 }
 .carousel-indicators {
@@ -3784,7 +3811,7 @@ h1 {
 }
 @media (min-width:768px) {
 	h2 {
-	font-size:30px
+	font-size:28px
 }
 }h3 {
 	font-size:24px;
@@ -3833,7 +3860,7 @@ h6 a:hover {
 	color:#9a9a90
 }
 a {
-	color:#0093EC;
+	color:#0AA284;
 	border-bottom:1px dotted #9a9a90
 }
 a:hover {
@@ -3844,7 +3871,7 @@ header a {
 	border-bottom:0
 }
 blockquote {
-	border-left:4px solid #0093EC;
+	border-left:4px solid #0AA284;
 	margin:30px 0;
 	padding:10px 30px;
 	font-weight:400;
@@ -3855,7 +3882,7 @@ blockquote {
 @media (min-width:768px) {
 	blockquote {
 	font-size:26px;
-	margin:60px 0
+	margin:30px 0
 }
 }.blockquote__alternative {
 	text-align:center;
@@ -3868,12 +3895,21 @@ blockquote {
 	padding:10px 75px
 }
 }.blockquote__alternative:before {
-	position:absolute;
-	content:open-quote;
-	left:-15px;
-	top:-30px;
+	color: #dcdddd;
+    content: "“";
+    font-size: 50px!important;
+    font-weight: 700;
+    left: 25px !important;
+    position: absolute;
+    top: 12px;
+}
+.blockquote__alternative:after {
+	content: "”";
+	font-size: 50px;
+	position: absolute;
 	color:#dcdddd;
-	font-size:80px;
+	right: 50px;
+	bottom: 5px;
 	font-weight:700
 }
 @media (min-width:768px) {
@@ -3968,6 +4004,11 @@ li ul.sub-menu{
     list-style:none;
     padding:0;
 }
+.in ul li ul.sub-menu{
+	display: block;
+    list-style: outside none none;
+    position: relative;
+}
 body.active li ul.sub-menu{
     display: block;
     position: relative;
@@ -3981,7 +4022,7 @@ body.active li ul.sub-menu li a{
     position: relative;
 }
 body.active li ul.sub-menu li.active a{
-     background-color:#0093ec!important;
+     background-color:#0AA284!important;
     color:#fff!important; 
 }
 .header ul li.active a{
@@ -4004,7 +4045,20 @@ body.active li ul.sub-menu li.active a{
     padding: 0.5rem 1rem;
 }
 .header ul li:hover a{
-    text-decoration: underline;
+    text-decoration: none;
+}
+.header ul li a span i{
+	-webkit-transition:all 0.2s linear;
+	transition:all 0.2s linear;
+}
+.header ul li:hover a span i{
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); 	/* IE 9 */
+	-moz-transform:rotate(180deg); 	/* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+	-o-transform:rotate(180deg);
+	-webkit-transition:all 0.2s linear;
+	transition:all 0.2s linear;
 }
 .header ul li:hover ul.sub-menu{
     display:block;
@@ -4013,7 +4067,7 @@ body.active li ul.sub-menu li.active a{
     text-decoration: none!important;
 }
 ul.sub-menu li:hover a{
-    background-color:#0093ec!important;
+    background-color:#0AA284!important;
     color:#fff!important; 
 }
 .boxed {
@@ -4022,11 +4076,11 @@ ul.sub-menu li:hover a{
 	border-radius:6px
 }
 h1+h3,h2+h3 {
-	margin:-8px 0 30px 0
+	margin:-8px 0 24px 0
 }
 @media (min-width:768px) {
 	.front-page-title {
-	margin-top:-30px
+	margin-top:-45px
 }
 }.search-subtitle {
 	margin:-20px 0 -10px 0
@@ -4162,7 +4216,7 @@ h1+h3,h2+h3 {
 	left:0;
 	right:0;
 	top:-1px;
-	background-color:#0093EC;
+	background-color:#0AA284;
 	visibility:hidden;
 	opacity:0;
 	-webkit-transition:all .1s linear;
@@ -4173,15 +4227,16 @@ h1+h3,h2+h3 {
 	opacity:1
 }
 }.navigation .active>a,.navigation>li:hover>a {
-	color:#0093EC
+	color:#0AA284
 }
 @media (min-width:992px) {
 	.navigation>li:hover>a:after {
 	visibility:visible;
-	opacity:1
+	opacity:1;
+	text-decoration: none;
 }
 .navigation .active>a {
-	color:#0093EC;
+	color:#0AA284;
 	display:block;
 	position:relative
 }
@@ -4192,7 +4247,7 @@ h1+h3,h2+h3 {
 	left:0;
 	right:0;
 	top:-1px;
-	background-color:#0093EC;
+	background-color:#0AA284;
 	visibility:visible;
 	opacity:1;
 	-webkit-transition:all .1s linear;
@@ -4229,7 +4284,7 @@ h1+h3,h2+h3 {
 }
 @media (min-width:992px) {
 	.navigation__dropdown>li>a {
-	background-color:#0093EC;
+	background-color:#0AA284;
 	border-bottom:1px solid #499a62;
 	color:#f3f4f4;
 	font-weight:700;
@@ -4237,7 +4292,7 @@ h1+h3,h2+h3 {
 	white-space:nowrap
 }
 }.navigation__dropdown>li>a:hover {
-	color:#0093EC;
+	color:#0AA284;
 	background-color:none
 }
 @media (min-width:992px) {
@@ -4251,12 +4306,12 @@ h1+h3,h2+h3 {
 	max-height:600px
 }
 .navbar-toggle {
-	border:1px solid #0093EC;
+	border:1px solid #0AA284;
 	border-radius:2px;
 	margin:18px 15px;
-	background:-webkit-gradient(linear,left top,left bottom,from(#0093EC),to(#419a5c));
-	background:-webkit-linear-gradient(top,#0093EC 0,#419a5c 100%);
-	background:linear-gradient(to bottom,#0093EC 0,#419a5c 100%)
+	background:-webkit-gradient(linear,left top,left bottom,from(#0AA284),to(#419a5c));
+	background:-webkit-linear-gradient(top,#0AA284 0,#419a5c 100%);
+	background:linear-gradient(to bottom,#0AA284 0,#419a5c 100%)
 }
 .navbar-toggle:focus,.navbar-toggle:hover {
 	outline:0
@@ -4273,12 +4328,12 @@ h1+h3,h2+h3 {
 	float:right;
 	border-left:1px solid #dcdddd;
 	border-right:1px solid #dcdddd;
-	color:#0093EC
+	color:#0AA284
 }
 .search__container:hover,.social__container--dropdown:hover,.social__container:hover {
 	-webkit-transition:all .1s linear;
 	transition:all .1s linear;
-	color:#0093EC;
+	color:#0AA284;
 	background-color:#f3f4f4
 }
 .social__container {
@@ -4318,7 +4373,7 @@ h1+h3,h2+h3 {
 }
 .search-panel .search-panel__text {
 	font-size:18px;
-	color:#0093EC;
+	color:#0AA284;
 	padding-left:5px
 }
 body.search-mode .search-panel {
@@ -4338,7 +4393,7 @@ body.search-mode .search-panel {
 	position:absolute;
 	opacity:0;
 	visibility:hidden;
-	background:#0093EC;
+	background:#0AA284;
 	z-index:20;
 	list-style:none;
 	padding:0;
@@ -4527,7 +4582,7 @@ body.search-mode .search-panel {
 	box-shadow:0 0 3px #e0e0e0 inset
 }
 .widget-posts .nav-tabs>li.active>a,.widget-posts .nav-tabs>li:hover>a {
-	color:#0093EC;
+	color:#0AA284;
 	background-color:#f8f9fa;
 	border:0;
 	margin:1px
@@ -4540,7 +4595,7 @@ body.search-mode .search-panel {
 	margin:0
 }
 .widget-posts .nav-tabs>li a:hover {
-	color:#0093EC;
+	color:#0AA284;
 	background:#f8f9fa;
 	border:0;
 	margin:1px
@@ -4596,7 +4651,7 @@ body.search-mode .search-panel {
 }
 .widget-contact__title {
 	font-family:Lato,sans-serif;
-	color:#0093EC
+	color:#0AA284
 }
 .widget-contact__text {
 	font-family:"Open Sans",sans-serif;
@@ -4611,7 +4666,7 @@ body.search-mode .search-panel {
 }
 .widget-navigation .navigation li a {
 	font-weight:400;
-	color:#0093EC;
+	color:#0AA284;
 	padding:5px 0;
 	text-transform:none;
 	border:0;
@@ -4648,10 +4703,10 @@ body.search-mode .search-panel {
 	margin-bottom:5px
 }
 .btn-primary {
-	border:1px solid #0093EC;
-	background:-webkit-gradient(linear,left top,left bottom,from(#0093EC),to(#418857));
-	background:-webkit-linear-gradient(top,#0093EC,#418857);
-	background:linear-gradient(to bottom,#0093EC,#418857)
+	border:1px solid #0AA284;
+	background:-webkit-gradient(linear,left top,left bottom,from(#0AA284),to(#418857));
+	background:-webkit-linear-gradient(top,#0AA284,#418857);
+	background:linear-gradient(to bottom,#0AA284,#418857)
 }
 .btn-primary:hover {
 	background:#418857;
@@ -4737,7 +4792,7 @@ body.search-mode .search-panel {
 }
 .btn-primary--transparent {
 	background:0 0;
-	color:#0093EC
+	color:#0AA284
 }
 .btn-info--transparent {
 	background:0 0;
@@ -4776,15 +4831,15 @@ body.search-mode .search-panel {
 .btn-transparent:hover {
 	background-color:#dfe2e4;
 	border:1px solid #dfe2e4;
-	color:#0093EC
+	color:#0AA284
 }
 .carousel-indicators li {
 	background-color:#9a9a90;
 	border-color:#9a9a90
 }
 .carousel-indicators .active {
-	background-color:#0093EC;
-	border-color:#0093EC
+	background-color:#0AA284;
+	border-color:#0AA284
 }
 .meta {
 	position:relative;
@@ -5055,7 +5110,7 @@ body.search-mode .search-panel {
 }
 }.tags__link {
 	display:inline-block;
-	border:1px solid #0093EC;
+	border:1px solid #0AA284;
 	border-radius:30px;
 	margin:5px;
 	padding:9.5px 20px;
@@ -5066,7 +5121,7 @@ body.search-mode .search-panel {
 	transition:all .1s linear
 }
 .tags__link:hover {
-	background-color:#0093EC;
+	background-color:#0AA284;
 	color:#fff
 }
 .widget-tags {
@@ -5093,10 +5148,10 @@ body.search-mode .search-panel {
 	margin-bottom:30px
 }
 .post-content--front-page h3 {
-	font-size:24px
+	font-size:22px
 }
 .post-content--front-page p {
-	font-size:18px
+	font-size:16px
 }
 .post-comments {
 	text-align:center;
@@ -5144,7 +5199,6 @@ body.search-mode .search-panel {
 	margin-top:-30px
 }
 }.slider {
-	margin-top:-45px;
 	margin-bottom:30px
 }
 .slider__subtitle {
