@@ -7,11 +7,11 @@ require.config({
         semantic: '../bower_components/semantic-ui/dist/semantic.min',
         // jqueryui: '../bower_components/jqueryui/jquery-ui.min',
         angularRoute: '../bower_components/angular-route/angular-route.min',
-        ueconf:'../bower_components/ueditor/ueditor.config.js',
-        codemirror:'../bower_components/ueditor/third-party/codemirror/codemirror.js',
-        ueall:'../bower_components/ueditor/ueditor.all.js',
-        uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn.js',
-        sh:'../bower_components/ueditor/third-party/SyntaxHighlighter/shCore.js'
+        ueconf:'../bower_components/ueditor/ueditor.config',
+        codemirror:'../bower_components/ueditor/third-party/codemirror/codemirror',
+        ueall:'../bower_components/ueditor/ueditor.all',
+        uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn',
+        sh:'../bower_components/ueditor/third-party/SyntaxHighlighter/shCore'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -20,9 +20,9 @@ require.config({
         'semantic': ['jquery'],
         'ueconf':{'exports':'ueconf'},
         'codemirror':{'exports':'codemirror'},
-        'uelan':{'exports':'uelan'},
         'sh':{'exports':'sh'},
-        'ueall':['jquery','codemirror','uelan','sh'],
+        'ueall':['jquery','codemirror','sh'],
+        'uelan':['ueall'],
     },
     priority: [
         'angular',
@@ -43,9 +43,15 @@ require([
     'jquery',
     // 'jqueryui',
     'semantic',
+    'ueconf',
+    'codemirror',
+    'uelan',
+    'sh',
+    'ueall',
     'app',
     'dl_base/dl_base_routes',
-    'dl_tech/dl_tech_routes'
+    'dl_tech/dl_tech_routes',
+    'dl_add/dl_add_routers'
     ], function(angular, app, routes) {
     angular.element().ready(function() {
         angular.resumeBootstrap(['base']);
