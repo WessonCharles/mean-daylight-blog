@@ -4432,7 +4432,7 @@ body.search-mode .search-panel {
 }
 .widget-author {
 	text-align:center;
-	overflow:hidden
+	/*overflow:hidden*/
 }
 .widget-author h4 {
 	margin-bottom:10px
@@ -4476,7 +4476,7 @@ body.search-mode .search-panel {
 	background:rgba(0,0,0,.5);
 	z-index:1
 }
-.widget-author__avatar--blurred>img {
+.widget-author__avatar--blurred {
 	width:100%;
 	height:auto;
 	-webkit-filter:blur(5px);
