@@ -10,7 +10,7 @@
     <base href="/">
     <link rel="shortcut icon" href="/img/small_logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="/bower_components/semantic-ui/dist/semantic.min.css" rel="stylesheet">
     <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/style/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/template.css">
@@ -22,13 +22,95 @@
            urlArgs: 'v='+new Date().getTime()
         };
     </script>
-    <script src="md5-map.js"></script>
-    <!-- <link href="/style/main.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="/style/mix.css" media="only screen and (min-width:720px)"> -->
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-    <div ng-include="'base/html/head.html'"></div>
+     <header id="header" class="push-down-45">
+        <div class="container">
+            <div class="logo  pull-left">
+                <a href="/">
+                    Chqiangs
+                </a>
+            </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" id="head-menu">
+                <button data-target="#readable-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav role="navigation" class="navbar  navbar-default">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                <div id="readable-navbar-collapse" class="collapse  navbar-collapse">
+                    <ul class="navigation nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a class="scroll" href="/">主页
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/tech">前端技术
+                                <span class="sub-arrow">
+                                    <i class="fa fa-chevron-down"></i>
+                                </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/tech/html-css">Html&Css</a></li>
+                                <li><a href="/tech/javascript">Javascript</a></li>
+                                <li><a href="/tech/angularjs">AngularJs</a></li>
+                                <li><a href="/tech/nodejs">NodeJs</a></li>
+                                <li><a href="/tech/mongodb">Mongodb</a></li>
+                                <li><a href="/tech/ionic">Ionic</a></li>
+                                <li><a href="/tech/git">Git</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/hobby">兴趣爱好
+                                <span class="sub-arrow">
+                                    <i class="fa fa-chevron-down"></i>
+                                </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/hobby/english">英语</a></li>
+                                <li><a href="/hobby/economy">经济学</a></li>
+                                <li><a href="/hobby/health">健身</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/read-learn">学而思之
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/sucai-photo">映像
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/nonsense">关于我
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+            <div class="hidden-xs  hidden-sm">
+                <a class="search__container  js--toggle-search-mode" href="#"> <span class="fa fa-search"></span> </a>
+                <div class="social">
+                    <a class="social__container" href="#"> <span class="fa fa-heart"></span> </a>
+                    <ul class="social__dropdown">
+                        <li>
+                            <a class="social__container" target="_blank" href="https://www.facebook.com/ProteusThemes"> <span class="zocial-facebook"></span> </a>
+                        </li>
+                        <li>
+                            <a class="social__container" target="_blank" href="https://twitter.com/ProteusNetCom"> <span class="zocial-twitter"></span> </a>
+                        </li>
+                        <li>
+                            <a class="social__container" target="_blank" href="http://www.specificfeeds.com/follow"> <span class="zocial-rss"></span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="slider main">
         <div class="carousel">
         <div class="carousel-inner">
@@ -61,50 +143,6 @@
     </div>
     <footer>
     </footer>
-    <script type="text/javascript">
-    // $(document).scroll(function(){
-    //     var t = document.documentElement.scrollTop||document.body.scrollTop;
-    //     var bg = $(".slider .carousel-inner .active");
-    //     if(t<bg[0].offsetHeight){
-    //         // var top = 35;
-    //         // if($(window)[0].outerWidth<720){
-    //         //     top = 100;
-    //         // }else if($(window)[0].outerWidth<960){
-    //         //     top = 150;
-    //         // }else if($(window)[0].outerWidth<1180){
-    //         //     top = 50;
-    //         // }
-    //         // console.log(top)
-    //         bg.css("background-position","75% "+(t/5)+"%");  
-    //         $("nav,.slide").removeClass("scroll");
-    //     }else{
-    //         $("nav,.slide").addClass("scroll");
-    //     }
-    // });
-
-    $("nav .menu-btn").click(function(){
-        var m = $(this);
-        if($("body").hasClass("active")){
-            $("body").removeClass("active");
-            m.removeClass("fa-times").addClass("fa-bars");
-        }else{
-            $("body").addClass("active");
-            m.addClass("fa-times").removeClass("fa-bars");
-        }   
-    })
-
-    $(".slide .nav li a").click(function(){
-        var t = $(this).parent();
-        if(t.find("ul.sub-menu").length>0){
-            if(t.find("a .sub-arrow i").hasClass("fa-chevron-down")){
-                t.find("a .sub-arrow i").removeClass("fa-chevron-down").addClass("fa-chevron-right");
-                t.find("ul.sub-menu").slideUp();
-            }else{
-                t.find("a .sub-arrow i").removeClass("fa-chevron-right").addClass("fa-chevron-down");
-                t.find("ul.sub-menu").slideDown();
-            }
-        }
-    });
-    </script>  
+    <script src="md5-map.js"></script>
 </body>
 </html>
