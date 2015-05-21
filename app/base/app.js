@@ -5,13 +5,15 @@
 define([
     'angular',
     'dl_base/dl_base_controllers',
-    'dl_tech/dl_tech_controllers'
+    'dl_tech/dl_tech_controllers',
+    'dl_add/dl_add_controllers'
     ], function (angular){
     // Declare app level module which depends on filters, and services
     return angular.module('base', [
         'ngRoute',
         'dl_base.dl_base_controllers',
-        'dl_tech.dl_tech_controllers'
+        'dl_tech.dl_tech_controllers',
+        'dl_add.dl_add_controllers'
     ])
     .controller('baseCtrl', function($scope, $http,$rootScope,$route, $location) {
         $rootScope.language_switch = function(language){

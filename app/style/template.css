@@ -320,6 +320,9 @@ cite {
 .text-info:hover {
 	color:#2d6987
 }
+.active.text-teal{
+	color:#0AA284!important;
+}
 .text-left {
 	text-align:left
 }
@@ -3872,7 +3875,7 @@ h6 a:hover {
 }
 a {
 	color:#0AA284;
-	border-bottom:1px dotted #9a9a90
+	/*border-bottom:1px dotted #9a9a90*/
 }
 a:hover {
 	/*color:#418857;*/
