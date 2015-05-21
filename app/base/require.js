@@ -1644,8 +1644,6 @@ var requirejs, require, define;
                         url.indexOf("bootstrap.min.js")>-1){
                         return url;
                     }else{
-                        console.log(url)
-                        console.log(window.md5_map)
                         var args = window.md5_map[url]||config.urlArgs;
                         return url + ((url.indexOf('?') === -1 ? '?' : '&')+"v="+args);
                     }
