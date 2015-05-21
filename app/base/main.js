@@ -7,6 +7,11 @@ require.config({
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap.min',
         jqueryui: '../bower_components/jqueryui/jquery-ui.min',
         angularRoute: '../bower_components/angular-route/angular-route.min',
+        ueconf:'../bower_components/ueditor/ueditor.config.js',
+        codemirror:'../bower_components/ueditor/third-party/codemirror/codemirror.js',
+        ueall:'../bower_components/ueditor/ueditor.all.js',
+        uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn.js',
+        sh:'../bower_components/ueditor/third-party/SyntaxHighlighter/shCore.js'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -14,6 +19,11 @@ require.config({
         'angularRoute': ['angular'],
         'jqueryui': ['jquery'],
         'bootstrap': ['jquery', 'jqueryui'],
+        'ueconf':{'exports':'ueconf'},
+        'codemirror':{'exports':'codemirror'},
+        'uelan':{'exports':'uelan'},
+        'sh':{'exports':'sh'},
+        'ueall':['jquery','codemirror','uelan','sh'],
     },
     priority: [
         'angular',
