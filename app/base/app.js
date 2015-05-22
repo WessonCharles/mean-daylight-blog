@@ -6,11 +6,13 @@ define([
     'angular',
     'dl_base/dl_base_controllers',
     'dl_tech/dl_tech_controllers',
-    'dl_add/dl_add_controllers'
+    'dl_add/dl_add_controllers',
+    'config'
     ], function (angular){
     // Declare app level module which depends on filters, and services
     return angular.module('base', [
         'ngRoute',
+        'base.config',
         'dl_base.dl_base_controllers',
         'dl_tech.dl_tech_controllers',
         'dl_add.dl_add_controllers'
@@ -25,7 +27,16 @@ define([
         }else{
             $rootScope.app = '/';
         }
-        $rootScope.$on('$locationChangeStart',function(){
+        jQuery.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
+            var obj=new Object();  
+            $.each(this.serializeArray(),function(index,param){  
+                if(!(param.name in obj)){  
+                    obj[param.name]=param.value;  
+                }  
+            });  
+            return obj;  
+        };  
+        $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
             setTimeout(function(){
                 var path = window.location.pathname;
                 console.log(path)
@@ -76,11 +87,11 @@ define([
                 });
             },300)
         })
-        $rootScope.$on('locationChangeSuccess', function(){
+        $rootScope.$on('locationChangeSuccess', function(){//刷新当前url地址,重新加载本页内容需要重载路由
             $route.reload();
         });
         
-        $scope.$on("$viewContentLoaded",function(){
+        $scope.$on("$viewContentLoaded",function(){//相当于domready
             $("#rebuild_image").dropdown();
             $('.browse').popup({
                 inline   : true,
@@ -91,6 +102,46 @@ define([
                   hide: 800
                 }
             });
-        })  
+        });
+        var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
+        var blogreg = /<img[^>]+src="[^"]+"[^>]*>/g;
+        var srcreg = /src="([^"]+)"/;
+        $rootScope.blogaction = {//博客内容的相关方法
+            cutword:function(str,len){//截取指定长度的内容，作为预览显示
+                if(!str){
+                    return "";
+                }
+                
+                str = str.replace(htmltotext,"");
+                var str_len = str.length;
+                str = str.substring(0,len);
+                if(len < str_len ){
+                    str =str+"..." ;
+                }
+                return str;
+            },
+            cutimg:function(str,imgs){//截取文字并返回
+                if(!str){
+                    return "";
+                }
+                
+                imgs = imgs || [];
+                if(imgs){
+                    var result = str.match(blogreg);
+                    if(result){
+                        for (var i=0; i<result.length; i++) {            
+                            srcreg.exec(result[i]);
+                            imgs.push(RegExp.$1);
+                        }
+                    }
+                }
+                
+                if(imgs.length > 0){        
+                    return "<div class='blog_index_img'><img class='blog_img_preview300' src='"+imgs[0]+"'/></div>";
+                }
+                return "";
+            }
+        };
+        
     })
 });

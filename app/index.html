@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="base">
+<html xmlns:ng="http://angularjs.org" ng-app="base">
 <head>
 	<title>Chqiangs's Blog</title>
     <meta name="fragment" content="!" />
@@ -25,7 +25,7 @@
     <!-- <link rel="stylesheet" href="/style/mix.css" media="only screen and (min-width:720px)"> -->
 </head>
 <body>
-     <header id="header" class="push-down-45">
+    <header id="header" class="push-down-45">
         <div class="container">
             <div class="logo  pull-left">
                 <a href="/">
@@ -46,7 +46,7 @@
                 <div id="readable-navbar-collapse" class="collapse  navbar-collapse">
                     <ul class="navigation nav navbar-nav navbar-right">
                         <li class="active">
-                            <a class="scroll" href="/">主页
+                            <a class="scroll" href="/">首页
                             </a>
                         </li>
                         <li class="">
@@ -62,24 +62,19 @@
                                 <li><a href="/tech/nodejs">NodeJs</a></li>
                                 <li><a href="/tech/mongodb">Mongodb</a></li>
                                 <li><a href="/tech/ionic">Ionic</a></li>
-                                <li><a href="/tech/git">Git</a></li>
                             </ul>
                         </li>
                         <li class="">
-                            <a class="scroll" href="/hobby">兴趣爱好
+                            <a class="scroll" href="/life">启示天华
                                 <span class="sub-arrow">
                                     <i class="fa fa-chevron-down"></i>
                                 </span>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="/hobby/english">英语</a></li>
-                                <li><a href="/hobby/economy">经济学</a></li>
-                                <li><a href="/hobby/health">健身</a></li>
+                                <li><a href="/life/pic-word">图文</a></li>
+                                <li><a href="/life/weblog">轻博客</a></li>
+                                <li><a href="/life/article">闲言碎语</a></li>
                             </ul>
-                        </li>
-                        <li class="">
-                            <a class="scroll" href="/read-learn">学而思之
-                            </a>
                         </li>
                         <li class="">
                             <a class="scroll" href="/sucai-photo">映像
@@ -144,7 +139,59 @@
         </div>
         
     </div>
-    <footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="col-xs-12  col-md-3">
+                <div class="widget-about  push-down-30">
+                    <img src="images/logo.png.pagespeed.ce.9AC7oTjcgs.png" alt="Logo" width="176" height="70">
+                    <br>
+                    <span class="footer__text">We focus on highly customizable, fast and optimized themes for variety of popular platform like WordPress and Magento.</span>
+                    <br>
+                    <br>
+                    <div class="social-icons  widget-social-icons">
+                        <a href="#" class="social-icons__container"> <span class="zocial-facebook"></span> </a>
+                        <a href="#" class="social-icons__container"> <span class="zocial-twitter"></span> </a>
+                        <a href="#" class="social-icons__container"> <span class="zocial-youtube"></span> </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12  col-md-3">
+                <div class="tags  widget-tags">
+                    <h6>Tags</h6>
+                    <hr>
+                    <a href="#" class="tags__link">Tech</a>
+                    <a href="#" class="tags__link">Web</a>
+                    <a href="#" class="tags__link">UI/UX</a>
+                    <a href="#" class="tags__link">Tutorials</a>
+                    <a href="#" class="tags__link">Workflow</a>
+                </div>
+            </div>
+            <div class="col-xs-12  col-md-3">
+                <nav class="widget-navigation  push-down-30">
+                    <h6>Navigation</h6>
+                    <hr>
+                    <ul class="navigation">
+                        <li> <a href="index.html">Home</a> </li>
+                        <li> <a href="single-post.html">Post Formats</a> </li>
+                        <li> <a href="elements.html">Elements</a> </li>
+                        <li> <a href="about-us.html">About</a> </li>
+                        <li> <a href="contact.html">Contact</a> </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-xs-12  col-md-3">
+                <div class="widget-contact  push-down-30">
+                    <h6>Contact Us</h6>
+                    <hr>
+                    <span class="widget-contact__text">
+                        <span class="widget-contact__title">Readable Itd.</span>
+                        <br>Tehnološki park 19,
+                        <br>1000 Ljubljana
+                        <br>Slovenia
+                    </span>
+                </div>
+            </div>
+        </div>
     </footer>
     <script src="md5-map.js"></script>
 </body>

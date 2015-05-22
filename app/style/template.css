@@ -5599,3 +5599,6 @@ body.search-mode .search-panel {
 	height:100%;
 	background:url(https://www.proteusthemes.com/themes/readable-html/images/icon-play.png,q1422280023.pagespeed.ce.407c880_ZR.png) no-repeat center center
 }
+.edui-editor{
+	z-index: 0!important;
+}

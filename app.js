@@ -49,7 +49,7 @@ app.use(function (req, res,next) {
         res.sendfile('app/index.html');
     }
 });    
-var app_list = ['dl_base','dl_hobby','dl_nonsense','dl_read-learn','dl_sucai-photo','dl_tech'];
+var app_list = ['dl_base','dl_life','dl_nonsense','dl_sucai-photo','dl_tech'];
 for(var i=0;i<app_list.length;i++){
     var app_route = require('./app/base/'+app_list[i]+'/server_route');
     app_route(app);
