@@ -14,11 +14,11 @@ var blogSchema = new Schema({
 	//文章标题
     title : String,
     //标签
-    tags:String,
+    tags:[],
     //作者
-	author : {nickname:String,_id:String,url:String},
+	author : {nickname:String,_id:String},
 	//日志内容
-	message : String,
+	content : String,
 	//创建日期
 	time : Date,
 	//分类
@@ -27,12 +27,10 @@ var blogSchema = new Schema({
 	comments:[comment],
 	//点击喜欢量（赞）
 	ctr : Number,
-	//点击量
-	clickNum:Number,
+	//是否原创
+	ismine:Boolean,
 	//原作者
-	creator : {nickname:String,_id:String,url:String},
-	url :String,
-	draft : String
+	originalauthor : {name:String,_id:String,url:String},
 });
 
 blogSchema.index({"author._id":1});

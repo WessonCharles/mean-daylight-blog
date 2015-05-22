@@ -31,9 +31,5 @@ define(['angular', 'app'], function(angular, app) {
             templateUrl: 'base/dl_tech/tech.html',
             controller: 'dltechctrl'
         })
-        $routeProvider.when('/tech/git', {
-            templateUrl: 'base/dl_tech/tech.html',
-            controller: 'dltechctrl'
-        })
     }]);
 });

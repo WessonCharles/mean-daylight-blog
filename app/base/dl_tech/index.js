@@ -14,3 +14,7 @@ exports.gettech = function(req,res){
 		res.send(blogs);
     });
 }
+exports.create = function(req,res){
+	console.log(req.aparam["type"]);
+
+}
