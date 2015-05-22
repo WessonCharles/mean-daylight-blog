@@ -18,24 +18,20 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 		});
 
 		$scope.restore = function(){
-			$scope.blog = {
-				title:'',
-				ismine:true,
-				type:'tech',
-				tags:[],
-				content:''};
-		}
+			$scope.blog = {ismine:true,type:'tech'};
+		};	
 		$scope.restore();
 		$scope.addblog = function(e){
 			$(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
-			var b = {};
+			var poststr = "";
 			console.log($scope.blog)
 			for(var p in $scope.blog){
-				b[p] = $scope.blog[p];
+				poststr+= p+"="+$scope.blog[p]+"&";
 			}
-			b["content"] = $(e.target).serializeObject().content;
-			console.log(b)
-			$http.post("/api/tech",b).success(function(data){
+			poststr+=$(e.target).serialize();
+			// b["content"] = $(e.target).serializeObject().content;
+			// console.log(b)
+
 				console.log(data)
 			});
 		}

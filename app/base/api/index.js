@@ -4,6 +4,10 @@ function Action (Model){
 }
 
 //create
+Action.prototype.newmodel = function(){
+    return new this.model;
+}
+
 Action.prototype.create = function (doc,callback){
     this.model.create(doc, function (error) {
         if(error) return callback(error);

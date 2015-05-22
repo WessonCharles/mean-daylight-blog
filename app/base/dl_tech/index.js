@@ -15,6 +15,21 @@ exports.gettech = function(req,res){
     });
 }
 exports.create = function(req,res){
-	console.log(req.aparam["type"]);
+	console.log(req.body)
+	console.log("+++++++++++++")
+	console.log("_________________")
+	console.log("*********")
+	req.body.author = {name:'Chqiangs',_id:'chqiangs'};
+	req.body.time = new Date();
+	blog.create(req.body,function(blog){
+		var data = {
+			message:{
+				"content":"添加博客成功",
+				"code":5
+			},
+			tech:blog
+		}
+		res.send(data);
+	})	
 
 }

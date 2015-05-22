@@ -10,8 +10,8 @@
 		<form id="add_blog" class="ui form" ng-submit="addblog($event)">
 			<div class="field">
 				<label>标题</label>
-				<input type="text" name="title" ng-modal="blog.title" placeholder="标题" required data-validation-required-message="请填写标题">
-				<p class="help-block"></p>
+				<input type="text" ng-model="blog.title" placeholder="标题" required data-validation-required-message="请填写标题">
+				<p class="help-block">{{blog.title}}</p>
 			</div>
 	      	<div class="two fields">
 	        	<div class="field">
@@ -23,7 +23,7 @@
 		        </div>
 		        <div class="field">
 		          	<label>类型</label>
-		          	<select class="ui search dropdown" id="blogtype" ng-modal="blog.type" required data-validation-required-message=
+		          	<select class="ui search dropdown" id="blogtype" ng-model="blog.type" required data-validation-required-message=
     "You must agree to the terms and conditions">
 			            <option value="tech" selected="selected">前端技术</option>
 			            <option value="life" disabled="">启示芳华</option>
@@ -34,14 +34,14 @@
 	      	<div class="two fields" ng-if="!blog.ismine">
 	      		<div class="field">
 		          	<label>原作者</label>
-		          	<input type="text" ng-modal="blog.originalauthor.name" required data-validation-required-message=
+		          	<input type="text" ng-model="blog.originalauthor.name" required data-validation-required-message=
     "You must agree to the terms and conditions">
 		        </div>
 		        <div class="field">
 		          	<label>链接</label>
 		          	<div class="ui labeled input">
 				      <div class="ui label">http:// </div>
-				      <input type="text" placeholder="mysite.com" ng-modal="blog.originalauthor.url" required data-validation-required-message=
+				      <input type="text" placeholder="mysite.com" ng-model="blog.originalauthor.url" required data-validation-required-message=
     "You must agree to the terms and conditions">
 				    </div>
 		        </div>
