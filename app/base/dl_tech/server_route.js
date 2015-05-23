@@ -1,15 +1,15 @@
+var express = require('express');
+var app = express.Router();
 var tech = require('./index');
 
-console.log(tech)
-module.exports = function (app) {
-	console.log("...")
-    app.get('/api/tech', tech.gettech);
-    app.post('/api/tech',tech.create);
-    // app.get('/list', user.list);
-    // app.get('/blog', blog.list);
-    // app.get('/user', user.list);
-    // app.post('/signup', user.create);
-    // app.post('/login', user.login);
-    // app.get('/logout', user.logout);
-    // app.get('/checklogin', index.getLoginUser);
-};
+// middleware specific to this router
+app.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+})
+app.get('/tech', tech.gettech);
+app.post('/tech',tech.create);
+
+
+module.exports = app;
+

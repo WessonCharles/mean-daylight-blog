@@ -31,7 +31,7 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 			poststr+=$(e.target).serialize();
 			// b["content"] = $(e.target).serializeObject().content;
 			// console.log(b)
-
+			$http.post("/api/tech",poststr).success(function(data){
 				console.log(data)
 			});
 		}

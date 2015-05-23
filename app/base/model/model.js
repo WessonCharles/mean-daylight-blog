@@ -23,6 +23,8 @@ var blogSchema = new Schema({
 	time : Date,
 	//分类
 	type : String,
+	//if type==life
+	subtype:String,
 	//评论列表
 	comments:[comment],
 	//点击喜欢量（赞）
