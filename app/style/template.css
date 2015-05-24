@@ -4098,7 +4098,8 @@ ul.sub-menu li:hover a,ul.sub-menu li.active a{
 .boxed {
 	background-color:#fff;
 	border:1px solid #e4e4e4;
-	border-radius:6px
+	border-radius:6px;
+	position: relative;
 }
 h1+h3,h2+h3 {
 	margin:-8px 0 24px 0
@@ -4872,7 +4873,7 @@ body.search-mode .search-panel {
 }
 @media (min-width:768px) {
 	.meta {
-	margin-bottom:60px
+	margin-bottom:25px
 }
 }.meta--full-width {
 	margin-top:-45px
@@ -4951,7 +4952,7 @@ body.search-mode .search-panel {
 }
 @media (min-width:768px) {
 	.meta__container--without-image {
-	padding:0;
+	padding:0 30px 0 20px;
 	height:70px;
 	line-height:70px
 }
@@ -5601,4 +5602,85 @@ body.search-mode .search-panel {
 }
 .edui-editor{
 	z-index: 0!important;
+}
+.ui.tag{
+    background-color: #e8e8e8;
+    background-image: none;
+    border-color: #e8e8e8;
+    border-radius: 0.2857rem;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0.125em;
+    padding: 0.6em 0.8em;
+    text-transform: none;
+    transition: background 0.2s ease 0s;
+    vertical-align: baseline;
+}
+.boxed.push-down-45 .post-format{
+	position: absolute;
+	left: 50%;
+	top: -41px;
+	margin-left: -41px;
+	background: #0AA284;
+	width: 82px;
+	height: 82px;
+	border-radius: 82px;
+	border:5px solid #f3f4f4;
+	z-index: 2;
+}
+
+.boxed.push-down-45 .post-format:before{
+	content: '';
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	border-radius: 70px;
+	top: 5px;
+	left: 5px;
+}
+
+
+.boxed.push-down-45 .post-format:after{
+	font-family: 'FontAwesome';
+	font-size: 32px;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	   -moz-transform: translateX(-50%) translateY(-50%);
+	    -ms-transform: translateX(-50%) translateY(-50%);
+	     -o-transform: translateX(-50%) translateY(-50%);
+	        transform: translateX(-50%) translateY(-50%);
+	color: #fff;
+	position: absolute;
+}
+
+.boxed.push-down-45.word .post-format:after{
+	content: "\f040";
+}
+
+.boxed.push-down-45.image .post-format:after{
+	content: "\f03e";
+}
+
+.boxed.push-down-45.pic-word .post-format:after{
+	content: "\f097";
+}
+
+.boxed.push-down-45.format-status .post-format:after{
+	content: '\e837';
+}
+
+.boxed.push-down-45.format-link .post-format:after{
+	content: '\e822';
+}
+
+.boxed.push-down-45.video .post-format:after{
+	content: "\f008";
+}
+
+.boxed.push-down-45.format-audio .post-format:after{
+	content: '\e800';
 }

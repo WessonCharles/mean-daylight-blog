@@ -35,7 +35,7 @@ define([
                 }  
             });  
             return obj;  
-        };  
+        };
         $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
             setTimeout(function(){
                 var path = window.location.pathname;
