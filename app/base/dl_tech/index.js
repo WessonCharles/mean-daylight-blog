@@ -4,17 +4,44 @@ var Blog = require(path_root+"/base/model/model").Blog,
 var blog = new Action(Blog);
 
 exports.gettech = function(req,res){
-	console.log("*************")
- 	// var render = render.create(req,res);
- 	blog.getAll(function (err, blogs) {
- 		if(err)console.dir(err);
- 		console.log(" ___________________")
- 		console.log(blogs)
- 		console.log(" +++++++++++++++++++")
-		res.send(blogs);
-    });
+	var obj = {
+		page:req.param("page"),
+		query:{type:req.param("type")}
+	}
+	// blog.getAll(function(err,list){
+	// 	res.send(list)
+	// })
+	blog.getPageNationQueryList(obj,function(err,list,total){
+		console.log(err)
+		console.log(list)
+		if(err)console.dir(err);
+		var data = {
+			message:{
+				content:"查询成功",
+				code:5
+			},
+			list:list,
+			count:total
+		}
+		res.send(data);
+	})
 }
 exports.create = function(req,res){
-	console.log(req.aparam["type"]);
+	console.log(req.body)
+	console.log("+++++++++++++")
+	console.log("_________________")
+	console.log("*********")
+	req.body.author = {name:'Chqiangs',_id:'chqiangs'};
+	req.body.time = new Date();
+	blog.create(req.body,function(blog){
+		var data = {
+			message:{
+				"content":"添加博客成功",
+				"code":5
+			},
+			tech:blog
+		}
+		res.send(data);
+	})	
 
 }

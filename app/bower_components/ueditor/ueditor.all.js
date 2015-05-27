@@ -17716,7 +17716,7 @@ baidu.editor.ui = {};
                             title:title,
                             onclick:function () {
                             	if(cmd=="insertimage"){
-                            		Litteam.imageUpload({
+                            		Chqiangs.imageUpload({
                     					upload_dir : "blogimages",
                     					onSure : function(data){
                     						var img = {},images = [];

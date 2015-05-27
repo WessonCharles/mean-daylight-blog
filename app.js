@@ -1,6 +1,8 @@
 global.db_server = "localhost";
 global.db_port = 27017;
 global.root_name = "daylight";
+global.path_core = __dirname+"/app/base/core";
+global.path_api = __dirname+"/app/base/api"
 global.BaseApi = {isDebug : true};
 
 
@@ -31,7 +33,7 @@ console.log(path_root)
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
 
@@ -40,19 +42,18 @@ app.use(express.static(path.join(__dirname, 'app')));
 //     // res.sendFile(__dirname+'/app/index.html');
 // });
 app.use(function (req, res,next) {
-    if(req.path.indexOf('/api')>=0){
+    if(req.path.indexOf('/api')>-1){
         console.log("It's server router");
-        console.log(req.path)
         next();
     }else{ //angular启动页
         console.log("It's angular router");
         res.sendfile('app/index.html');
     }
 });    
-var app_list = ['dl_base','dl_life','dl_nonsense','dl_sucai-photo','dl_tech'];
+var app_list = ['dl_life','dl_nonsense','dl_sucai-photo','dl_tech','dl_base'];
 for(var i=0;i<app_list.length;i++){
-    var app_route = require('./app/base/'+app_list[i]+'/server_route');
-    app_route(app);
+    var app_route = require(path_root+'/base/'+app_list[i]+'/server_route');
+    app.use("/api",app_route) 
 }
 fmm();
 
