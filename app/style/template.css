@@ -25,16 +25,13 @@ html {
     font-weight: 300;
     letter-spacing: -0.01em;
     position:relative;
-    -webkit-transition: all 0.6s ease 0s;
-    -moz-transition: all 0.6s ease 0s;
-    -o-transition: all 0.6s ease 0s;
-    transition: all 0.6s ease 0s;
 }
 
 body {
 	font-size:12px;
 	font-size:1.2rem ;
-	margin:0
+	margin:0;
+	height:auto;
 }
 a {
 	background:0 0
@@ -5660,7 +5657,15 @@ body.search-mode .search-panel {
 .boxed.push-down-45.word .post-format:after{
 	content: "\f040";
 }
-
+.boxed.push-down-45.word .row:first-child {
+  padding-top: 19px;
+}
+.boxed.push-down-45.word .row:first-child {
+  padding-top: 19px;
+}
+.boxed.push-down-45.word .row:first-child .meta__container--without-image{
+  height: 82px;
+}
 .boxed.push-down-45.image .post-format:after{
 	content: "\f03e";
 }
@@ -5683,4 +5688,19 @@ body.search-mode .search-panel {
 
 .boxed.push-down-45.format-audio .post-format:after{
 	content: '\e800';
+}
+/*nicescroll css*/
+.nicescroll-rails{
+	background-color: rgb(241,241,241)!important;
+	width:15px!important;
+	z-index: 20!important;
+}
+.nicescroll-cursors{
+	background-color: rgb(188,188,188)!important;
+	width:13px!important;
+	border:1px solid rgb(168,168,168)!important;
+	border-radius: 1px!important;
+}
+.nicescroll-cursors{
+	background-color: rgb(170,170,171)!important;
 }
