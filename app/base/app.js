@@ -102,6 +102,13 @@ define([
                   hide: 800
                 }
             });
+            
+          // $(document).ready(function() {
+          
+            var nice = $("html").niceScroll({mousescrollstep:100,autohidemode:false});  // The document page (body)
+            
+          // });
+
         });
         var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
         var blogreg = /<img[^>]+src="[^"]+"[^>]*>/g;
