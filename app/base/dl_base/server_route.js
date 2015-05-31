@@ -8,5 +8,7 @@ app.use(function timeLog(req, res, next) {
   next();
 })
 app.get("/tech/delete",index.remove);
+app.post("/common/imageupload",index.imageupload);
+app.get("/common/imagecrop",index.imagecrop);
 
 module.exports = app;

@@ -42,10 +42,11 @@ function explorer(path,finalcode){
 			        	}else{
 			        		key = key.split("//")[1];
 			        	}
-			        	if(key.indexOf("ueditor")>-1){
-			        		console.log(key)	
+			        	if(key.indexOf(".png")==-1
+			        		&&key.indexOf(".jpg")==-1
+			        		&&key.indexOf(".gif")==-1){
+			        		finalcode[key] = createmd5(origCode);
 			        	}
-			        	finalcode[key] = createmd5(origCode);
 			        	fs.writeFileSync(__dirname+"/app/md5-map.js", "window.md5_map = "+JSON.stringify(finalcode), 'utf8');
 			        }
 			            

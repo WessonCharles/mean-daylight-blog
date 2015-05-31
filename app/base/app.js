@@ -7,17 +7,19 @@ define([
     'dl_base/dl_base_controllers',
     'dl_tech/dl_tech_controllers',
     'dl_add/dl_add_controllers',
+    'service',
     'config'
     ], function (angular){
     // Declare app level module which depends on filters, and services
     return angular.module('base', [
         'ngRoute',
+        'base.service',
         'base.config',
         'dl_base.dl_base_controllers',
         'dl_tech.dl_tech_controllers',
         'dl_add.dl_add_controllers'
     ])
-    .controller('baseCtrl', function($scope, $http,$rootScope,$route, $location) {
+    .controller('baseCtrl', function($scope, $http,$rootScope,$route, $location,customExtend) {
         $rootScope.language_switch = function(language){
             $rootScope.language = language;
         }
@@ -36,6 +38,12 @@ define([
             });  
             return obj;  
         };
+        $.browser = {};
+        $.browser.mozilla = /firefox/.test(navigator.userAgent.toLowerCase());
+        $.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+        $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+        $.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+
         $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
             setTimeout(function(){
                 var path = window.location.pathname;
@@ -103,6 +111,9 @@ define([
                 }
             });
             
+            $(document).scroll(function(e){
+                $(".carousel-inner > .active").css("background-position","75% -"+$(this).scrollTop()/2+"px")
+            })
           // $(document).ready(function() {
           
             var nice = $("html").niceScroll({mousescrollstep:100,autohidemode:false});  // The document page (body)
