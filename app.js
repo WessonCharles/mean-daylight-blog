@@ -1,6 +1,7 @@
 global.db_server = "localhost";
 global.db_port = 27017;
 global.root_name = "daylight";
+global.upload_root = __dirname;
 global.path_core = __dirname+"/app/base/core";
 global.path_api = __dirname+"/app/base/api"
 global.BaseApi = {isDebug : true};
@@ -20,6 +21,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var fmm = require('./file-md5-map');
 
 var debug = require("debug")("daylight");
@@ -32,8 +34,9 @@ console.log(path_root)
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());//for parsing application/json
+app.use(bodyParser.urlencoded({ extended: false }));// for parsing application/x-www-form-urlencoded
+app.use(multer());// for parsing multipart/form-data
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
 
