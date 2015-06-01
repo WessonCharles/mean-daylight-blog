@@ -204,7 +204,7 @@ exports.imagecrop = function(req,res){
     }
     var type = req.param("type");
     if(!type) type = "tempimages";
-	var pos = req.param("pos");
+	var pos = JSON.parse(req.param("pos"));
 
     var desPath;
     
@@ -216,16 +216,19 @@ exports.imagecrop = function(req,res){
     } 
   
     if(req.param("zoom") && req.param("zoom") != 1){
-    	pos.x = pos.x/req.param("zoom");
-    	pos.y = pos.y/req.param("zoom");
-    	pos.w = pos.w/req.param("zoom");
-    	pos.h = pos.h/req.param("zoom");
+    	pos.x = parseInt(pos.x/req.param("zoom"));
+    	pos.y = parseInt(pos.y/req.param("zoom"));
+    	pos.w = parseInt(pos.w/req.param("zoom"));
+    	pos.h = parseInt(pos.h/req.param("zoom"));
     }
-   
+    	console.log(pos+"__"+typeof pos)
+    	console.log(pos.w+"__"+typeof pos.w)
+    	console.log(pos.h+"__"+typeof pos.h)
+    	console.log(pos.x+"__"+typeof pos.x)
+    	console.log(pos.y+"__"+typeof pos.y)
 	  var cropParam =   [upload_root+req.param("path"), '-crop',
-	     		Math.round( pos.w) +'x'+Math.round( pos.h)
-	     		+"+"+Math.round( pos.x) +'+'+Math.round( pos.y)
-	     		,"+repage"
+	     		Math.round(parseInt(pos.w)) +'x'+Math.round(parseInt(pos.h))
+	     		+"+"+Math.round(parseInt(pos.x)) +'+'+Math.round(parseInt(pos.y))
 	     		, upload_root+desPath];
 	 
 	  var width = req.param("width");
@@ -257,13 +260,13 @@ exports.imagecrop = function(req,res){
 		  }	
 	  
 	 
-	  
+	  console.log(cropParam)
 	    mk_dir(upload_root,path.dirname(desPath));
-
+	    console.log(resizeParam)
 
 	     imgk.convert(cropParam,function(err, stdout, stderr){
 	    	 if(err){
-	    	 	
+	    	 	 console.log("this")
 	    		 console.dir(err);
 	    		
 				 res.end("Extend.cropcallback ("+JSON.stringify({code:-1,message:"error"})+");");
@@ -275,6 +278,7 @@ exports.imagecrop = function(req,res){
 	    		 if(resizeParam){
 		    			 imgk.convert(resizeParam, function(err, stdout, stderr){
 			    				if(err){
+			    					console.log("that")
 			    					 console.dir(err);
 			    					
 									 res.end("Extend.cropcallback ("+JSON.stringify({code:-1,message:"error"})+");");
