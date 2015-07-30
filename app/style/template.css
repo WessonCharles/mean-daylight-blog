@@ -2690,11 +2690,11 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
   	transform: inherit!important;/*关于position-attament 在chrome失效的问题  只要加上倒数两句就可以了*/
 }
 .carousel-inner>.active .shade{
-	background: -moz-linear-gradient(left center , #272622 37%, transparent 150%);
+	/*background: -moz-linear-gradient(left center , #272622 37%, transparent 150%);
 	background: -webkit-linear-gradient(left, #272622 37%, transparent 150%); 
 	background: -o-linear-gradient(left,  #272622 37%, transparent 150%);  
 	background: -ms-linear-gradient(left,  #272622 37%, transparent 150%); 
-	background: linear-gradient(left,  #272622 37%, transparent 150%);   
+	background: linear-gradient(left,  #272622 37%, transparent 150%);   */
 	/*background-color: #272622;*/
 	position: absolute;
 	left: 0;
@@ -2819,7 +2819,7 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	right:15%;
 	bottom:20px;
 	z-index:10;
-	padding-top:20px;
+	padding-top: 90px;
 	padding-bottom:20px;
 	color:#fff;
 	text-align:center;
@@ -2837,8 +2837,6 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	font-size:30px
 }
 .carousel-caption {
-	left:5%;
-	right:35%;
 	padding-bottom:30px
 }
 .carousel-indicators {
@@ -3885,10 +3883,10 @@ body.search-mode .search-panel {
 	height:auto;
 	-webkit-filter:blur(5px);
 	filter:blur(5px);
-	filter:url(../imgs/blur.svg#blur);
+	/*filter:url(../imgs/blur.svg#blur);
 	-webkit-transform:scale(1.05);
 	-ms-transform:scale(1.05);
-	transform:scale(1.05);
+	transform:scale(1.05);*/
 	margin-top:-20%
 }
 .widget-author__content {
