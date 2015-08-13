@@ -654,7 +654,7 @@ pre code {
 	left:100%
 }
 .col-xs-offset-0 {
-	margin-left:0
+	margin-left:4.2%;
 }
 .col-xs-offset-1 {
 	margin-left:8.33333%
@@ -2675,33 +2675,21 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	display:block
 }
 .carousel-inner>.active {
-	background-image: url("../imgs/slide.png");
-	background-repeat: no-repeat;
-	background-position: 75% 0;
-	background-attachment: fixed;
-    height: 420px;
+	height: 420px;
     left: 0;
     position: relative;
-    background-size: cover;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
   	backface-visibility: inherit;
+  	background:url(../imgs/back.png);
   	transform: inherit!important;/*关于position-attament 在chrome失效的问题  只要加上倒数两句就可以了*/
 }
 .carousel-inner>.active .shade{
-	background: -moz-linear-gradient(left center , #272622 37%, transparent 150%);
-	background: -webkit-linear-gradient(left, #272622 37%, transparent 150%); 
-	background: -o-linear-gradient(left,  #272622 37%, transparent 150%);  
-	background: -ms-linear-gradient(left,  #272622 37%, transparent 150%); 
-	background: linear-gradient(left,  #272622 37%, transparent 150%);   
-	/*background-color: #272622;*/
-	position: absolute;
-	left: 0;
-	top: 0;
-	right:0;
-	bottom: 0;
-	opacity: 0.8;
+	    background: #0AA284;/*#4C82DB*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
 }
 .carousel-inner>.next,.carousel-inner>.prev {
 	position:absolute;
@@ -2814,17 +2802,22 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	height:12px
 }
 .carousel-caption {
-	position:absolute;
-	left:15%;
-	right:15%;
-	bottom:20px;
-	z-index:10;
-	padding-top:20px;
-	padding-bottom:20px;
-	color:#fff;
-	text-align:center;
-	text-shadow:0 1px 2px rgba(0,0,0,.6)
+	position: relative;
+    width: 75%;
+    margin: 0 auto 0;
+    bottom: 20px;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
 }
+.carousel-caption:before {
+    content: '.';
+    font-size: 0!important;
+    position: relative;
+    line-height: 35px;
+}   
 .carousel-caption .btn {
 	text-shadow:none
 }
@@ -2837,8 +2830,6 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	font-size:30px
 }
 .carousel-caption {
-	left:5%;
-	right:35%;
 	padding-bottom:30px
 }
 .carousel-indicators {
@@ -3282,6 +3273,14 @@ blockquote {
 	padding:10px 30px;
 	position:relative
 }
+.blockquote__alternative > h3{
+	color: rgba(255,255,255,1);
+}
+.blockquote__alternative > p{
+	color: rgba(255,255,255,0.85);
+    width: 70%;
+    margin: 0 auto;
+}
 @media (min-width:768px) {
 	.blockquote__alternative {
 	padding:10px 75px
@@ -3311,7 +3310,6 @@ blockquote {
 }
 }.blockquote__alternative p {
 	font-size:16px;
-	color:#9a9a90;
 	font-style:normal
 }
 @media (min-width:768px) {
@@ -3518,6 +3516,10 @@ h1+h3,h2+h3 {
     padding: 6px;
     z-index: 20;
 }
+.scroll .logo{
+	margin-top:4px;
+	padding:0 6px;
+}
 .logo img {
 	height:70px;
 	width:auto
@@ -3608,6 +3610,9 @@ h1+h3,h2+h3 {
 	text-transform:uppercase;
 	font-weight:900;
 	text-decoration:none
+}
+.scroll .navigation>li>a{
+	padding:18px 15px 18px;
 }
 @media (min-width:992px) {
 	.navigation>li>a {
@@ -3733,6 +3738,10 @@ h1+h3,h2+h3 {
 	border-left:1px solid #dcdddd;
 	border-right:1px solid #dcdddd;
 	color:#0AA284
+}
+.scroll .search__container,.scroll .social__container,.scroll .social__container--dropdown{
+	height:55px;
+	line-height: 55px;
 }
 .search__container:hover,.social__container--dropdown:hover,.social__container:hover {
 	-webkit-transition:all .1s linear;
@@ -3877,15 +3886,11 @@ body.search-mode .search-panel {
 	left:0;
 	right:0;
 	content:"";
-	background:rgba(0,0,0,.5);
 	z-index:1
 }
 .widget-author__avatar--blurred {
 	width:100%;
 	height:auto;
-	-webkit-filter:blur(5px);
-	filter:blur(5px);
-	filter:url(../imgs/blur.svg#blur);
 	-webkit-transform:scale(1.05);
 	-ms-transform:scale(1.05);
 	transform:scale(1.05);
@@ -4705,9 +4710,9 @@ body.search-mode .search-panel {
 	left: 50%;
 	top: -41px;
 	margin-left: -41px;
-	background: #0AA284;
-	width: 82px;
-	height: 82px;
+	background: #3ED1B4;
+	width: 65px;
+	height: 65px;
 	border-radius: 82px;
 	border:5px solid #f3f4f4;
 	z-index: 2;
@@ -4787,4 +4792,159 @@ body.search-mode .search-panel {
 }
 .nicescroll-cursors{
 	background-color: rgb(170,170,171)!important;
+}
+/************ball***********/
+@keyframes floage{
+    0% { margin:5% 0% 5% 68%;} /* 添加旋转角度，以下类似 */
+    10% { margin:5% 0% 5% 84%%; }
+    20% { margin:5% 0% 5% 100%; }
+    30% { margin:5% 0% 5% 88%; }
+    40% { margin:5% 0% 5% 68%; }
+    50% { margin:5% 0% 5% 48%; }
+    60% { margin:5% 0% 5% 68%; }
+    70% { margin:5% 0% 5% 88%%; }
+    80% { margin:5% 0% 5% 108%; }
+	90% { margin:5% 0% 5% 88%;}
+}
+.ball{
+width: 150px;
+height: 150px;
+margin: 5% 0 5% 68%;
+border-radius: 50%;
+top:0;
+position:absolute;
+z-index:-1;
+-webkit-animation: floage 15s linear infinite;
+  -moz-animation: floage 15s linear infinite;
+  -ms-animation: floage 15s linear infinite;
+  -o-animation: floage 15s linear infinite;
+  animation: floage 15s linear infinite;
+}
+.ball > ul {
+position: absolute;
+left: 0;
+top: 0;
+margin: auto 5%;
+padding: 0px;
+height: 100%;
+width: 90%;
+display: block;
+z-index: 10;
+overflow: hidden;
+border-radius: 50%;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+color: #fff;
+text-align: center;
+font-size: 0;
+}
+.ball > ul > li{
+	width:100%;
+	height:25%;
+}
+.ball:before{
+content: '.';
+height: 100%;
+width: 90%;
+display: block;
+position: relative;
+z-index: 1;
+background: transparent;
+border-radius: 50%;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+color: #fff;
+text-align: center;
+font-size: 0;
+margin: 0 auto;
+}
+.ball:after {
+content: '';
+height: 0;
+width: 82%;
+display: block;
+position: relative;
+border: 10px transparent solid;
+border-top-color: #50A0EA;
+border-width: 70px 30px 0 30px;
+text-align: center;
+margin: -30% auto 0;
+}
+.left-cover{
+border-left: 16px solid transparent;
+border-right: 40px solid #88C431;
+border-top: 37px solid #88C431;
+bottom: 0;
+height: 0;
+left: 17px;
+position: absolute;
+width: 0;
+z-index: 30;
+}
+.right-cover{
+border-right: 16px solid transparent;
+border-left: 40px solid #88C431;
+border-top: 37px solid #88C431;
+bottom: 0;
+height: 0;
+right: 17px;
+position: absolute;
+width: 0;
+z-index: 30;	
+}
+.bottom-cover{
+	position: absolute;
+	width: 30%;
+	height: 20%;
+	bottom: -65%;
+	left: 35%;
+	border-radius: 5px;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#9B5B08,endColorStr=#87440E); /*IE 6 7 8*/ 
+	background: -ms-linear-gradient(top, #9B5B08,  #87440E);        /* IE 10 */
+	background:-moz-linear-gradient(top,#9B5B08,#87440E);/*火狐*/ 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#9B5B08), to(#87440E));/*谷歌*/ 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9B5B08), to(#87440E));      /* Safari 4-5, Chrome 1-9*/
+	background: -webkit-linear-gradient(top, #9B5B08, #87440E);   /*Safari5.1 Chrome 10+*/
+	background: -o-linear-gradient(top, #9B5B08, #87440E);  
+}
+.bottom-cover .left{
+	    height: 75%;
+		width: 15%;
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		background-color: #fff;
+}
+.bottom-cover .right{
+	    height: 75%;
+		width: 15%;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		background-color: #fff;
+}
+.bottom-cover .line{
+	 border-left: 1px solid #8b480d;
+bottom: 200%;
+float: left;
+height: 200%;
+margin-left: 12.5%;
+position: relative;
+width: 12.5%;
+}
+.bottom-cover .line:first-child{
+	margin-left: -4px;
+	transform: rotate(-190deg);
+}
+.bottom-cover .two{
+	margin-left:5px;
+	transform:rotate(-185deg);
+}
+.bottom-cover .three{
+	margin-left:10px;
+	transform:rotate(185deg);
+}
+.bottom-cover .line:last-child{
+	margin-left:10px;
+	transform:rotate(190deg);
 }

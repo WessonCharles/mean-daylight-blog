@@ -117,7 +117,14 @@ define([
           // $(document).ready(function() {
           
             var nice = $("html").niceScroll({mousescrollstep:100,autohidemode:false});  // The document page (body)
-            
+            $("html").niceScroll().scrollend(function(info){
+                    if(info.current.y>0){
+                        $("#header,.slider.main").addClass("scroll");
+                    }
+                    if(info.current.y==0){
+                        $("#header,.slider.main").removeClass("scroll");
+                    }
+                });
           // });
 
         });
