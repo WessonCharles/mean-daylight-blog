@@ -3160,7 +3160,7 @@ td.visible-print,th.visible-print {
 }
 }body {
 	font-family:Georgia,serif;
-	background-color:#f3f4f4
+	background-color:#eee;
 }
 h1,h2,h3,h4,h5,h6 {
 	line-height:1.5;
@@ -3473,9 +3473,10 @@ ul.sub-menu li:hover a,ul.sub-menu li.active a{
 }
 .boxed {
 	background-color:#fff;
-	border:1px solid #e4e4e4;
+	border:1px solid transparent;
 	border-radius:6px;
 	position: relative;
+	box-shadow: rgba(0,0,0,.0470588) 0 2px 3px 0;
 }
 h1+h3,h2+h3 {
 	margin:-8px 0 24px 0
