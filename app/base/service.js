@@ -155,11 +155,8 @@ define(['angular'], function (angular) {
 			              '<input type="file" name="imgFile" style="position: absolute; opacity: 0; font-size: 20px; cursor: pointer; top: 59px; left: 85px; width: 84px;" accept="image/*"/>',
 			          '</form>',
 			      '</div></div></div>'].join(""));
-			if($(document.body).find("#tab").length==0){
-				contents.appendTo(document.body);
-			}else{
-				contents = $(document.body).find("#tab");
-			}
+			$(document.body).find("#tab").remove();
+			contents.appendTo(document.body);
 			contents.find("#tabs .item").tab();
 			var cropdata;
 			Extend.handle[callbackname] = function(data){			
@@ -173,11 +170,12 @@ define(['angular'], function (angular) {
 				//opts.height = 200;	
 				opts.aspectRatio = 0;
 				opts.size = false;
-				Extend.showCropDialog(data,opts,function(rs){				
+				Extend.showCropDialog(data,opts,function(rs,c){
+					alert(rs.code)
 					 if(rs.code > 0){
-						if(api_) api_.hide();
 						opts.croprs = rs.data;
 						if(opts.onSure){
+							c.modal("hide");
 							opts.onSure({
 								url :rs.data.src
 							});
@@ -207,7 +205,7 @@ define(['angular'], function (angular) {
 
 		Extend.showCropDialog = function(data,options,oncrop,iflogo){
 			// var urlstr = "";//9号改
-			console.log(data)
+			
 			var contents = $(['<div class="ui standard small test modal" id="tab">',
 			   ' <i class="close icon"></i>',
 			   ' <div class="header">确认图片</div>',
@@ -220,10 +218,10 @@ define(['angular'], function (angular) {
 		        		'<div class="ui button teal" id="img_crop_sure">确  定</div>',
 		        	'</div>',
 		        '</div></div>'].join(""));
+			$(document.body).find("#tab").remove();
 			contents.appendTo(document.body);
 			contents.modal("show");
 			var crop;
-			setTimeout(function(){
 				var c = contents;
 				//console.log(options);	
 				options.height = options.height || options.size ||  c.find("img").height();
@@ -262,40 +260,37 @@ define(['angular'], function (angular) {
 				c.find("#img_crop_sure").click(function(){
 					//Extend.showStatus("请耐心等待，正在上传...");
 					//console.log(crop.tellSelect());
-					console.log(crop)
+					
 					if(crop){
 						var img = c.find(".jcrop-holder img")[0];
 						var zoom = img.offsetWidth/img.naturalWidth;
 						
 						Extend.cropcallback = function(rs){
 							crop = null;
-							api.hide();
-							
 							if(typeof oncrop == "function"){
-								oncrop(rs);
+								oncrop(rs,c);
 							}
 							
-							if(typeof options.onCrop == "function"){
-								 options.onCrop(rs);
+							if(typeof options.onSure == "function"){
+								 options.onSure(rs);
 							}
 						};
 						
 						$.ajax({
 						   async:false,
 						   type: "get",
-						   url: "/api/common/imagecrop?callback=Extend.cropcallback",
+						   url: "/api/common/imagecrop",
 						   data: "type="+options.imageType+"&_id="+options.targetId+"&path="+data.url+"&zoom="+zoom+"&size="+options.size+"&width="+options.width+"&height="+options.height+"&pos="+JSON.stringify(crop.tellSelect()),
-						   dataType: "jsonp"
+						   dataType: "jsonp",
 						});
 						
 					}
 					
 				});
-			},500)
 		}
 
 	})
-	.factory('Restful',["$resource",function($resource){
-		return $resource(url,{},{});
+	.factory('Restful',['$resource',function($res){
+		return $res(url,{},{});
 	}])
 });

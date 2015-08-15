@@ -126,7 +126,7 @@ var getAvatorPath = BaseApi.getAvatorPath = function(type,id,imgty){
 	   
 	    //return[ "/upload",
 	   
-	   return[ file_url+"/upload",
+	   return[ /*file_url+*/"/upload",
 	            type ,
 	            id.substr(0,2),
 	             id.substr(2,2),
@@ -263,13 +263,13 @@ exports.imagecrop = function(req,res){
 	  console.log(cropParam)
 	    mk_dir(upload_root,path.dirname(desPath));
 	    console.log(resizeParam)
-	    console.log("**************")
+
 	     imgk.convert(cropParam,function(err, stdout, stderr){
 	    	 if(err){
 	    	 	 console.log("this")
 	    		 console.dir(err);
 	    		
-				 res.end("Extend.cropcallback("+JSON.stringify({code:-1,message:"error"})+");");
+				 res.end("Extend.cropcallback ("+JSON.stringify({code:-1,message:"error"})+");");
 	    		
 	    	 }else{
 				
@@ -287,7 +287,7 @@ exports.imagecrop = function(req,res){
 			    	// 				res.end("Extend.cropcallback("+JSON.stringify({code:1,data:{src:desPath}})+");");
 			    	// 			}
 			    	// 		});
-	    		 // }	 else{
+	    		 // }else{
 					 res.end("Extend.cropcallback("+JSON.stringify({code:1,data:{src:desPath}})+");");
 	    		 // } 		 
 	    	 }

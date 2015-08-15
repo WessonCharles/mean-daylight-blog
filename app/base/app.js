@@ -48,6 +48,7 @@ define([
         $.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
 
         $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
+
             setTimeout(function(){
                 var path = window.location.pathname;
                 console.log(path)

@@ -22,7 +22,10 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 					$scope.life.subtype = v;
 				})
 			});
+			console.log("1")
+			UE.delEditor("add_wpreface");
 			UE.getEditor("add_wpreface");
+			UE.getEditor("add_wlife");
 			UE.getEditor("add_wlife");
 		});
 		$scope.tags = function(e){
