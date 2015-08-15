@@ -263,33 +263,33 @@ exports.imagecrop = function(req,res){
 	  console.log(cropParam)
 	    mk_dir(upload_root,path.dirname(desPath));
 	    console.log(resizeParam)
-
+	    console.log("**************")
 	     imgk.convert(cropParam,function(err, stdout, stderr){
 	    	 if(err){
 	    	 	 console.log("this")
 	    		 console.dir(err);
 	    		
-				 res.end("Extend.cropcallback ("+JSON.stringify({code:-1,message:"error"})+");");
+				 res.end("Extend.cropcallback("+JSON.stringify({code:-1,message:"error"})+");");
 	    		
 	    	 }else{
 				
-				 desPath = file_url+desPath;//9号
+				 desPath = /*file_url+*/desPath;//9号
 				
-	    		 if(resizeParam){
-		    			 imgk.convert(resizeParam, function(err, stdout, stderr){
-			    				if(err){
-			    					console.log("that")
-			    					 console.dir(err);
+	    		 // if(resizeParam){
+		    		// 	 imgk.convert(resizeParam, function(err, stdout, stderr){
+			    	// 			if(err){
+			    	// 				console.log("that")
+			    	// 				 console.dir(err);
 			    					
-									 res.end("Extend.cropcallback ("+JSON.stringify({code:-1,message:"error"})+");");
+								// 	 res.end("Extend.cropcallback("+JSON.stringify({code:-1,message:"error"})+");");
 			    		    		 
-			    				}else{
-			    					res.end("Extend.cropcallback ("+JSON.stringify({code:1,data:{src:desPath}})+");");
-			    				}
-			    			});
-	    		 }	 else{
-					 res.end("Extend.cropcallback ("+JSON.stringify({code:1,data:{src:desPath}})+");");
-	    		 } 		 
+			    	// 			}else{
+			    	// 				res.end("Extend.cropcallback("+JSON.stringify({code:1,data:{src:desPath}})+");");
+			    	// 			}
+			    	// 		});
+	    		 // }	 else{
+					 res.end("Extend.cropcallback("+JSON.stringify({code:1,data:{src:desPath}})+");");
+	    		 // } 		 
 	    	 }
 	    	 
 	     });

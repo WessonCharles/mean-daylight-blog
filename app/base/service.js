@@ -3,7 +3,7 @@
 
 define(['angular'], function (angular) {
 
-    angular.module('base.service', [])
+    angular.module('base.service', ['ngResource'])
     .factory('AuthService', function ($rootScope, $http, $window, $location) {
 	    var authService = {};
 	    $rootScope.keystone_url = 'http://keystone.halfss.com:5000/v2.0';
@@ -155,7 +155,11 @@ define(['angular'], function (angular) {
 			              '<input type="file" name="imgFile" style="position: absolute; opacity: 0; font-size: 20px; cursor: pointer; top: 59px; left: 85px; width: 84px;" accept="image/*"/>',
 			          '</form>',
 			      '</div></div></div>'].join(""));
-			contents.appendTo(document.body);
+			if($(document.body).find("#tab").length==0){
+				contents.appendTo(document.body);
+			}else{
+				contents = $(document.body).find("#tab");
+			}
 			contents.find("#tabs .item").tab();
 			var cropdata;
 			Extend.handle[callbackname] = function(data){			
@@ -203,7 +207,7 @@ define(['angular'], function (angular) {
 
 		Extend.showCropDialog = function(data,options,oncrop,iflogo){
 			// var urlstr = "";//9号改
-			
+			console.log(data)
 			var contents = $(['<div class="ui standard small test modal" id="tab">',
 			   ' <i class="close icon"></i>',
 			   ' <div class="header">确认图片</div>',
@@ -258,7 +262,7 @@ define(['angular'], function (angular) {
 				c.find("#img_crop_sure").click(function(){
 					//Extend.showStatus("请耐心等待，正在上传...");
 					//console.log(crop.tellSelect());
-					
+					console.log(crop)
 					if(crop){
 						var img = c.find(".jcrop-holder img")[0];
 						var zoom = img.offsetWidth/img.naturalWidth;
@@ -291,4 +295,7 @@ define(['angular'], function (angular) {
 		}
 
 	})
+	.factory('Restful',["$resource",function($resource){
+		return $resource(url,{},{});
+	}])
 });

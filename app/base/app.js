@@ -4,6 +4,8 @@
 // var load_ctrl_an = url=="/"?"dl_base.dl_base_controllers":"dl_"+url.slice(1,url.length)+".dl_"+url.slice(1,url.length)+"_controllers";
 define([
     'angular',
+    // 'angularRoute',
+    // 'angularResource',
     'dl_base/dl_base_controllers',
     'dl_tech/dl_tech_controllers',
     'dl_add/dl_add_controllers',
@@ -13,6 +15,7 @@ define([
     // Declare app level module which depends on filters, and services
     return angular.module('base', [
         'ngRoute',
+        'ngResource',
         'base.service',
         'base.config',
         'dl_base.dl_base_controllers',

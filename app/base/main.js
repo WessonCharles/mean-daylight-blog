@@ -3,6 +3,7 @@
 require.config({
     paths: {
         angular: '../bower_components/angular/angular.min',
+        angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery: '../bower_components/jquery/dist/jquery.min',
         semantic: '../bower_components/semantic-ui/dist/semantic.min',
         // jqueryui: '../bower_components/jqueryui/jquery-ui.min',
@@ -21,6 +22,7 @@ require.config({
         'angular' : {'exports' : 'angular'},
         'jquery': {'exports': 'jquery'},
         'angularRoute': ['angular'],
+        'angularResource':['angular'],
         'semantic': ['jquery'],
         'nicescroll':['jquery'],
         'validate':['jquery'],
@@ -48,6 +50,7 @@ var load_route_module = url=="/"?"dl_base/dl_base_routes":"dl_"+url.slice(1,url.
 require([
     'angular',
     'angularRoute',
+    'angularResource',
     'jquery',
     // 'jqueryui',
     'semantic',
