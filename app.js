@@ -5,6 +5,7 @@ global.upload_root = __dirname;
 global.path_core = __dirname+"/app/base/core";
 global.path_api = __dirname+"/app/base/api"
 global.BaseApi = {isDebug : true};
+global.file_url = __dirname;
 
 
 var mongoose = require('mongoose')

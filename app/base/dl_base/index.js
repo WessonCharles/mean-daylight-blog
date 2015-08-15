@@ -126,7 +126,7 @@ var getAvatorPath = BaseApi.getAvatorPath = function(type,id,imgty){
 	   
 	    //return[ "/upload",
 	   
-	   return[ file_url+"/upload",
+	   return[ /*file_url+*/"/upload",
 	            type ,
 	            id.substr(0,2),
 	             id.substr(2,2),
@@ -273,23 +273,23 @@ exports.imagecrop = function(req,res){
 	    		
 	    	 }else{
 				
-				 desPath = file_url+desPath;//9号
+				 desPath = /*file_url+*/desPath;//9号
 				
-	    		 if(resizeParam){
-		    			 imgk.convert(resizeParam, function(err, stdout, stderr){
-			    				if(err){
-			    					console.log("that")
-			    					 console.dir(err);
+	    		 // if(resizeParam){
+		    		// 	 imgk.convert(resizeParam, function(err, stdout, stderr){
+			    	// 			if(err){
+			    	// 				console.log("that")
+			    	// 				 console.dir(err);
 			    					
-									 res.end("Extend.cropcallback ("+JSON.stringify({code:-1,message:"error"})+");");
+								// 	 res.end("Extend.cropcallback("+JSON.stringify({code:-1,message:"error"})+");");
 			    		    		 
-			    				}else{
-			    					res.end("Extend.cropcallback ("+JSON.stringify({code:1,data:{src:desPath}})+");");
-			    				}
-			    			});
-	    		 }	 else{
-					 res.end("Extend.cropcallback ("+JSON.stringify({code:1,data:{src:desPath}})+");");
-	    		 } 		 
+			    	// 			}else{
+			    	// 				res.end("Extend.cropcallback("+JSON.stringify({code:1,data:{src:desPath}})+");");
+			    	// 			}
+			    	// 		});
+	    		 // }else{
+					 res.end("Extend.cropcallback("+JSON.stringify({code:1,data:{src:desPath}})+");");
+	    		 // } 		 
 	    	 }
 	    	 
 	     });

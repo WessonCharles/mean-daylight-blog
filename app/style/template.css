@@ -20,8 +20,8 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "GillSans",Arial,sans-serif;
-    font-size:62.5%;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
     font-weight: 300;
     letter-spacing: -0.01em;
     position:relative;
@@ -200,7 +200,7 @@ select {
 	box-sizing:border-box
 }
 html {
-	font-size:62.5%;
+	font-size:12px;
 	-webkit-tap-highlight-color:transparent
 }
 body {
@@ -330,7 +330,8 @@ cite {
 	text-align:center
 }
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
-	font-family:"Open Sans",sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	font-weight:500;
 	line-height:1.1;
 	color:#2f343b
@@ -468,7 +469,8 @@ address {
 	line-height:1.5
 }
 code,kbd,pre,samp {
-	font-family:Monaco,Menlo,Consolas,"Courier New",monospace
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 }
 code {
 	padding:2px 4px;
@@ -3159,13 +3161,15 @@ td.visible-print,th.visible-print {
 	display:none!important
 }
 }body {
-	font-family:Georgia,serif;
-	background-color:#f3f4f4
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
+	background-color:#eee;
 }
 h1,h2,h3,h4,h5,h6 {
 	line-height:1.5;
 	margin:15px 0;
-	font-family:"Open Sans",sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	color:#2f343b;
 	font-weight:700
 }
@@ -3230,7 +3234,8 @@ h4 {
 }
 }h6 {
 	font-size:12px;
-	font-family:Lato,sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	text-transform:uppercase;
 	margin:0;
 	color:#9a9a90
@@ -3473,9 +3478,10 @@ ul.sub-menu li:hover a,ul.sub-menu li.active a{
 }
 .boxed {
 	background-color:#fff;
-	border:1px solid #e4e4e4;
+	border:1px solid transparent;
 	border-radius:6px;
 	position: relative;
+	box-shadow: rgba(0,0,0,.0470588) 0 2px 3px 0;
 }
 h1+h3,h2+h3 {
 	margin:-8px 0 24px 0
@@ -3507,14 +3513,15 @@ h1+h3,h2+h3 {
 	height:100%
 }
 .logo {
-	color: #fff;
+    color: #fff;
     font-family: "Comic Sans MS";
-    font-size: 2em;
+    font-size: 2.5em;
     height: 52px;
     margin-right: 15px;
     margin-top: 7px;
     padding: 6px;
     z-index: 20;
+    line-height: 1.2em;
 }
 .scroll .logo{
 	margin-top:4px;
@@ -3581,7 +3588,8 @@ h1+h3,h2+h3 {
 }.navbar-default {
 	background-color:transparent;
 	border:0;
-	font-family:Lato,sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	margin:0;
 	min-height:0
 }
@@ -3609,6 +3617,7 @@ h1+h3,h2+h3 {
 	color:#9a9a90;
 	text-transform:uppercase;
 	font-weight:900;
+	font-size: 15px;
 	text-decoration:none
 }
 .scroll .navigation>li>a{
@@ -3833,7 +3842,8 @@ body.search-mode .search-panel {
 	line-height:1.5;
 	color:#9a9a90;
 	font-size:14px;
-	font-family:Lato,sans-serif
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 }
 .sidebar h6 {
 	margin-bottom:12px
@@ -3904,7 +3914,8 @@ body.search-mode .search-panel {
 	margin-bottom:45px
 }
 }.widget-author__content p {
-	font-family:Georgia,serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	font-size:18px;
 	color:#40454a
 }
@@ -3923,14 +3934,15 @@ body.search-mode .search-panel {
 	line-height:1.5;
 	font-size:14px;
 	margin-bottom:30px;
-	font-family:"Open Sans",sans-serif
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 }
 .widget-featured-post img {
 	border-radius:3px
 }
 .widget-categories {
-	font-family:Lato,sans-serif;
-	font-size:14px;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;	font-size:14px;
 	font-weight:700
 }
 .widget-categories ul {
@@ -3970,7 +3982,8 @@ body.search-mode .search-panel {
 	color:#9a9a90
 }
 .widget-posts {
-	font-family:Lato,sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	font-weight:700
 }
 .widget-posts .nav-tabs {
@@ -4058,11 +4071,13 @@ body.search-mode .search-panel {
 	margin-bottom:15px
 }
 .widget-contact__title {
-	font-family:Lato,sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	color:#0AA284
 }
 .widget-contact__text {
-	font-family:"Open Sans",sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	font-size:14px;
 	color:#9a9a90
 }
@@ -4106,7 +4121,8 @@ body.search-mode .search-panel {
 	border-radius:4px;
 	font-weight:700;
 	font-size:14px;
-	font-family:Lato,sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	padding:8px 16px;
 	margin-bottom:5px
 }
@@ -4587,8 +4603,8 @@ body.search-mode .search-panel {
 }
 .post-author .post-author__text {
 	font-size:14px;
-	font-family:"Open Sans",sans-serif;
-	color:#9a9a90
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;	color:#9a9a90
 }
 .related-stories {
 	margin-bottom:30px
@@ -4634,7 +4650,8 @@ body.search-mode .search-panel {
 	padding:10px 0 45px
 }
 .contact form {
-	font-family:Lato,sans-serif;
+	font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;    font-size:12px;
+	-webkit-font-smoothing: antialiased;
 	font-size:16px
 }
 .contact form input {
@@ -4947,4 +4964,12 @@ width: 12.5%;
 .bottom-cover .line:last-child{
 	margin-left:10px;
 	transform:rotate(190deg);
+}
+/********上传*******/
+
+.jcrop-holder{
+	max-width: 100%;
+}
+.jcrop-holder > input[type='radio']{
+	display: none!important;
 }

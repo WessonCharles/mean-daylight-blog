@@ -3,7 +3,7 @@
 
 define(['angular'], function (angular) {
 
-    angular.module('base.service', [])
+    angular.module('base.service', ['ngResource'])
     .factory('AuthService', function ($rootScope, $http, $window, $location) {
 	    var authService = {};
 	    $rootScope.keystone_url = 'http://keystone.halfss.com:5000/v2.0';
@@ -155,6 +155,7 @@ define(['angular'], function (angular) {
 			              '<input type="file" name="imgFile" style="position: absolute; opacity: 0; font-size: 20px; cursor: pointer; top: 59px; left: 85px; width: 84px;" accept="image/*"/>',
 			          '</form>',
 			      '</div></div></div>'].join(""));
+			$(document.body).find("#tab").remove();
 			contents.appendTo(document.body);
 			contents.find("#tabs .item").tab();
 			var cropdata;
@@ -169,11 +170,12 @@ define(['angular'], function (angular) {
 				//opts.height = 200;	
 				opts.aspectRatio = 0;
 				opts.size = false;
-				Extend.showCropDialog(data,opts,function(rs){				
+				Extend.showCropDialog(data,opts,function(rs,c){
+					alert(rs.code)
 					 if(rs.code > 0){
-						if(api_) api_.hide();
 						opts.croprs = rs.data;
 						if(opts.onSure){
+							c.modal("hide");
 							opts.onSure({
 								url :rs.data.src
 							});
@@ -216,10 +218,10 @@ define(['angular'], function (angular) {
 		        		'<div class="ui button teal" id="img_crop_sure">确  定</div>',
 		        	'</div>',
 		        '</div></div>'].join(""));
+			$(document.body).find("#tab").remove();
 			contents.appendTo(document.body);
 			contents.modal("show");
 			var crop;
-			setTimeout(function(){
 				var c = contents;
 				//console.log(options);	
 				options.height = options.height || options.size ||  c.find("img").height();
@@ -265,30 +267,30 @@ define(['angular'], function (angular) {
 						
 						Extend.cropcallback = function(rs){
 							crop = null;
-							api.hide();
-							
 							if(typeof oncrop == "function"){
-								oncrop(rs);
+								oncrop(rs,c);
 							}
 							
-							if(typeof options.onCrop == "function"){
-								 options.onCrop(rs);
+							if(typeof options.onSure == "function"){
+								 options.onSure(rs);
 							}
 						};
 						
 						$.ajax({
 						   async:false,
 						   type: "get",
-						   url: "/api/common/imagecrop?callback=Extend.cropcallback",
+						   url: "/api/common/imagecrop",
 						   data: "type="+options.imageType+"&_id="+options.targetId+"&path="+data.url+"&zoom="+zoom+"&size="+options.size+"&width="+options.width+"&height="+options.height+"&pos="+JSON.stringify(crop.tellSelect()),
-						   dataType: "jsonp"
+						   dataType: "jsonp",
 						});
 						
 					}
 					
 				});
-			},500)
 		}
 
 	})
+	.factory('Restful',['$resource',function($res){
+		return $res(url,{},{});
+	}])
 });

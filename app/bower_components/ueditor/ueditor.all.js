@@ -17719,10 +17719,11 @@ baidu.editor.ui = {};
                             		Extend.imageUpload({
                     					upload_dir : "blogimages",
                     					onSure : function(data){
+                                            console.log(data)
                     						var img = {},images = [];
-                    						img.src = data.url;
-                    						img._src = data.url;
-                    						images.push(img);
+                    						img.src = data.url.split("app")[1];
+                    						img._src = data.url.split("app")[1];
+                    						if(img.src)images.push(img);
                     						editor.execCommand("insertImage", images);
                     						//self_.action("insertimage",data.url);
                     					}
