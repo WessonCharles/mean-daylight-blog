@@ -1,7 +1,7 @@
 'use strict';
 
 define(['angular','ueall','validate'], function(angular,ueall,validate){
-	var editor = new UE.ui.Editor();
+	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
 	.controller('dladdctrl',function($rootScope,$scope,$http, $location, $window, $filter,$compile,Restful){
 		$scope.$on("$viewContentLoaded",function(){
@@ -67,9 +67,9 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 			poststr+=$(e.target).serialize();
 			// b["content"] = $(e.target).serializeObject().content;
 			// console.log(b)
-			var Tech = Restful("/api/tech",poststr);
-			console.log(Tech)
-			return false;
+			// var Tech = Restful("/api/tech",poststr);
+			// console.log(Tech)
+			// return false;
 			$http.post("/api/tech",poststr).success(function(data){
 				console.log(data)
 			});

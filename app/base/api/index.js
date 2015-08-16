@@ -8,6 +8,7 @@ function Action (Model){
 Action.prototype.getPageNationQueryList = function(obj,callback){
     var page = obj.page,
         query = obj.query,
+        count = parseInt(obj.count)||15,
         m = this.model;
         console.log(query)
     async.waterfall([
@@ -18,8 +19,8 @@ Action.prototype.getPageNationQueryList = function(obj,callback){
         },
         function(total,cb){
             var q = m.find(query);
-            q.skip((parseInt(page)-1)*10);
-            q.limit(10);
+            q.skip((parseInt(page)-1)*count);
+            q.limit(count);
             q.sort({'time':-1});
             q.find(function(err,list){
                 cb(err,list,total);

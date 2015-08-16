@@ -23,6 +23,23 @@
            urlArgs: 'v='+new Date().getTime()
         };
     </script>
+    <script src="md5-map.js"></script>
+            <script>
+        var links = ["/bower_components/semantic-ui/dist/semantic.min.css",
+                    "/bower_components/font-awesome/css/font-awesome.css",
+                    "/static/common/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css",
+                    "/static/common/ueditor/themes/default/css/ueditor.css",
+                    "/static/common/ueditor/third-party/codemirror/codemirror.css",
+                    "/bower_components/jcrop/css/jquery.jcrop.min.css",
+                    "/style/template.css"];
+        for(var i=0;i<links.length;i++){
+            var _link = document.createElement('link');
+            _link.rel = 'stylesheet';
+            _link.href = links[i]+"?v="+(new Date().getTime());
+            document.getElementsByTagName("head")[0].appendChild(_link);
+        }
+        
+    </script>
     <!-- <link rel="stylesheet" href="/style/mix.css" media="only screen and (min-width:720px)"> -->
 </head>
 <body class="height:auto!important">
@@ -210,22 +227,6 @@
             </div>
         </div>
     </footer>
-    <script src="md5-map.js"></script>
-            <script>
-        var links = ["/bower_components/semantic-ui/dist/semantic.min.css",
-                    "/bower_components/font-awesome/css/font-awesome.css",
-                    "/static/common/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css",
-                    "/static/common/ueditor/themes/default/css/ueditor.css",
-                    "/static/common/ueditor/third-party/codemirror/codemirror.css",
-                    "/bower_components/jcrop/css/jquery.jcrop.min.css",
-                    "/style/template.css"];
-        for(var i=0;i<links.length;i++){
-            var _link = document.createElement('link');
-            _link.rel = 'stylesheet';
-            _link.href = links[i]+"?v="+(new Date().getTime());
-            document.getElementsByTagName("head")[0].appendChild(_link);
-        }
-        
-    </script>
+    
 </body>
 </html>

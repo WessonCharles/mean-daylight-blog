@@ -8,6 +8,7 @@ exports.gettech = function(req,res){
 		page:req.param("page"),
 		query:{type:req.param("type")}
 	}
+	if(req.param("subtype"))obj.query['subtype'] = req.param("subtype");
 	// blog.getAll(function(err,list){
 	// 	res.send(list)
 	// })
