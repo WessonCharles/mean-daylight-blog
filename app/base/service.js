@@ -4,7 +4,7 @@
 define(['angular'], function (angular) {
 
     angular.module('base.service', ['ngResource'])
-    .factory('AuthService', function ($rootScope, $http, $window, $location) {
+    .factory('AuthService',['$rootScope','$http','$window','$location', function ($rootScope, $http, $window, $location) {
 	    var authService = {};
 	    $rootScope.keystone_url = 'http://keystone.halfss.com:5000/v2.0';
       $rootScope.keystone_roleid = "16131b070578418b9c9b4c3b8f0518e9";
@@ -74,11 +74,12 @@ define(['angular'], function (angular) {
 	  }
 
 	  return authService;
-	})
+	}])
 	.factory('superCache', ['$cacheFactory', function($cacheFactory) {
 		return $cacheFactory('super-cache');
 	}])
-	.factory('customExtend',function($rootScope,$http,$window,$location){
+	.factory('customExtend',['$rootScope','$http','$window','$location',
+		function($rootScope,$http,$window,$location){
 		window.Extend = window.Extend||{};
 		Extend.handle ={};
 		var dlcount = 0;
@@ -289,7 +290,7 @@ define(['angular'], function (angular) {
 				});
 		}
 
-	})
+	}])
 	.factory('Restful',['$resource',function($res){
 		return $res(url,{},{});
 	}])

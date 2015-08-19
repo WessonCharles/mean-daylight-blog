@@ -3,7 +3,8 @@
 define(['angular'], function(angular){
 
     return angular.module('dl_base.dl_base_controllers', [])
-	.controller('dlbasectrl',function($rootScope,$scope,$http, $location, $window, $filter,$compile){
+	.controller('dlbasectrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile',
+        function($rootScope,$scope,$http, $location, $window, $filter,$compile){
         // console.log($location.url());
         $scope.loadall = function(){
             
@@ -17,5 +18,5 @@ define(['angular'], function(angular){
         	})
         }
         
-     })
+    }])
 });

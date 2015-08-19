@@ -22,7 +22,8 @@ define([
         'dl_tech.dl_tech_controllers',
         'dl_add.dl_add_controllers'
     ])
-    .controller('baseCtrl', function($scope, $http,$rootScope,$route, $location,customExtend) {
+    .controller('baseCtrl',['$scope','$http','$rootScope','$route','$location','customExtend',
+     function($scope, $http,$rootScope,$route, $location,customExtend) {
         $rootScope.language_switch = function(language){
             $rootScope.language = language;
         }
@@ -172,5 +173,5 @@ define([
             }
         };
         
-    })
+    }])
 });

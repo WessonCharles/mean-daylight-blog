@@ -3,7 +3,8 @@
 define(['angular','ueall','validate'], function(angular,ueall,validate){
 	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
-	.controller('dladdctrl',function($rootScope,$scope,$http, $location, $window, $filter,$compile,Restful){
+	.controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful',
+		function($rootScope,$scope,$http, $location, $window, $filter,$compile,Restful){
 		$scope.$on("$viewContentLoaded",function(){
 			$("#addsth .item").tab();
 			$("#ismine").checkbox();
@@ -89,5 +90,5 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 				console.log(data)
 			});
 		}
-     })
+    }])
 });            
