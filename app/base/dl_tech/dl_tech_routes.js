@@ -7,29 +7,29 @@ define(['angular', 'app'], function(angular, app) {
             templateUrl: 'base/dl_tech/tech.html',
             controller: 'dltechctrl'
         })
-        $routeProvider.when('/tech/html-css', {
+        $routeProvider.when('/tech/:type', {
             templateUrl: 'base/dl_tech/tech.html',
             controller: 'dltechctrl'
         })
-        $routeProvider.when('/tech/javascript', {
-            templateUrl: 'base/dl_tech/tech.html',
-            controller: 'dltechctrl'
-        })
-        $routeProvider.when('/tech/angularjs', {
-            templateUrl: 'base/dl_tech/tech.html',
-            controller: 'dltechctrl'
-        })
-        $routeProvider.when('/tech/nodejs', {
-            templateUrl: 'base/dl_tech/tech.html',
-            controller: 'dltechctrl'
-        })
-        $routeProvider.when('/tech/mongodb', {
-            templateUrl: 'base/dl_tech/tech.html',
-            controller: 'dltechctrl'
-        })
-        $routeProvider.when('/tech/ionic', {
-            templateUrl: 'base/dl_tech/tech.html',
-            controller: 'dltechctrl'
-        })
+        // $routeProvider.when('/tech/javascript', {
+        //     templateUrl: 'base/dl_tech/tech.html',
+        //     controller: 'dltechctrl'
+        // })
+        // $routeProvider.when('/tech/angularjs', {
+        //     templateUrl: 'base/dl_tech/tech.html',
+        //     controller: 'dltechctrl'
+        // })
+        // $routeProvider.when('/tech/nodejs', {
+        //     templateUrl: 'base/dl_tech/tech.html',
+        //     controller: 'dltechctrl'
+        // })
+        // $routeProvider.when('/tech/mongodb', {
+        //     templateUrl: 'base/dl_tech/tech.html',
+        //     controller: 'dltechctrl'
+        // })
+        // $routeProvider.when('/tech/ionic', {
+        //     templateUrl: 'base/dl_tech/tech.html',
+        //     controller: 'dltechctrl'
+        // })
     }]);
 });
