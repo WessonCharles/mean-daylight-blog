@@ -117,19 +117,24 @@ define([
             });
             
             $(document).scroll(function(e){
-                $(".carousel-inner > .active").css("background-position","75% -"+$(this).scrollTop()/2+"px")
+                $(".carousel-inner > .active").css("background-position","75% -"+$(this).scrollTop()/2+"px");
+                if($(this).scrollTop()==0){
+                    $("#header,.slider.main").removeClass("scroll");
+                }else{
+                    $("#header,.slider.main").addClass("scroll");
+                }
             })
           // $(document).ready(function() {
           
-            var nice = $("html").niceScroll({mousescrollstep:100,autohidemode:false});  // The document page (body)
-            $("html").niceScroll().scrollend(function(info){
-                    if(info.current.y>0){
-                        $("#header,.slider.main").addClass("scroll");
-                    }
-                    if(info.current.y==0){
-                        $("#header,.slider.main").removeClass("scroll");
-                    }
-                });
+            // var nice = $("html").niceScroll({mousescrollstep:100,autohidemode:false});  // The document page (body)
+            // $("html").niceScroll().scrollend(function(info){
+            //         if(info.current.y>0){
+            //             $("#header,.slider.main").addClass("scroll");
+            //         }
+            //         if(info.current.y==0){
+            //             $("#header,.slider.main").removeClass("scroll");
+            //         }
+            //     });
           // });
 
         });
