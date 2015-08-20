@@ -4,8 +4,8 @@ require.config({
     paths: {
         angular: '../bower_components/angular/angular.min',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
-        // jquery: '../bower_components/jquery/dist/jquery.min',
-        jquery:'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min',
+        jquery: '../bower_components/jquery/dist/jquery.min',
+        // jquery:'//cdn.bootcss.com/jquery/2.1.4/jquery.min',
         // semantic: '../bower_components/semantic-ui/dist/semantic.min',
         semantic:'http://libs.cncdn.cn/semantic-ui/2.0.1/semantic.min',
         // jqueryui: '../bower_components/jqueryui/jquery-ui.min',

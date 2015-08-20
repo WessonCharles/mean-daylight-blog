@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','ueall','validate'], function(angular,ueall,validate){
+define(['angular','jquery','ueall','validate'], function(angular,jquery,ueall,validate){
 	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
 	.controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful',
