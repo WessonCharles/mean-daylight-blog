@@ -149,6 +149,14 @@
       this.$textarea.attr('rows',rowsVal);
       if (this.$options.resize) {
         this.$textarea.css('resize',this.$options.resize);
+        /**
+         * 手动添加
+         */
+        this.$textarea.css({'min-height':'300px',
+            'height':'auto',
+            'width':'50%',
+            'float':'left'
+        })
       }
 
       this.$textarea
@@ -156,8 +164,8 @@
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
         .on('change',   $.proxy(this.change, this))
-        .on('select',   $.proxy(this.select, this));
-
+        .on('select',   $.proxy(this.select, this))
+        .on('scroll',   $.proxy(this.textscroll,this));//手动添加
       if (this.eventSupported('keydown')) {
         this.$textarea.on('keydown', $.proxy(this.keydown, this));
       }
@@ -395,6 +403,13 @@
         this.$editable   = editable;
         this.$oldContent = this.getContent();
 
+        /**
+         * 手动添加，为textarea提供IDE风格，便于写代码
+         */
+        var behavetext = new Behave({
+            textarea: document.getElementById(this.$textarea[0].id)
+        });
+
         this.__setListener();
 
         // Set editor attributes, data short-hand API and listener
@@ -493,7 +508,7 @@
       // Give flag that tell the editor enter preview mode
       this.$isPreview = true;
       // Disable all buttons
-      this.disableButtons('all').enableButtons('cmdPreview');
+      // this.disableButtons('all').enableButtons('cmdPreview');//手动注释
 
       // Try to get the content from callback
       callbackContent = options.onPreview(this);
@@ -513,8 +528,10 @@
 
       // Set the preview element dimensions
       replacementContainer.css({
-        width: container.outerWidth() + 'px',
-        height: container.outerHeight() + 'px'
+        // width: container.outerWidth() + 'px',//手动注释
+        width:'50%',
+        height: container.outerHeight() + 'px',
+        'background-color':'#F8F9FA'
       });
 
       if (this.$options.resize) {
@@ -522,19 +539,35 @@
       }
 
       // Hide the last-active textarea
-      container.hide();
+      // container.hide();//手动注释
 
       // Attach the editor instances
       replacementContainer.data('markdown',this);
 
-      if (this.$element.is(':disabled') || this.$element.is('[readonly]')) {
-        this.$editor.addClass('md-editor-disabled');
-        this.disableButtons('all');
-      }
+      replacementContainer.on('scroll',$.proxy(this.previewscroll,this));//手动添加
+      // if (this.$element.is(':disabled') || this.$element.is('[readonly]')) {
+      //   this.$editor.addClass('md-editor-disabled');
+      //   this.disableButtons('all');
+      // }//手动注释
 
       return this;
     }
+  , changePreviewval:function(){
+      var options = this.$options,
+          container = this.$textarea,
+          content,
+          callbackContent;
 
+
+      // Try to get the content from callback
+      callbackContent = options.onPreview(this);
+      // Set the content based from the callback content if string otherwise parse value from textarea
+      content = typeof callbackContent == 'string' ? callbackContent : this.parseContent();
+
+      // Build preview element
+      container.parent().find(".md-preview:first").html(content);
+
+  }
   , hidePreview: function() {
       // Give flag that tell the editor quit preview mode
       this.$isPreview = false;
@@ -754,7 +787,9 @@
       }
       return isSupported;
     }
-
+  , keypress:function(e){
+      this.$options.onChange(this);
+  }
   , keyup: function (e) {
       var blocked = false;
       switch(e.keyCode) {
@@ -768,6 +803,7 @@
         case 9: // tab
           var nextTab;
           if (nextTab = this.getNextTab(),nextTab !== null) {
+            console.log("111")
             // Get the nextTab if exists
             var that = this;
             setTimeout(function(){
@@ -775,7 +811,8 @@
             },500);
 
             blocked = true;
-          } else {
+          /*} else {//手动注释，为防止与behave IDE冲突
+            console.log("222")
             // The next tab memory contains nothing...
             // check the cursor position to determine tab action
             var cursor = this.getSelection();
@@ -788,7 +825,7 @@
               this.setSelection(this.getContent().length,this.getContent().length);
 
               blocked = true;
-            }
+            }*/
           }
 
           break;
@@ -817,6 +854,41 @@
       this.$options.onChange(this);
       return this;
     }
+  , textscroll:function(e){//手动添加
+      this.$textarea.parent().find(".md-preview:first").unbind("scroll");
+      var _this = this;
+      /*
+      按百分比来同步滚动，if text scrolltop is a ,text total height is x ,
+                      preview total height is y;
+                      then preview scrolltop value is y*a/x;
+      previewscroll方法同上逻辑
+       */
+      var text = this.$textarea,
+          preview = this.$textarea.parent().find(".md-preview:first"),
+          a = text[0].scrollTop,
+          x = text[0].scrollHeight,
+          y = preview[0].scrollHeight;
+      preview.scrollTop(y*(a/x));
+      setTimeout(function(){
+        text.parent().find(".md-preview:first").bind("scroll",$.proxy(_this.previewscroll,_this));
+      },50)
+    }
+  , previewscroll:function(e){//手动添加
+      this.$textarea.unbind("scroll");
+      if(e.target.className.indexOf('md-preview')==-1){
+        return false;
+      }
+      var _this = this;
+      var preview = this.$textarea.parent().find(".md-preview:first"),
+          text = this.$textarea,
+          a = preview[0].scrollTop,
+          x = preview[0].scrollHeight,
+          y = text[0].scrollHeight;
+      text.scrollTop(y*(a/x));
+      setTimeout(function(){
+        text.bind("scroll",$.proxy(_this.textscroll,_this));
+      },50)
+    }  
   , select: function (e) {
       this.$options.onSelect(this);
       return this;
@@ -912,11 +984,12 @@
     savable: false,
     width: 'inherit',
     height: 'inherit',
-    resize: 'none',
-    iconlibrary: 'glyph',
-    language: 'en',
-    initialstate: 'editor',
+    resize: 'horizontal',
+    iconlibrary: 'fa',
+    language: 'ch',
+    initialstate: 'preview',
     parser: null,
+    syncscroll:true,//是否同步 默认同步 //手动添加
 
     /* Buttons Properties */
     buttons: [
@@ -1287,7 +1360,7 @@
     ],
     additionalButtons:[], // Place to hook more buttons by code
     reorderButtonGroups:[],
-    hiddenButtons:[], // Default hidden buttons
+    hiddenButtons:['cmdPreview'], // Default hidden buttons
     disabledButtons:[], // Default disabled buttons
     footer: '',
     fullscreen: {
@@ -1312,7 +1385,10 @@
     onSave: function (e) {},
     onBlur: function (e) {},
     onFocus: function (e) {},
-    onChange: function(e) {},
+    onChange: function(e) {//手动添加
+      // console.log(e)
+      e.changePreviewval();
+    },
     onFullscreen: function(e) {},
     onSelect: function (e) {}
   };
