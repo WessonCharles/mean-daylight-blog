@@ -23,21 +23,50 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var colors = require('colors')
 // var fmm = require('./file-md5-map');
 
 var debug = require("debug")("daylight");
 var app = express();
-// view engine setup
-// app.use(function(req,res,next){
-//     if(req.headers.host.indexOf('8008')>-1){
-//         console.log("- _ -")
-//         app.set('views', path.join(__dirname, 'app'));
-//     }else{
-//         app.set('views', path.join(__dirname, 'dist'));
-//     }
-//     next();
-// })
-app.set('views', path.join(__dirname, 'app'));
+
+/**
+ * app.get("env")来获取环境 是开发环境还是生产环境，来决定
+ * 进入不同的前段路径。
+ *
+ * (以下操作要进入项目根目录设置)
+ * 
+ * 在此之前，应该在开发环境的电脑上配置export NODE_ENV=development
+ *
+ * 再服务器上配置export NODE_ENV=production，并且服务器上 应该对前端执行gulp
+ * 
+ * @type {[type]}
+ */
+var env = app.get("env");
+//开发环境
+if(env=="development"){
+    console.log("开发-----")
+    console.log("//////".white+"/\//////////".green+"/////////".white);
+    console.log("//////".white+"/\///".green+"//////".white+"/\///".green+"///////".white);
+    console.log("//////".white+"/\///".green+"////////".white+"/\///".green+"/////".white);
+    console.log("//////".white+"/\///".green+"///".white+"开发".red+"///".white+"/\///".green+"////".white);
+    console.log("//////".white+"/\///".green+"///".white+"环境".red+"///".white+"/\///".green+"////".white);
+    console.log("//////".white+"/\///".green+"////////".white+"/\///".green+"/////".white);
+    console.log("//////".white+"/\///".green+"//////".white+"/\///".green+"///////".white);
+    console.log("//////".white+"/\//////////".green+"/////////".white);    
+    app.set('views', path.join(__dirname, 'app'));
+}else{
+//生产环境
+    console.log("线上")
+    console.log("//////".white+"/\/////////".green+"//////////");
+    console.log("//////".white+"//".green+"////////".white+"//".green+"/////////");
+    console.log("//////".white+"//".green+"/////////".white+"//".green+"///////");
+    console.log("//////".white+"//".green+"/////////".white+"//".green+"///////");
+    console.log("//////".white+"/\/////////".green+"/////////");
+    console.log("//////".white+"//".green+"///".white+"生产".red+"/////////////");
+    console.log("//////".white+"//".green+"///".white+"环境".red+"/////////////");
+    console.log("//////".white+"//".green+"///////////////////"); 
+    app.set('views', path.join(__dirname, 'dist'));
+}
 app.set('view engine', 'html');
 global.path_root = path.join(__dirname,'server');
 console.log(path_root)
@@ -48,7 +77,16 @@ app.use(bodyParser.json());//for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false }));// for parsing application/x-www-form-urlencoded
 app.use(multer());// for parsing multipart/form-data
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'app')));
+//开发环境
+if(env=="development"){
+    console.log("开发")
+    app.use(express.static(path.join(__dirname, 'app')));
+}else{
+//生产环境
+    console.log("线上")
+    app.use(express.static(path.join(__dirname, 'dist')));
+}
+
 // app.use(function(req,res,next){
 //     if(req.headers.host.indexOf('8008')>-1){
 //         express.static(path.join(__dirname, 'app'))
@@ -68,7 +106,7 @@ app.use(function (req, res,next) {
         next();
     }else{ //angular启动页
         console.log("It's angular router");
-        if(req.headers.host.indexOf('8008')>-1){//测试环境
+        if(env=="development"){//测试环境
             res.sendfile('app/index.html');            
         }else{//生产环境
             res.sendfile('dist/index.html');

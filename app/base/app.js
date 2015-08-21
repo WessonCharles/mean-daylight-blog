@@ -10,7 +10,8 @@ define([
     'dl_tech/dl_tech_controllers',
     'dl_add/dl_add_controllers',
     'service',
-    'config'
+    'config',
+    'directive'
     ], function (angular){
     // Declare app level module which depends on filters, and services
     return angular.module('base', [
@@ -18,6 +19,7 @@ define([
         'ngResource',
         'base.service',
         'base.config',
+        'base.directive',
         'dl_base.dl_base_controllers',
         'dl_tech.dl_tech_controllers',
         'dl_add.dl_add_controllers'

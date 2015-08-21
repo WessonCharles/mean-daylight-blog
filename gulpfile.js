@@ -11,6 +11,7 @@ var rev = require('gulp-rev');
 var revCollector = require('gulp-rev-collector');
 var rjs = require('requirejs');
 var minifyHTML   = require('gulp-minify-html'); //压缩html
+var minifycss = require('gulp-minify-css');
 var htmlreplace = require('gulp-html-replace');
 
 
@@ -28,6 +29,7 @@ gulp.task('clean',function(){
     return gulp.src('dist',{read:false})
         .pipe(clean());
 })
+
 
 
 //require合并
@@ -48,13 +50,14 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery:'empty:',
         semantic: 'empty:',
-        nicescroll:'../bower_components/nicescroll/jquery.nicescroll.min',
-        validate:'../bower_components/validation/jqBootstrapValidation',
+        // nicescroll:'../bower_components/nicescroll/jquery.nicescroll.min',
+        // validate:'../bower_components/validation/jqBootstrapValidation',
         angularRoute: '../bower_components/angular-route/angular-route.min',
-        ueconf:'../bower_components/ueditor/ueditor.config',
+        // ueconf:'../bower_components/ueditor/ueditor.config',
         codemirror:'empty:',
-        ueall:'../bower_components/ueditor/ueditor.all',
-        uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn',
+        editor:'../bower_components/editor.md/editormd.min',
+        // ueall:'../bower_components/ueditor/ueditor.all',
+        // uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn',
         sh:'empty:',
         color:'empty:',
         jcrop:'empty:'
@@ -65,13 +68,14 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
           'angularRoute': ['angular'],
           'angularResource':['angular'],
           'semantic': ['jquery'],
-          'nicescroll':['jquery'],
-          'validate':['jquery'],
-          'ueconf':{'exports':'ueconf'},
+          // 'nicescroll':['jquery'],
+          // 'validate':['jquery'],
+          // 'ueconf':{'exports':'ueconf'},
           'codemirror':{'exports':'codemirror'},
           'sh':{'exports':'sh'},
-          'ueall':['jquery','codemirror','sh'],
-          'uelan':['ueall'],
+          // 'ueall':['jquery','codemirror','sh'],
+          // 'uelan':['ueall'],
+          'editor':['jquery','codemirror']
           'color':['jquery'],
           'jcrop':['jquery','color']
       },
@@ -88,24 +92,31 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
 });
 
 
+/*
+合并压缩css
+ */
+gulp.task('conmincss',['build'],function(){
+  var cssc = {
+        animate:'app/style/animate.css',
+        fontawesome:'app/bower_components/font-awesome/css/font-awesome.css',
+        shcore:'app/bower_components/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css',
+        ueditor:'app/bower_components/ueditor/themes/default/css/ueditor.css',
+        codemirror:'app/bower_components/ueditor/third-party/codemirror/codemirror.css',
+        jcrop:'app/bower_components/jcrop/css/jquery.jcrop.min.css'
+    },csscfile=[];
+    for(var c in cssc){
+        csscfile.push(cssc[c]);
+    }
+    return gulp.src(csscfile)
+      .pipe(concat('blog.min.css'))
+      .pipe(minifycss())
+      .pipe(gulp.dest('app/min'))
+})
 /**
  * 对静态资源增加版本控制MD5戳
  */
-// gulp.task('css',['clean','build'],function(){
-//     return gulp.src('app/libs/**/*.css')
-//         // .pipe(csso())  //这里是针对css进行压缩  需要引用gulp-csso
-//         .pipe(rename(function(path){
-//             console.log(path)
-//             // path.basename += ".min";
-//             path.etname=".css";
-//         }))
-//         .pipe(rev())
-//         .pipe(gulp.dest('app/gulp-build/styles'))
-//         .pipe(rev.manifest())
-//         .pipe(gulp.dest('app/gulp-build/rev/css')) //生成minifest.json（静态资源表）文件
-// });
 
-gulp.task('js&css',['clean','build'],function(){
+gulp.task('js&css',['conmincss'],function(){
   return gulp.src(['app/**/*.*'])
         // .pipe(rename())
         // .pipe(rev())
@@ -131,8 +142,16 @@ gulp.task('css',['clean','js&css'],function(){
         .pipe(rev.manifest())
         .pipe(gulp.dest('dist/rev/css')) 
 })
+gulp.task('min_css',['clean','js&css'],function(){
+    return gulp.src(['app/min/*.css'])
+        // .pipe(rename())
+        .pipe(rev())
+        .pipe(gulp.dest('dist/min'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('dist/rev/min_css')) 
+})
 
-gulp.task('rev',['js','css'],function(){
+gulp.task('rev',['js','css','min_css'],function(){
     return gulp.src(['dist/rev/**/*.json','app/index.html'])//数组前一个是生成的静态资源文件，后一个是需要修改的html模板
         .pipe(revCollector({
             replaceReved:true,
@@ -143,7 +162,8 @@ gulp.task('rev',['js','css'],function(){
 gulp.task('replace',['rev'],function(){
   return gulp.src('dist/index.html')
         .pipe(htmlreplace({
-          'require':'min/blog.min.js'
+          'require':'min/blog.min.js',
+          'css':'min/blog.min.css'
         }))
         .pipe(gulp.dest('dist/'))
 })
@@ -153,12 +173,12 @@ gulp.task('revrequire',['replace'],function(){
         .pipe(revCollector({
             replaceReved:true,
         }))
-        .pipe(minifyHTML({//HTML压缩
-            empty:true,
-            spare:true
-        }))
+        // .pipe(minifyHTML({//HTML压缩
+        //     empty:true,
+        //     spare:true
+        // }))
         .pipe(gulp.dest('dist/'))
 })
 
 
-gulp.task('default', ['clean','build','js&css','js','css','rev','replace','revrequire']);
+gulp.task('default', ['clean','conmincss','build','js&css','js','css','min_css','rev','replace','revrequire']);

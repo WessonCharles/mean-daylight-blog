@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','ueall','validate'], function(angular,ueall,validate){
+define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
 	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
 	.controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful',
@@ -24,10 +24,12 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 				})
 			});
 			console.log("1")
-			UE.delEditor("add_wpreface");
-			UE.getEditor("add_wpreface");
-			UE.getEditor("add_wlife");
-			UE.getEditor("add_wlife");
+			$("#add_wpreface").markdown({autofocus:false,savable:false});
+			$("#add_wlife").markdown({autofocus:false,savable:false})
+			// UE.delEditor("add_wpreface");
+			// UE.getEditor("add_wpreface");
+			// UE.getEditor("add_wlife");
+			// UE.getEditor("add_wlife");
 		});
 		$scope.tags = function(e){
             var tagdom = $("#tags");
@@ -59,7 +61,7 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 		};	
 		$scope.restore();
 		$scope.addblog = function(e){
-			$(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
+			// $(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
 			var poststr = "";
 			console.log($scope.blog)
 			for(var p in $scope.blog){
@@ -77,7 +79,7 @@ define(['angular','ueall','validate'], function(angular,ueall,validate){
 		}
 
 		$scope.add_life = function(e){
-			$(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
+			// $(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
 			var poststr = "";
 			console.log($scope.life)
 			for(var p in $scope.life){
