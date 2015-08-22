@@ -35,6 +35,14 @@ define([
         }else{
             $rootScope.app = '/';
         }
+        $scope.toggleheader = function(){
+            $("#header").toggleClass('sticky');
+            if($("#header").hasClass('sticky')){
+                $("#header").css("margin-bottom","-68px").css("position","relative");
+            }else{
+                $("#header").css("margin-bottom","45px").css("position","fixed");                
+            }
+        }
         jQuery.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
             var obj=new Object();  
             $.each(this.serializeArray(),function(index,param){  
@@ -152,6 +160,8 @@ define([
                 if(!len){
                     len = 300;
                 }
+                // str = decodeURIComponent(str);
+                // str = Extend.parseContent(str);
                 str = str.replace(htmltotext,"");
                 var str_len = str.length;
                 str = str.substring(0,len);
@@ -166,6 +176,8 @@ define([
                 }
                 
                 imgs = imgs || [];
+                // str = decodeURIComponent(str);
+                // str = Extend.parseContent(str);
                 var result = str.match(blogreg);
                 if(result){
                     for (var i=0; i<result.length; i++) {            
@@ -174,7 +186,7 @@ define([
                     }
                 }
                 
-                if(imgs.length > 0){        
+                if(imgs.length > 0){
                     return imgs[0];
                 }
                 return "";

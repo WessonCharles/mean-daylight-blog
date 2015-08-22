@@ -1,5 +1,6 @@
 var Blog = require(path_root+"/model/model").Blog,
-	Action = require(path_root+"/api/index");
+	Action = require(path_root+"/api/index"),
+    markdown = require('markdown').markdown;
   	// render = require(path_root+"/base/api/render");
 var blog = new Action(Blog);
 
@@ -28,12 +29,14 @@ exports.gettech = function(req,res){
 	})
 }
 exports.create = function(req,res){
-	console.log(req.body)
-	console.log("+++++++++++++")
-	console.log("_________________")
-	console.log("*********")
+	// console.log(req.body)
+	// console.log("+++++++++++++")
+	// console.log("_________________")
+	// console.log("*********");
+	// console.log(markdown)
 	req.body.author = {name:'Chqiangs',_id:'chqiangs'};
 	req.body.time = new Date();
+	req.body.content = markdown.toHTML(req.body.content);
 	blog.create(req.body,function(blog){
 		var data = {
 			message:{

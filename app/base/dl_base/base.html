@@ -1,7 +1,7 @@
 <div class="col-xs-12  col-md-8" ng-controller="dlbasectrl">
     <!-- Post with featured image 图片加文字 -->
     <div class="dl_list_all">
-        <div class="dl_list_one" ng-repeat="b in blogs track by $index">
+        <div class="dl_list_one" ng-repeat="b in bloglists track by $index">
             <div class="boxed  push-down-45 image" ng-if="blogaction.cutimg(b.content)">
                 <!-- Featured image and meta start -->
                 <div class="meta">
@@ -56,7 +56,7 @@
                         <!-- Start of the content -->
                         <div class="post-content--front-page">
                             <h2 class="front-page-title">
-                                <a href="single-post.html">
+                                <a href="/article/{{b._id}}">
                                     {{b.title}}
                                 </a>
                             </h2>
@@ -82,7 +82,7 @@
                             </p> -->
                         </div>
                         <!-- End of the content -->
-                        <a href="single-post.html">
+                        <a href="/article/{{b._id}}">
                             <div class="read-more">
                                 Continue reading
                                 <div class="read-more__arrow">
@@ -269,7 +269,7 @@
                         <!-- Start of the content -->
                         <div class="post-content--front-page">
                             <h2 class="front-page-title">
-                                <a href="single-post-without-image.html">
+                                <a href="/article/{{b._id}}">
                                     {{b.title}}
                                 </a>
                             </h2>
@@ -282,7 +282,7 @@
                             </p>
                         </div>
                         <!-- End of the content -->
-                        <a href="single-post.html">
+                        <a href="/article/{{b._id}}">
                             <div class="read-more">
                                 Continue reading
                                 <div class="read-more__arrow">

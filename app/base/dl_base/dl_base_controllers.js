@@ -8,7 +8,7 @@ define(['angular'], function(angular){
         // console.log($location.url());
         $scope.loadall = function(){
             $http.get("/api/all").success(function(list){
-                $scope.blogs = list["list"];
+                $rootScope.bloglists = list["list"];
             })
         }
         $scope.loadall();
@@ -19,6 +19,21 @@ define(['angular'], function(angular){
         			console.log(list)
         		})
         	})
+        }
+        
+    }])
+    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$location',function($rootScope,$scope,$routeParams){
+        console.log($routeParams)
+        if($rootScope.bloglists){//从列表而来
+            for(var i=0;i<$rootScope.bloglists.length;i++){
+                if($rootScope.bloglists[i]._id == $routeParams.id){
+                    $scope.one = $rootScope.bloglists[i];
+                    $scope.one.content = $scope.one.content;
+                    break;
+                }
+            }
+        }else{//从外边来，需要走restful
+
         }
         
     }])
