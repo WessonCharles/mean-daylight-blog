@@ -19,12 +19,13 @@ exports.getall = function(req,res){
 	blog.getPageNationQueryList(obj,function(err,list,total){
 		console.log(err)
 		console.log(list)
+		console.log()
 		if(err)console.dir(err);
 		var data = {
 			message:{
 				content:"查询成功",
 				code:5
-			},
+			},	
 			list:list,
 			count:total
 		}

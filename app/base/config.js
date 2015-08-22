@@ -4,7 +4,8 @@ define(['angular'/*, 'services'*/], function(angular){
 
     return angular.module('base.config', [/*'base.services'*/])
         .config(['$httpProvider', function($httpProvider){
-            $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+            // $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+            $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
             // $httpProvider.defaults.useXDomain = true;
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
             // $httpProvider.interceptors.push('formsubmit');

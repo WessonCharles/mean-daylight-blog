@@ -61,40 +61,22 @@ define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
 		};	
 		$scope.restore();
 		$scope.addblog = function(e){
-			// $(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
-			var poststr = "";
 			console.log($scope.blog)
-			for(var p in $scope.blog){
-				poststr+= p+"="+$scope.blog[p]+"&";
-			}
-			// poststr+=$(e.target).serialize();
-			poststr += "tags="+$(e.target).serializeObject().tags.toString()+"&";
-			var con = Extend.parseContent($(e.target).serializeObject().content);
-			poststr+= "content="+con;
-
-			console.log(con)
-			console.log(poststr)
-			// b["content"] = $(e.target).serializeObject().content;
-			// console.log(b)
-			// var Tech = Restful("/api/tech",poststr);
-			// console.log(Tech)
-			// return false;
-			$http.post("/api/tech",poststr).success(function(data){
-				console.log(data)
+			$scope.blog["tags"] = $(e.target).serializeObject().tags;
+			$scope.blog["content"] = $(e.target).serializeObject().content;			
+			$http.post("/api/tech",$scope.blog).success(function(data){
+				$scope.restore();
 			});
 		}
 
 		$scope.add_life = function(e){
-			// $(e.target).find("input,select,textarea").jqBootstrapValidation({autoAdd: {helpBlocks: true}});
-			var poststr = "";
-			console.log($scope.life)
-			for(var p in $scope.life){
-				poststr+= p+"="+$scope.life[p]+"&";
+			var datas =$(e.target).serializeObject();
+			for(var d in datas){
+				$scope.life[d] = datas[d];
 			}
-			poststr+=$(e.target).serialize();
 			// b["content"] = $(e.target).serializeObject().content;
 			// console.log(b)
-			$http.post("/api/tech",poststr).success(function(data){
+			$http.post("/api/tech",$scope.life).success(function(data){
 				console.log(data)
 			});
 		}

@@ -47,6 +47,9 @@ Action.prototype.getPageNationQueryList = function(obj,callback){
 Action.prototype.create = function (doc,callback){
     this.model.create(doc, function (error) {
         if(error) return callback(error);
+
+        console.log("lllllllllllllllllll".red)
+        console.log(doc)
         return callback(doc);
     });
 };
