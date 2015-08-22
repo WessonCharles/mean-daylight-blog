@@ -143,12 +143,15 @@ define([
         var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
         var blogreg = /<img[^>]+src="[^"]+"[^>]*>/g;
         var srcreg = /src="([^"]+)"/;
+
         $rootScope.blogaction = {//博客内容的相关方法
             cutword:function(str,len){//截取指定长度的内容，作为预览显示
                 if(!str){
                     return "";
                 }
-                
+                if(!len){
+                    len = 300;
+                }
                 str = str.replace(htmltotext,"");
                 var str_len = str.length;
                 str = str.substring(0,len);
@@ -163,18 +166,16 @@ define([
                 }
                 
                 imgs = imgs || [];
-                if(imgs){
-                    var result = str.match(blogreg);
-                    if(result){
-                        for (var i=0; i<result.length; i++) {            
-                            srcreg.exec(result[i]);
-                            imgs.push(RegExp.$1);
-                        }
+                var result = str.match(blogreg);
+                if(result){
+                    for (var i=0; i<result.length; i++) {            
+                        srcreg.exec(result[i]);
+                        imgs.push(RegExp.$1);
                     }
                 }
                 
                 if(imgs.length > 0){        
-                    return "<div class='blog_index_img'><img class='blog_img_preview300' src='"+imgs[0]+"'/></div>";
+                    return imgs[0];
                 }
                 return "";
             }

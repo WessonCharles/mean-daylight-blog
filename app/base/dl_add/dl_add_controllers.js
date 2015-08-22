@@ -67,7 +67,13 @@ define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
 			for(var p in $scope.blog){
 				poststr+= p+"="+$scope.blog[p]+"&";
 			}
-			poststr+=$(e.target).serialize();
+			// poststr+=$(e.target).serialize();
+			poststr += "tags="+$(e.target).serializeObject().tags.toString()+"&";
+			var con = Extend.parseContent($(e.target).serializeObject().content);
+			poststr+= "content="+con;
+
+			console.log(con)
+			console.log(poststr)
 			// b["content"] = $(e.target).serializeObject().content;
 			// console.log(b)
 			// var Tech = Restful("/api/tech",poststr);

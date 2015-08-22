@@ -1,7 +1,7 @@
 
 'use strict';
 
-define(['angular'], function (angular) {
+define(['angular','markdown'], function (angular,markdown) {
 
     angular.module('base.service', ['ngResource'])
     .factory('AuthService',['$rootScope','$http','$window','$location', function ($rootScope, $http, $window, $location) {
@@ -84,6 +84,7 @@ define(['angular'], function (angular) {
 		Extend.handle ={};
 		var dlcount = 0;
 		var prologo_cropdata;
+		/*****图片的处理*****/
 		Extend.cropperDialog = function(opts){
 			var	targetid = "up_frame_"+dlcount;
 			var contents = $(['<div class="ui standard small test modal" id="cropper">',
@@ -104,7 +105,7 @@ define(['angular'], function (angular) {
 		           ' </div>',
 		       ' </div>',
 		   ' </form>',
-		'	</div>'].join(""));
+			'	</div>'].join(""));
 			contents.appendTo(document.body);
 			contents.modal("show");
 			$(document.body).delegate("#cropper #crop_sure_button","click",function(){
@@ -290,6 +291,23 @@ define(['angular'], function (angular) {
 				});
 		}
 
+		/*********转化markdown*******/
+
+		Extend.parseContent = function(val) {
+	      var content;
+
+	      // parse with supported markdown parser
+
+	      if (typeof markdown == 'object') {
+	        content = markdown.toHTML(val);
+	      } else if (typeof marked == 'function') {
+	        content = marked(val);
+	      } else {
+	        content = val;
+	      }
+
+	      return content;
+	    }
 	}])
 	.factory('Restful',['$resource',function($res){
 		return $res(url,{},{});

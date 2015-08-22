@@ -154,6 +154,7 @@
          */
         this.$textarea.css({'min-height':'300px',
             'height':'auto',
+            'max-height':'450px',
             'width':'50%',
             'float':'left'
         })
@@ -224,12 +225,15 @@
       $editor.addClass('md-fullscreen-mode');
       $('body').addClass('md-nooverflow');
       this.$options.onFullscreen(this);
+      $textarea.css("max-height","auto");//手动添加
     } else {
       $editor.removeClass('md-fullscreen-mode');
       $('body').removeClass('md-nooverflow');
+      $textarea.css("max-height","450px");//手动添加
 
       if (this.$isPreview == true) this.hidePreview().showPreview()
     }
+
 
     this.$isFullscreen = mode;
     $textarea.focus();
@@ -530,9 +534,17 @@
       replacementContainer.css({
         // width: container.outerWidth() + 'px',//手动注释
         width:'50%',
-        height: container.outerHeight() + 'px',
+        height:'auto',
+        'min-height':'300px',
+        // height: container.outerHeight() + 'px',
         'background-color':'#F8F9FA'
       });
+
+      if(this.$editor.hasClass('md-fullscreen-mode')){
+        replacementContainer.css("max-height","auto");
+      }else{
+        replacementContainer.css("max-height","450px");
+      }
 
       if (this.$options.resize) {
         replacementContainer.css('resize',this.$options.resize);
@@ -871,7 +883,7 @@
       preview.scrollTop(y*(a/x));
       setTimeout(function(){
         text.parent().find(".md-preview:first").bind("scroll",$.proxy(_this.previewscroll,_this));
-      },50)
+      },100)
     }
   , previewscroll:function(e){//手动添加
       this.$textarea.unbind("scroll");
@@ -887,7 +899,7 @@
       text.scrollTop(y*(a/x));
       setTimeout(function(){
         text.bind("scroll",$.proxy(_this.textscroll,_this));
-      },50)
+      },100)
     }  
   , select: function (e) {
       this.$options.onSelect(this);
