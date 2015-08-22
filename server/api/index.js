@@ -10,6 +10,7 @@ Action.prototype.getPageNationQueryList = function(obj,callback){
         query = obj.query,
         count = parseInt(obj.count)||15,
         m = this.model;
+    if(!page)page = 1;
         console.log(query)
     async.waterfall([
         function(cb){

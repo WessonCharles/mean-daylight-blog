@@ -7,5 +7,8 @@ define(['angular', 'app'], function(angular, app) {
             templateUrl: 'base/dl_base/base.html',
             controller: 'dlbasectrl'
         })
+        $routeProvider.when('/article/:id',{
+        	
+        })
     }]);
 });

@@ -8,6 +8,29 @@ var Blog = require(path_root+"/model/model").Blog,
   	// render = require(path_root+"/base/api/render");
 var blog = new Action(Blog);
 
+
+exports.getall = function(req,res){
+	var obj = {
+		page:req.param("page"),
+	}
+	// blog.getAll(function(err,list){
+	// 	res.send(list)
+	// })
+	blog.getPageNationQueryList(obj,function(err,list,total){
+		console.log(err)
+		console.log(list)
+		if(err)console.dir(err);
+		var data = {
+			message:{
+				content:"查询成功",
+				code:5
+			},
+			list:list,
+			count:total
+		}
+		res.send(data);
+	})
+}
 exports.remove = function(req,res){
 	var obj = {
 		tags:[]

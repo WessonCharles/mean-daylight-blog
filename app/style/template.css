@@ -3367,6 +3367,11 @@ blockquote {
 .btn {
 	-webkit-tap-highlight-color:transparent
 }
+.wrap_post_image{
+	width:100%;
+	max-height:315px;
+	overflow: hidden;
+}
 .wp-post-image {
 	width:100%;
 	height:auto;
@@ -4972,4 +4977,17 @@ width: 12.5%;
 }
 .jcrop-holder > input[type='radio']{
 	display: none!important;
+}
+/**********markdown editor*********/
+.md-editor>.md-preview{
+	min-height:300px;
+}
+.md-editor.md-fullscreen-mode .btn {
+    border: 0;
+    background-color: #333;
+    color: #fff;
+}
+.md-editor.md-fullscreen-mode .btn:hover {
+    color: #b3b3b3;
+    background-color: #111;
 }
