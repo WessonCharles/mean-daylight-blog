@@ -70,32 +70,15 @@ define(['angular'/*, 'services'*/], function(angular){
 
           $httpProvider.responseInterceptors.push(interceptor);
         }])
-        // .provider('securityInterceptor', function() {
-        //     this.$get = function($location, $q) {
-        //       return function(promise) {
-        //         return promise.then(null, function(response) {
-        //           console.log("请求执行了")
-        //           console.log(response)
-        //           if(response.data.error&&response.data.error.message=="Invalid user / password"){
-        //               Opstack.showStatus("登录名或密码错误",3);
-        //           }else if(response.status === 403 || response.status === 401) {
-        //             window.location.href = "/login";//暂时先跳转到首页
-        //             // $location.path('/');
-        //           }else if(response.status===500 || response.status===503){
-        //               $("#page-wrapper").find(".modal:visible").modal("hide");
-        //               var who = "";
-        //               if(response.config.url.indexOf("compute")>-1||response.config.url.indexOf("cmdb")>-1){
-        //                 who = "继伟";
-        //               }
-        //               if(response.config.url.indexOf("game")>-1){
-        //                 who = "曹正";
-        //               }
-        //               Opstack.showStatus("很遗憾，后端挂了！请找："+who,6);
-        //           }
-        //           return $q.reject(response);
-        //         });
-        //       };
-        //     };
+        .config(['$sceDelegateProvider',function($sceDelegateProvider){
+                $sceDelegateProvider.resourceUrlWhitelist([/*¿çÓò°×Ãûµ¥*/
+                   
+                   'self',
+                   'http://libs.baidu.com/**',
+                   'http://libs.useso.com/**',
+                   'http://widget.weibo.com/weiboshow/**']);
+                }
+        ])
         // });
         
 });

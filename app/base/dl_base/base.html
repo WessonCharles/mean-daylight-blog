@@ -2,11 +2,11 @@
     <!-- Post with featured image 图片加文字 -->
     <div class="dl_list_all">
         <div class="dl_list_one" ng-repeat="b in bloglists track by $index">
-            <div class="boxed  push-down-45 image" ng-if="blogaction.cutimg(b.content)">
+            <div class="boxed  push-down-45 image" ng-if="b.thumb">
                 <!-- Featured image and meta start -->
                 <div class="meta">
                     <div class="wrap_post_image">
-                        <img src="{{blogaction.cutimg(b.content)}}" class="wp-post-image" alt="">  
+                        <img ng-src="{{b.thumb}}" class="wp-post-image" alt="">  
                     </div>
                     <div class="meta__container">
                         <div class="row">
@@ -61,7 +61,7 @@
                                 </a>
                             </h2>
                             <p>
-                                {{blogaction.cutword(b.content)}}
+                                {{b.summary}}
                             </p>
                             <!-- <h3>
                                 第一关：奇葩的req.body
@@ -278,13 +278,13 @@
                                 (H3)
                             </h3> -->
                             <p>
-                                {{blogaction.cutword(b.content)}}
+                                {{b.summary}}
                             </p>
                         </div>
                         <!-- End of the content -->
                         <a href="/article/{{b._id}}">
                             <div class="read-more">
-                                Continue reading
+                                阅读更多
                                 <div class="read-more__arrow">
                                     <span class="fa  fa-chevron-right">
                                     </span>

@@ -105,4 +105,47 @@ Action.prototype.update = function( conditions, update ,options, callback) {
     });
 };
 
+var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
+var blogreg = /<img[^>]+src="[^"]+"[^>]*>/g;
+var srcreg = /src="([^"]+)"/;
+
+Action.prototype.cutword =function(str,len){//截取指定长度的内容，作为预览显示
+    if(!str){
+        return "";
+    }
+    if(!len){
+        len = 300;
+    }
+    // str = decodeURIComponent(str);
+    // str = Extend.parseContent(str);
+    str = str.replace(htmltotext,"");
+    var str_len = str.length;
+    str = str.substring(0,len);
+    if(len < str_len ){
+        str =str+"..." ;
+    }
+    return str;
+};
+Action.prototype.cutimg = function(str,imgs){//截取文字并返回
+    if(!str){
+        return "";
+    }
+    
+    imgs = imgs || [];
+    // str = decodeURIComponent(str);
+    // str = Extend.parseContent(str);
+    var result = str.match(blogreg);
+    if(result){
+        for (var i=0; i<result.length; i++) {            
+            srcreg.exec(result[i]);
+            imgs.push(RegExp.$1);
+        }
+    }
+    
+    if(imgs.length > 0){
+        return imgs[0];
+    }
+    return "";
+}
+
 module.exports = Action;

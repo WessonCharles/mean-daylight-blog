@@ -1,9 +1,9 @@
-<div class="col-xs-12 col-md-8" style="margin-top:-250px;">
+<div class="col-xs-12 col-md-8" style="z-index: 13;">
 <div class="boxed  push-down-60">
 	<!-- Featured image and meta start -->
 	<div class="meta">
-		<div class="wrap_post_image">
-			<img class="wp-post-image" src="{{blogaction.cutimg(one.content)}}">
+		<div class="wrap_post_image" style="height: 220px;">
+			<img class="wp-post-image" ng-src="{{one.thumb}}">
 		</div>
 		<div class="meta__container">
 			<div class="row">
@@ -32,7 +32,9 @@
 					<a href="#">{{one.title}}</a>
 				</h1>
 				<!-- <h3>She had a last view back on the skyline of her hometown Bookmarksgrove. (H3)</h3> -->
-				<div onview data-content={{one.content}}>
+				<div id="articlecon">
+					<div onview data-content="{{one.content}}">
+					</div>
 				</div>
 			</div>
 		<!-- End of the content -->
@@ -82,14 +84,14 @@
 			<!-- End of post tags -->
 			</div>
 		</div>
-		<div class="disqus-comments  push-down-45" id="comments">
+		<!-- <div class="disqus-comments  push-down-45" id="comments">
 			<div id="disqus_thread"></div>
 			<script type="text/javascript">var disqus_shortname='readablehtml';(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='//'+disqus_shortname+'.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
 			<noscript>Please enable JavaScript to view the
 			&lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;
 			</noscript>
 			<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span> </a>
-		</div>
+		</div> -->
 		<!-- Start of related stories -->
 		<div class="related-stories">
 			<h6>Related Stories</h6>

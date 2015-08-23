@@ -2,7 +2,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 	display:block
 }
 audio,canvas,video {
-	display:inline-block
+	display:inline-block;
+	width: 100%;
 }
 audio:not([controls]) {
 	display:none;
@@ -2678,22 +2679,48 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 .carousel-inner>.active,.carousel-inner>.next,.carousel-inner>.prev {
 	display:block
 }
-.carousel-inner>.active {
-	/*height: 420px;*/
+/*.carousel-inner>.active {
     left: 0;
     position: relative;
   	backface-visibility: inherit;
   	background:url(../imgs/back.png);
-  	transform: inherit!important;/*关于position-attament 在chrome失效的问题  只要加上倒数两句就可以了*/
+  	transform: inherit!important;
+}*/
+.carousel-inner>.active{
+	left: 0;
+    background-color: #4EB9A4;
+    position: relative;
+    backface-visibility: inherit;
+    transform: inherit!important;
 }
-.carousel-inner>.active .shade{
-	    background: #0AA284;/*#4C82DB*/
+/*.carousel-inner>.active .shade{
+	    background: #0AA284;
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
     opacity: 0.6;
+}*/
+.carousel-inner>.active .shade {
+    background: url("../imgs/back2.png");
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-position: 60% 200px;
+    opacity: 0.3;
+}
+.blur .shade2{
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    height: 110px;
+    width: 100%;
+    background: -webkit-gradient(linear,left top,left bottom,from(transparent),to(rgba(0,0,0,.6)));
+    background: -webkit-linear-gradient(top,transparent 0,rgba(0,0,0,.6) 100%);
+    background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 100%);
 }
 .carousel-inner>.next,.carousel-inner>.prev {
 	position:absolute;
@@ -3266,7 +3293,7 @@ blockquote {
 	padding:10px 30px;
 	font-weight:400;
 	font-size:18px;
-	font-style:italic;
+	font-style:normal;
 	color:#40454a
 }
 @media (min-width:768px) {
@@ -3282,6 +3309,9 @@ blockquote {
 }
 .blockquote__alternative > h3{
 	color: rgba(255,255,255,1);
+    font-weight: bold;
+    font-family: serif;
+    letter-spacing: 0.5px;
 }
 .blockquote__alternative > p{
 	color: rgba(255,255,255,0.85);
@@ -3299,7 +3329,7 @@ blockquote {
     font-weight: 700;
     left: 25px !important;
     position: absolute;
-    top: 12px;
+    top: -5px;
 }
 .blockquote__alternative:after {
 	content: "”";
@@ -3901,6 +3931,10 @@ body.search-mode .search-panel {
 	box-shadow:0 0 0 8px #fff;
 	border-radius:50%;
 	z-index:2
+}
+.blur{
+	-webkit-filter: blur(3px);
+	filter: url(../imgs/blur.svg#blur);
 }
 .widget-author__avatar--blurred {
 	overflow:hidden;
