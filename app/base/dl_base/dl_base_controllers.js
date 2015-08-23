@@ -22,18 +22,24 @@ define(['angular'], function(angular){
         }
         
     }])
-    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$location',function($rootScope,$scope,$routeParams){
+    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$compile',function($rootScope,$scope,$routeParams,$http,$compile){
         console.log($routeParams)
+        $rootScope.cover = true;
         if($rootScope.bloglists){//从列表而来
             for(var i=0;i<$rootScope.bloglists.length;i++){
                 if($rootScope.bloglists[i]._id == $routeParams.id){
                     $scope.one = $rootScope.bloglists[i];
-                    $scope.one.content = $scope.one.content;
                     break;
                 }
             }
         }else{//从外边来，需要走restful
-
+            console.log("222")
+            $http.get("/api/one/"+$routeParams.id).success(function(data){
+                $scope.one = data.blog;
+                var link = $compile('<div onview data-content="{{one.content}}"></div>')
+                var code = link($scope);
+                $("#articlecon").html(code);
+            })
         }
         
     }])

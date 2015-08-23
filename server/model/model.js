@@ -33,6 +33,11 @@ var blogSchema = new Schema({
 	ismine:Boolean,
 	//原作者
 	originalauthor : {name:String,_id:String,url:String},
+	//缩略图
+	thumb:String,
+	//简介
+	summary:String,
+
 });
 
 blogSchema.index({"author._id":1});

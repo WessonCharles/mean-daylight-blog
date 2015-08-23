@@ -43,6 +43,9 @@ define([
                 $("#header").css("margin-bottom","45px").css("position","fixed");                
             }
         }
+
+        $scope.frameurl = "http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2709394993&verifier=8341d7fb&colors=d6f3f7,ffffff,666666,0AA284,F8F9FA&dpc=1";
+
         jQuery.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
             var obj=new Object();  
             $.each(this.serializeArray(),function(index,param){  
@@ -59,10 +62,10 @@ define([
         $.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
 
         $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
-
+            var path = window.location.pathname;
+            $rootScope.cover = false;
             setTimeout(function(){
-                var path = window.location.pathname;
-                console.log(path)
+                
                 var nav = $("#readable-navbar-collapse");
                 var it;
                 nav.find("ul li").click(function(){
@@ -111,6 +114,11 @@ define([
             },300)
         })
         $rootScope.$on('locationChangeSuccess', function(){//刷新当前url地址,重新加载本页内容需要重载路由
+            if(window.location.pathname.indexOf("article")>-1){
+                 $rootScope.cover = true;
+            }else{
+                $rootScope.cover = false;
+            }
             $route.reload();
         });
         
@@ -127,7 +135,7 @@ define([
             });
             
             $(document).scroll(function(e){
-                $(".carousel-inner > .active").css("background-position","75% -"+$(this).scrollTop()/2+"px");
+                $(".carousel-inner > .active > .shade").css("background-position","60% "+(200-$(this).scrollTop()/2)+"px");
                 if($(this).scrollTop()==0){
                     $("#header,.slider.main").removeClass("scroll");
                 }else{
@@ -148,50 +156,5 @@ define([
           // });
 
         });
-        var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
-        var blogreg = /<img[^>]+src="[^"]+"[^>]*>/g;
-        var srcreg = /src="([^"]+)"/;
-
-        $rootScope.blogaction = {//博客内容的相关方法
-            cutword:function(str,len){//截取指定长度的内容，作为预览显示
-                if(!str){
-                    return "";
-                }
-                if(!len){
-                    len = 300;
-                }
-                // str = decodeURIComponent(str);
-                // str = Extend.parseContent(str);
-                str = str.replace(htmltotext,"");
-                var str_len = str.length;
-                str = str.substring(0,len);
-                if(len < str_len ){
-                    str =str+"..." ;
-                }
-                return str;
-            },
-            cutimg:function(str,imgs){//截取文字并返回
-                if(!str){
-                    return "";
-                }
-                
-                imgs = imgs || [];
-                // str = decodeURIComponent(str);
-                // str = Extend.parseContent(str);
-                var result = str.match(blogreg);
-                if(result){
-                    for (var i=0; i<result.length; i++) {            
-                        srcreg.exec(result[i]);
-                        imgs.push(RegExp.$1);
-                    }
-                }
-                
-                if(imgs.length > 0){
-                    return imgs[0];
-                }
-                return "";
-            }
-        };
-        
     }])
 });

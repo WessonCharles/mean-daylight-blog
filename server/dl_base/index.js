@@ -32,6 +32,21 @@ exports.getall = function(req,res){
 		res.send(data);
 	})
 }
+exports.getone = function(req,res){
+	var id = req.param("id");
+	blog.getById(id,function(err,one){
+		if(err)console.dir(err);
+		var data = {
+			message:{
+				content:'查询成功',
+				code:5
+			},
+			blog:one,
+			count:1
+		}
+		res.send(data);
+	})
+}
 exports.remove = function(req,res){
 	var obj = {
 		tags:[]
