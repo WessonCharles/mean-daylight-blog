@@ -3,11 +3,11 @@
 define(['angular', 'app'], function(angular, app) {
     return app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     	$locationProvider.html5Mode(true);
-        $routeProvider.when('/tech', {
+        $routeProvider.when('/front-end', {
             templateUrl: 'base/dl_tech/tech.html',
             controller: 'dltechctrl'
         })
-        $routeProvider.when('/tech/:type', {
+        $routeProvider.when('/front-end/:type', {
             templateUrl: 'base/dl_tech/tech.html',
             controller: 'dltechctrl'
         })
