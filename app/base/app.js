@@ -135,7 +135,7 @@ define([
             });
             
             $(document).scroll(function(e){
-                $(".carousel-inner > .active > .shade").css("background-position","60% "+(200-$(this).scrollTop()/2)+"px");
+                // $(".carousel-inner > .active > .shade").css("background-position","60% "+(200-$(this).scrollTop()/2)+"px");
                 if($(this).scrollTop()==0){
                     $("#header,.slider.main").removeClass("scroll");
                 }else{

@@ -1,4 +1,4 @@
-<div class="col-xs-12  col-md-8" ng-controller="dlbasectrl">
+<div class="col-xs-12  col-md-8">
     <!-- Post with featured image 图片加文字 -->
     <div class="dl_list_all">
         <div class="dl_list_one" ng-repeat="b in bloglists track by $index">
@@ -23,7 +23,7 @@
                                     <span class="meta__date">
                                         <span class="fa fa-calendar">
                                         </span>
-                                        &nbsp; {{b.time}}
+                                        &nbsp; {{b.time | date:"MM/dd/yyyy 'at' h:mma"}}
                                     </span>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                                     <span class="meta__date">
                                         <span class="fa fa-calendar">
                                         </span>
-                                        &nbsp; {{b.time}}
+                                        &nbsp; {{b.time | date:"MM/dd/yyyy 'at' h:mma"}}
                                     </span>
                                 </div>
                             </div>
