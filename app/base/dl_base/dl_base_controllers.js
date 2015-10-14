@@ -20,6 +20,15 @@ define(['angular'], function(angular){
         		})
         	})
         }
+
+        // $scope.parseHtml= function(str){
+        //     console.log(str)
+        //     var xmlString = str
+        //     , parser = new DOMParser()
+        //     , doc = parser.parseFromString(xmlString, "text/xml");
+            
+        //     return doc;
+        // }
         
     }])
     .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$compile',function($rootScope,$scope,$routeParams,$http,$compile){

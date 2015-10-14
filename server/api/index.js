@@ -118,7 +118,7 @@ Action.prototype.cutword =function(str,len){//截取指定长度的内容，作�
     }
     // str = decodeURIComponent(str);
     // str = Extend.parseContent(str);
-    str = str.replace(htmltotext,"");
+    // str = str.replace(htmltotext,"");
     var str_len = str.length;
     str = str.substring(0,len);
     if(len < str_len ){
