@@ -4010,8 +4010,8 @@ body.search-mode .search-panel {
 .widget-categories ul {
 	list-style:none;
 	padding:0;
-	background-color:#EDF0F5;
-	border:1px solid #dfe2e4;
+	/*background-color:#EDF0F5;
+	border:1px solid #dfe2e4;*/
 	border-radius:3px
 }
 .widget-categories ul li {
@@ -4329,7 +4329,8 @@ body.search-mode .search-panel {
 }
 .meta {
 	position:relative;
-	margin-bottom:0
+	margin-bottom:0;
+	overflow: hidden;
 }
 @media (min-width:768px) {
 	.meta {

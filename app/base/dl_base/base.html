@@ -181,7 +181,7 @@
                 </a>
             </div> -->
             <!-- Post with quote 图文 -->
-            <div class="boxed  push-down-45 pic-word" ng-if="b.subtype&&b.subtype=='pic-word'"><!--ng-if="b.subtype"-->
+            <div class="boxed  push-down-45 pic-word" ng-if="b.subtype&&b.subtype=='pic-word'">
                 <!-- Featured image and meta start -->
                 <div class="meta" style="margin-bottom:0;">
                     <!-- <img width="748" height="324" alt="Blog image" src="images/dummy/748x324xblog-image-4.jpg.pagespeed.ic.zbhJ3l0AsC.jpg"
@@ -226,7 +226,7 @@
                 <span class="post-format"></span>
             </div>
             <!-- 纯文字 -->
-            <div class="boxed  push-down-45 word"  ng-if="!blogaction.cutimg(b.content)">
+            <div class="boxed  push-down-45 word"  ng-if="!b.thumb"><!--ng-if="!blogaction.cutimg(b.content)"-->
                 <!-- Meta without image start (Needed for WP theme)-->
                 <div class="row">
                     <div class="meta__container--without-image">
