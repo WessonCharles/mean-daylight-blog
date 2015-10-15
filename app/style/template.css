@@ -4124,11 +4124,6 @@ body.search-mode .search-panel {
 #likebox-wrapper * {
 	width:100%!important
 }
-.widget-facebook iframe {
-	border:0;
-	overflow:hidden;
-	height:260px
-}
 .widget-contact hr {
 	margin-bottom:15px
 }
