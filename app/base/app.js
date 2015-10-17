@@ -24,8 +24,8 @@ define([
         'dl_tech.dl_tech_controllers',
         'dl_add.dl_add_controllers'
     ])
-    .controller('baseCtrl',['$scope','$http','$rootScope','$route','$location','customExtend',
-     function($scope, $http,$rootScope,$route, $location,customExtend) {
+    .controller('baseCtrl',['$scope','$http','$rootScope','$route','$location','customExtend','$timeout',
+     function($scope, $http,$rootScope,$route, $location,customExtend,$timeout) {
         $rootScope.language_switch = function(language){
             $rootScope.language = language;
         }
@@ -44,7 +44,7 @@ define([
             }
         }
 
-        $scope.frameurl = "http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2709394993&verifier=8341d7fb&colors=d6f3f7,ffffff,666666,0AA284,F8F9FA&dpc=1";
+        // $scope.frameurl = "http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2709394993&verifier=8341d7fb&colors=d6f3f7,ffffff,666666,0AA284,F8F9FA&dpc=1";
 
         jQuery.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
             var obj=new Object();  
@@ -63,23 +63,33 @@ define([
 
         $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
             var path = window.location.pathname;
-            $rootScope.cover = false;
-            setTimeout(function(){
-                
+            console.log(path)
+            $timeout(function(){                
                 var nav = $("#readable-navbar-collapse");
                 var it;
-                nav.find("ul li").click(function(){
-                    it = $(this);
-                    if(it.find(".sub-menu").length>0){
-                        nav.find("ul li .sub-menu li").removeClass("active");
-                    }   
-                })
-                nav.find("ul li .sub-menu li").click(function(e){
-                    e.stopPropagation();
-                    var t = $(this);
-                    console.log(t)
-                    t.addClass("active");
-                })
+                
+                nav.find("ul .active").removeClass("active");
+                if(path=="/"){
+                    it = nav.find("ul li:first");
+                    nav.find("ul li:first").addClass("active");
+                }else{
+                    var href = "/"+path.split("/")[1];
+                    it = nav.find("ul li a[href='"+href+"']").parent();
+                    it.addClass("active");
+                }
+                if(it.find(".sub-menu").length>0){
+                    nav.find("ul li .sub-menu li a[href='"+path+"']").parent().addClass("active");
+                }
+             });   
+            $rootScope.cover = false;
+        })
+        $rootScope.$on('$routeChangeSuccess',function(){
+            console.log(window.location.pathname)
+            var path = window.location.pathname;
+            $timeout(function(){                
+                var nav = $("#readable-navbar-collapse");
+                var it;
+                
                 nav.find("ul .active").removeClass("active");
                 if(path=="/"){
                     it = nav.find("ul li:first");
@@ -95,15 +105,15 @@ define([
                 nav.find("ul li").hover(function(){
                     var t = $(this);
                     if(!nav.hasClass("in")&&t.parent().parent().attr("id")=="readable-navbar-collapse"&&it!=t){
-                        it.removeClass("active");
-                        t.addClass("active");
+                        // it.removeClass("active");
+                        // t.addClass("active");
                         t.find("ul").css("padding-left",t[0].getBoundingClientRect().left);
                     }
                 },function(){
                     var t = $(this);
                     if(!nav.hasClass("in")&&t.parent().parent().attr("id")=="readable-navbar-collapse"&&it!=t){
-                        t.removeClass("active");
-                        it.addClass("active");
+                        // t.removeClass("active");
+                        // it.addClass("active");
                         t.find("ul").css("padding-left",0);
                     }
                 });
@@ -111,7 +121,8 @@ define([
                 $("#head-menu").click(function(){
                     nav.toggleClass("in");
                 });
-            },300)
+            })
+
         })
         $rootScope.$on('locationChangeSuccess', function(){//刷新当前url地址,重新加载本页内容需要重载路由
             if(window.location.pathname.indexOf("article")>-1){
@@ -133,7 +144,7 @@ define([
                   hide: 800
                 }
             });
-            
+
             $(document).scroll(function(e){
                 // $(".carousel-inner > .active > .shade").css("background-position","60% "+(200-$(this).scrollTop()/2)+"px");
                 if($(this).scrollTop()==0){

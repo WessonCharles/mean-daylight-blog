@@ -82,6 +82,15 @@
                             </p> -->
                         </div>
                         <!-- End of the content -->
+                        <div class="post-content-tags">
+                            <ul>
+                                <li ng-repeat="t in b.tags">
+                                    <div class="ui tag label">
+                                        {{t}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <a href="/article/{{b._id}}">
                             <div class="read-more">
                                 Continue reading
@@ -282,6 +291,15 @@
                             </p>
                         </div>
                         <!-- End of the content -->
+                        <div class="post-content-tags">
+                            <ul>
+                                <li ng-repeat="t in b.tags">
+                                    <div class="ui tag label">
+                                        {{t}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <a href="/article/{{b._id}}">
                             <div class="read-more">
                                 阅读更多

@@ -2517,7 +2517,7 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	color:#999
 }
 .navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover {
-	color:#333;
+	color:#fff;
 	background-color:transparent
 }
 .navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:focus,.navbar-default .navbar-nav>.active>a:hover {
@@ -4635,6 +4635,22 @@ body.search-mode .search-panel {
 .post-content--front-page p {
 	font-size:16px;
 	text-indent: 2em;
+}
+.post-content-tags ul{
+	list-style: none;
+	padding-left: 0;
+}
+.post-content-tags ul li{
+	float: left;
+    margin-right: 10px;
+}
+.post-content-tags ul li .label{
+	color:#2F343B;
+}
+.post-content-tags ul:after{
+	content:" ";
+	clear: both;
+	display: block;
 }
 .post-comments {
 	text-align:center;
