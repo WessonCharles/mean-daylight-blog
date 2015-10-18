@@ -8,7 +8,7 @@ function Action (Model){
 Action.prototype.getPageNationQueryList = function(obj,callback){
     var page = obj.page,
         query = obj.query,
-        count = parseInt(obj.count)||15,
+        count = parseInt(obj.count)||30,
         m = this.model;
     if(!page)page = 1;
         console.log(query)

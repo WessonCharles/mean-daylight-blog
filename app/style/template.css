@@ -4395,7 +4395,11 @@ body.search-mode .search-panel {
 	margin-right:25px
 }
 .meta__container .meta__comments,.meta__container--without-image .meta__comments {
-	float:right
+	float:right;
+	cursor: pointer;
+}
+.meta__container .meta__comments a:hover,.meta__container--without-image .meta__comments a:hover {
+	color:#42A3E5;
 }
 }.meta__container--without-image {
 	position:relative;
@@ -4565,14 +4569,31 @@ body.search-mode .search-panel {
 	line-height:40px;
 	border:0;
 	border-radius:4px;
-	color:#7A8491
+	color:#fff;
+	font-size: 20px;
+	-webkit-transition:all .1s linear;
+	transition:all .1s linear
+}
+.social-icons .weibo{
+	background-color: #DA4F49;
+}
+.social-icons .weixin{
+	background-color: #0AA284;
 }
 @media (min-width:768px) {
 	.social-icons .social-icons__container {
 	margin:0 5px
 }
 }.social-icons .social-icons__container:hover {
-	color:#818176
+	color:#fff
+}
+.social-icons .weibo:hover{
+	color:#DA4F49;
+	background-color:#E4E4E4;
+}
+.social-icons .weixin:hover{
+	color:#0AA284;
+	background-color:#E4E4E4;
 }
 .widget-social-icons {
 	float:none;

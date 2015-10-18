@@ -31,7 +31,7 @@ define(['angular'], function(angular){
         // }
         
     }])
-    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$compile',function($rootScope,$scope,$routeParams,$http,$compile){
+    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$compile','$timeout',function($rootScope,$scope,$routeParams,$http,$compile,$timeout){
         console.log($routeParams)
         $rootScope.cover = true;
         if($rootScope.bloglists){//从列表而来
@@ -45,11 +45,21 @@ define(['angular'], function(angular){
             console.log("222")
             $http.get("/api/one/"+$routeParams.id).success(function(data){
                 $scope.one = data.blog;
+                console.log(data.blog)
                 var link = $compile('<div onview data-content="{{one.content}}"></div>')
                 var code = link($scope);
                 $("#articlecon").html(code);
             })
         }
-        
+
+        $timeout(function(){
+            var path = window.location.href;
+            if(path.indexOf("#")>-1){
+                var domid = path.split("#")[1];
+                $('html,body').animate({
+                    scrollTop:$("#"+domid)[0].offsetTop
+                });
+            }
+        },500)
     }])
 });

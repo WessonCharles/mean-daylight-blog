@@ -17,9 +17,8 @@ exports.getall = function(req,res){
 	// 	res.send(list)
 	// })
 	blog.getPageNationQueryList(obj,function(err,list,total){
-		console.log(err)
-		console.log(list)
-		console.log()
+		// console.log(err)
+		// console.log(list)
 		if(err)console.dir(err);
 		var data = {
 			message:{
