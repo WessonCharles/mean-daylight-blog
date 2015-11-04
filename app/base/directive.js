@@ -48,4 +48,21 @@ define(['angular'],function(angular){
 		}
 	}
 	])
+	// .directive('comment',['$timeout',function($timeout){
+	// 	return {
+	// 		restrict:'A',
+	// 		link:function(s,e,a){
+	// 			$timeout(function(){
+	// 				var href = $(e).attr("href");
+	// 				console.log(href)
+	// 				var it = '<!-- UYAN COUNT BEGIN -->'+
+	//                             '<a href="/article/{{b._id}}#related-comment" id="uyan_count_unit">'+
+	//                             '</a>'+
+	//                             '<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2068620"></script>'+
+	//                         '<!-- UYAN COUNT END -->';
+	// 				$(e).html('<span class="fa fa-comment"></span>'+it);
+	// 			},0)
+	// 		}
+	// 	}
+	// }])
 })

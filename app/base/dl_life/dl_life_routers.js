@@ -2,7 +2,6 @@
 
 define(['angular', 'app'], function(angular, app) {
     return app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    	$locationProvider.html5Mode(true);
         $routeProvider.when('/life', {
             templateUrl: 'base/dl_life/life.html',
             controller: 'dllifectrl'
@@ -19,5 +18,7 @@ define(['angular', 'app'], function(angular, app) {
             templateUrl: 'base/dl_life/life.html',
             controller: 'dllifectrl'
         })
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix("!");
     }]);
 });

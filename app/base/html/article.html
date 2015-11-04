@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-xs-12  col-sm-8">
 					<div class="meta__info">
-						<span class="meta__author"><img src="images/dummy/30x30xabout-5.jpg.pagespeed.ic.x5zyS-vzza.jpg" alt="Meta avatar" width="30" height="30"> <a href="#">Danielle Thatcher</a> in <a href="#">News</a> </span>
+						<span class="meta__author"><img src="images/dummy/30x30xabout-5.jpg.pagespeed.ic.x5zyS-vzza.jpg" alt="Meta avatar" width="30" height="30"> <a href="#">Charles</a> in <a href="#">{{one.area||'北京'}}</a> </span>
 						<span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp;{{one.time| date:"MM/dd/yyyy 'at' h:mma"}}</span>
 					</div>
 					<div class="meta__originauthor" ng-if="one.originalauthor||one.tags">
@@ -89,10 +89,34 @@
 			<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span> </a>
 		</div> -->
 		<!-- Start of related stories -->
-		<div class="related-stories" id="related-comment">
+		<div class="related-stories" id="related-comment" onecom>
 			<h6>评论</h6>
 			<hr>
-			
+			<!-- UY BEGIN 
+			<div id="uyan_frame"></div>
+			<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2068620"></script>
+			<!-- UY END -->
+			<div class="ui form" ng-init="$parent.comment={};">
+				<div class="field">
+		          <label>昵称</label>
+		          <input type="text" ng-model="comment.name" placeholder="Name">
+		        </div>
+				<div class="field">
+			        <label>评论内容</label>
+			        <textarea ng-model="comment.content"></textarea>
+			    </div>
+				<button class="ui button" type="button" ng-click="postcom(comment)">提交</button>
+			</div>
+			<h6>评论列表</h6>
+			<div class="ui relaxed divided list">
+			  <div class="item" ng-repeat="c in one.comments track by $index">
+			    <div class="content">
+			      <a class="header">{{c.name}}</a>
+			      <span>{{c.time| date:"MM/dd/yyyy 'at' h:mma"}}</span>
+			      <div class="description">{{c.content}}</div>
+			    </div>
+			  </div>
+			</div>
 		</div>
 		<!-- End of related stories -->
 		</div>

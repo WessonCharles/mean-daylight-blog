@@ -2,7 +2,6 @@
 
 define(['angular', 'app'], function(angular, app) {
     return app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    	$locationProvider.html5Mode(true);
         $routeProvider.when('/front-end', {
             templateUrl: 'base/dl_tech/tech.html',
             controller: 'dltechctrl'
@@ -31,5 +30,7 @@ define(['angular', 'app'], function(angular, app) {
         //     templateUrl: 'base/dl_tech/tech.html',
         //     controller: 'dltechctrl'
         // })
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix("!");
     }]);
 });

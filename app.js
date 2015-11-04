@@ -72,6 +72,7 @@ global.path_root = path.join(__dirname,'server');
 console.log(path_root)
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(require('prerender-node').set('prerenderToken', 'OJKmf9AxMpxIkDJP6xw7'));//prerender.io做seo
 app.use(logger('dev'));
 app.use(bodyParser.json());//for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false }));// for parsing application/x-www-form-urlencoded

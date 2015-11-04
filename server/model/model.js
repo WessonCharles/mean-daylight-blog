@@ -2,9 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var comment = new Schema({
-	user_id:String,
-	user_name:String,
-	ref:String,
+	name:String,
 	time : Date,
 	content : String
 });
@@ -37,6 +35,7 @@ var blogSchema = new Schema({
 	thumb:String,
 	//简介
 	summary:String,
+	area:String//城市
 
 });
 

@@ -26,6 +26,10 @@ define([
     ])
     .controller('baseCtrl',['$scope','$http','$rootScope','$route','$location','customExtend','$timeout',
      function($scope, $http,$rootScope,$route, $location,customExtend,$timeout) {
+        $rootScope.seo={
+            pagetitle:"主页",
+            des:"Wesson Charles的博客，前端技术，UIUE，和生活琐碎"
+        }
         $rootScope.language_switch = function(language){
             $rootScope.language = language;
         }
