@@ -2,7 +2,7 @@
     <!-- Post with featured image 图片加文字 -->
     <div class="dl_list_all">
         <div class="dl_list_one" ng-repeat="b in bloglists track by $index">
-            <div class="boxed  push-down-45 image" ng-if="b.thumb">
+            <div class="boxed  push-down-45 image" ng-if="b.thumb&&b.subtype!='pic-word'">
                 <!-- Featured image and meta start -->
                 <div class="meta">
                     <div class="wrap_post_image">
@@ -15,7 +15,7 @@
                                     <span class="meta__author">
                                         <img width="30" height="30" alt="Meta avatar" src="images/dummy/avator.png">
                                         <a href="#">
-                                            三杯咖啡
+                                            Charles
                                         </a>
                                         <a href="#">
                                         </a>
@@ -29,10 +29,10 @@
                             </div>
                             <div class="col-xs-12  col-sm-4">
                                 <div class="meta__comments">
-                                    <span class="fa fa-comment">
-                                    </span>
-                                    &nbsp;
-                                    <a href="single-post.html#disqus_thread">
+                                   <a href="/article/{{b._id}}#related-comment">
+                                        <span class="fa fa-comment">
+                                            {{b.comments.length}}
+                                        </span>
                                     </a>
                                 </div>
                             </div>
@@ -60,8 +60,8 @@
                                     {{b.title}}
                                 </a>
                             </h2>
-                            <p>
-                                {{b.summary}}
+                            <p onview data-content="{{b.summary}}">
+                                
                             </p>
                             <!-- <h3>
                                 第一关：奇葩的req.body
@@ -82,6 +82,15 @@
                             </p> -->
                         </div>
                         <!-- End of the content -->
+                        <div class="post-content-tags">
+                            <ul>
+                                <li ng-repeat="t in b.tags">
+                                    <div class="ui tag label">
+                                        {{t}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <a href="/article/{{b._id}}">
                             <div class="read-more">
                                 Continue reading
@@ -116,7 +125,7 @@
                                             <span class="meta__author">
                                                 <img width="30" height="30" alt="Meta avatar" src="images/dummy/30x30xabout-5.jpg.pagespeed.ic.x5zyS-vzza.jpg">
                                                 <a href="#">
-                                                    三杯咖啡
+                                                    Charles
                                                 </a>
                                                 in
                                                 <a href="#">
@@ -181,14 +190,14 @@
                 </a>
             </div> -->
             <!-- Post with quote 图文 -->
-            <div class="boxed  push-down-45 pic-word" ng-if="b.subtype">
+            <div class="boxed  push-down-45 pic-word" ng-if="b.subtype&&b.subtype=='pic-word'">
                 <!-- Featured image and meta start -->
                 <div class="meta" style="margin-bottom:0;">
-                    <img width="748" height="324" alt="Blog image" src="images/dummy/748x324xblog-image-4.jpg.pagespeed.ic.zbhJ3l0AsC.jpg"
-                    class="wp-post-image">
+                    <!-- <img width="748" height="324" alt="Blog image" src="images/dummy/748x324xblog-image-4.jpg.pagespeed.ic.zbhJ3l0AsC.jpg"
+                    class="wp-post-image"> -->
+                    <img ng-src="{{b.thumb}}" class="wp-post-image" alt=""> 
                     <q class="meta__quote">
-                        In order to succeed, your desire for success should be greater than your
-                        fear of failure.
+                        {{b.summary}}
                     </q>
                     <div class="meta__container">
                         <div class="row">
@@ -197,50 +206,11 @@
                                     <span class="meta__author">
                                         <img width="30" height="30" alt="Meta avatar" src="images/dummy/30x30xabout-5.jpg.pagespeed.ic.x5zyS-vzza.jpg">
                                         <a href="#">
-                                            三杯咖啡
+                                            Charles
                                         </a>
                                         in
                                         <a href="#">
-                                            News
-                                        </a>
-                                    </span>
-                                    <span class="meta__date">
-                                        <span class="fa fa-calendar">
-                                        </span>
-                                        &nbsp; 6. May, 2014
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12  col-sm-4">
-                                <div class="meta__comments">
-                                    <span class="fa fa-comment">
-                                    </span>
-                                    &nbsp;
-                                    <a href="single-post.html#disqus_thread">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span class="post-format"></span>
-            </div>
-            <!-- 纯文字 -->
-            <div class="boxed  push-down-45 word"  ng-if="!blogaction.cutimg(b.content)">
-                <!-- Meta without image start (Needed for WP theme)-->
-                <div class="row">
-                    <div class="meta__container--without-image">
-                        <div class="row">
-                            <div class="col-xs-12  col-sm-8">
-                                <div class="meta__info">
-                                    <span class="meta__author">
-                                        <img width="30" height="30" alt="Meta avatar" src="images/dummy/30x30xabout-5.jpg.pagespeed.ic.x5zyS-vzza.jpg">
-                                        <a href="#">
-                                            三杯咖啡
-                                        </a>
-                                        in
-                                        <a href="#">
-                                            News
+                                            {{one.area||'北京'}}
                                         </a>
                                     </span>
                                     <span class="meta__date">
@@ -252,10 +222,49 @@
                             </div>
                             <div class="col-xs-12  col-sm-4">
                                 <div class="meta__comments">
-                                    <span class="fa fa-comment">
+                                    <a href="/article/{{b._id}}#related-comment">
+                                        <span class="fa fa-comment">
+                                            {{b.comments.length}}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="post-format"></span>
+            </div>
+            <!-- 纯文字 -->
+            <div class="boxed  push-down-45 word"  ng-if="!b.thumb"><!--ng-if="!blogaction.cutimg(b.content)"-->
+                <!-- Meta without image start (Needed for WP theme)-->
+                <div class="row">
+                    <div class="meta__container--without-image">
+                        <div class="row">
+                            <div class="col-xs-12  col-sm-8">
+                                <div class="meta__info">
+                                    <span class="meta__author">
+                                        <img width="30" height="30" alt="Meta avatar" src="images/dummy/30x30xabout-5.jpg.pagespeed.ic.x5zyS-vzza.jpg">
+                                        <a href="#">
+                                            Charles
+                                        </a>
+                                        in
+                                        <a href="#">
+                                            {{one.area||'北京'}}
+                                        </a>
                                     </span>
-                                    &nbsp;
-                                    <a href="single-post-without-image.html#disqus_thread">
+                                    <span class="meta__date">
+                                        <span class="fa fa-calendar">
+                                        </span>
+                                        &nbsp; {{b.time | date:"MM/dd/yyyy 'at' h:mma"}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12  col-sm-4">
+                                <div class="meta__comments">
+                                    <a href="/article/{{b._id}}#related-comment">
+                                        <span class="fa fa-comment">
+                                            {{b.comments.length}}
+                                        </span>
                                     </a>
                                 </div>
                             </div>
@@ -282,6 +291,15 @@
                             </p>
                         </div>
                         <!-- End of the content -->
+                        <div class="post-content-tags">
+                            <ul>
+                                <li ng-repeat="t in b.tags">
+                                    <div class="ui tag label">
+                                        {{t}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <a href="/article/{{b._id}}">
                             <div class="read-more">
                                 阅读更多

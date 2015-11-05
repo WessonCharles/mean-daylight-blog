@@ -2517,7 +2517,7 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 	color:#999
 }
 .navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover {
-	color:#333;
+	color:#fff;
 	background-color:transparent
 }
 .navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:focus,.navbar-default .navbar-nav>.active>a:hover {
@@ -2843,6 +2843,7 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
+    min-height:315px;
 }
 /*.carousel-caption:before {
     content: '.';
@@ -3409,11 +3410,18 @@ blockquote {
     vertical-align: middle;
 }
 .wp-post-image {
-	width: auto;
-    height: auto;
+	width: 100%;
+    height: 100%;
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
     margin: 0 auto;
+}
+.pic-word .wp-post-image{
+	max-height: 225px;
+	-webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
 }
 #header {
 	width: 100%;
@@ -3792,7 +3800,7 @@ h1+h3,h2+h3 {
 	height:56px;
 	width:65px;
 	text-align:center;
-	line-height:70px;
+	line-height:56px;
 	float:right;
 	/*border-left:1px solid #dcdddd;
 	border-right:1px solid #dcdddd;*/
@@ -4002,8 +4010,8 @@ body.search-mode .search-panel {
 .widget-categories ul {
 	list-style:none;
 	padding:0;
-	background-color:#EDF0F5;
-	border:1px solid #dfe2e4;
+	/*background-color:#EDF0F5;
+	border:1px solid #dfe2e4;*/
 	border-radius:3px
 }
 .widget-categories ul li {
@@ -4115,11 +4123,6 @@ body.search-mode .search-panel {
 }
 #likebox-wrapper * {
 	width:100%!important
-}
-.widget-facebook iframe {
-	border:0;
-	overflow:hidden;
-	height:260px
 }
 .widget-contact hr {
 	margin-bottom:15px
@@ -4321,7 +4324,8 @@ body.search-mode .search-panel {
 }
 .meta {
 	position:relative;
-	margin-bottom:0
+	margin-bottom:0;
+	overflow: hidden;
 }
 @media (min-width:768px) {
 	.meta {
@@ -4391,7 +4395,11 @@ body.search-mode .search-panel {
 	margin-right:25px
 }
 .meta__container .meta__comments,.meta__container--without-image .meta__comments {
-	float:right
+	float:right;
+	cursor: pointer;
+}
+.meta__container .meta__comments a:hover,.meta__container--without-image .meta__comments a:hover {
+	color:#42A3E5;
 }
 }.meta__container--without-image {
 	position:relative;
@@ -4561,14 +4569,31 @@ body.search-mode .search-panel {
 	line-height:40px;
 	border:0;
 	border-radius:4px;
-	color:#7A8491
+	color:#fff;
+	font-size: 20px;
+	-webkit-transition:all .1s linear;
+	transition:all .1s linear
+}
+.social-icons .weibo{
+	background-color: #DA4F49;
+}
+.social-icons .weixin{
+	background-color: #0AA284;
 }
 @media (min-width:768px) {
 	.social-icons .social-icons__container {
 	margin:0 5px
 }
 }.social-icons .social-icons__container:hover {
-	color:#818176
+	color:#fff
+}
+.social-icons .weibo:hover{
+	color:#DA4F49;
+	background-color:#E4E4E4;
+}
+.social-icons .weixin:hover{
+	color:#0AA284;
+	background-color:#E4E4E4;
 }
 .widget-social-icons {
 	float:none;
@@ -4631,6 +4656,22 @@ body.search-mode .search-panel {
 .post-content--front-page p {
 	font-size:16px;
 	text-indent: 2em;
+}
+.post-content-tags ul{
+	list-style: none;
+	padding-left: 0;
+}
+.post-content-tags ul li{
+	float: left;
+    margin-right: 10px;
+}
+.post-content-tags ul li .label{
+	color:#2F343B;
+}
+.post-content-tags ul:after{
+	content:" ";
+	clear: both;
+	display: block;
 }
 .post-comments {
 	text-align:center;
@@ -4781,7 +4822,7 @@ body.search-mode .search-panel {
 	position: absolute;
     top: -32px;
     margin-left: -25px;
-    background: #fff;
+    background: #42A3E5;
     width: 65px;
     height: 65px;
     border-radius: 82px;
@@ -4810,7 +4851,7 @@ body.search-mode .search-panel {
 	    -ms-transform: translateX(-50%) translateY(-50%);
 	     -o-transform: translateX(-50%) translateY(-50%);
 	        transform: translateX(-50%) translateY(-50%);
-	color: #42A3E5;
+	color: #fff;
 	position: absolute;
 }
 
@@ -5036,4 +5077,19 @@ width: 12.5%;
 .md-editor.md-fullscreen-mode .btn:hover {
     color: #b3b3b3;
     background-color: #111;
+}
+/**
+ * About duoshuo
+ */
+#ds-recent-comments li.ds-comment{
+	border-top:1px solid #e2e2e2;
+}
+#ds-recent-comments li.ds-comment div {
+    display: inline;
+    margin: 0 5px;
+    padding: 0;
+}
+#ds-recent-comments li.ds-comment .ds-excerpt {
+    display: block;
+    line-height: 18px;
 }

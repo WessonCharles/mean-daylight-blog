@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-xs-11  col-xs-offset-0">
                 <h4>
-                    三杯咖啡
+                    Charles
                 </h4>
                 <p>
                     前端工程师，爱音乐，爱色彩；前端大江湖中一粒尘埃；擅长js,html5,css3,nodejs，对各类双向绑定框架如angular,ui框架如bootstrap,semantic-ui,google material 均有涉猎
@@ -24,7 +24,7 @@
             <div class="col-xs-11  col-xs-offset-0">
                 <div class="widget-banner  push-down-30">
                     <h6>
-                        Banner
+                        推广
                     </h6>
                     <a href="http://themeforest.net/user/ProteusThemes/portfolio?ref=ProteusThemes">
                         <img width="300" height="250" alt="Banner ads" src="images/dummy/300x250xads-300x250.jpg.pagespeed.ic.S0egZznnN4.jpg">
@@ -33,44 +33,44 @@
                 <!-- Widget categories -->
                 <div class="widget-categories  push-down-30">
                     <h6>
-                        Categories
+                        类别
                     </h6>
                     <ul>
                         <li>
-                            <a href="#">
-                                Technology &nbsp;
+                            <a href="type?keyword=tech">
+                                技术 &nbsp;
                                 <span class="widget-categories__text">
                                     (16)
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                User Interface design &nbsp;
+                            <a href="type?keyword=ui-ue">
+                                用户体验与交互 &nbsp;
                                 <span class="widget-categories__text">
                                     (13)
                                 </span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#">
                                 User Experience &nbsp;
                                 <span class="widget-categories__text">
                                     (9)
                                 </span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="#">
-                                Startups &nbsp;
+                            <a href="type?keyword=pic-word">
+                                图文谨句 &nbsp;
                                 <span class="widget-categories__text">
                                     (23)
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                Reading &amp; Books &nbsp;
+                            <a href="type?keyword=read-and-know">
+                                阅读 &amp; 书籍 &nbsp;
                                 <span class="widget-categories__text">
                                     (3)
                                 </span>
@@ -78,8 +78,29 @@
                         </li>
                     </ul>
                 </div>
+                <div class="tags  widget-tags">
+                    <h6>
+                        标签
+                    </h6>
+                    <hr>
+                    <a class="tags__link" href="#">
+                        Tech
+                    </a>
+                    <a class="tags__link" href="#">
+                        Web
+                    </a>
+                    <a class="tags__link" href="#">
+                        UI/UX
+                    </a>
+                    <a class="tags__link" href="#">
+                        Tutorials
+                    </a>
+                    <a class="tags__link" href="#">
+                        Workflow
+                    </a>
+                </div>
                 <!-- Widget featured post -->
-                <div class="widget-featured-post  push-down-30">
+                <!-- <div class="widget-featured-post  push-down-30">
                     <h6>
                         Featured post
                     </h6>
@@ -92,42 +113,34 @@
                     <p>
                         Why ProteusThemes products is so much better than lorem everyone else's.
                     </p>
-                </div>
+                </div> -->
                 <!-- Widget Facebook -->
-                <div class="widget-facebook  push-down-30">
-                    <h6>
-                        新浪微博
-                    </h6>
-                    <div id="likebox-wrapper">
-                        <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" ng-src="{{frameurl}}"></iframe>
-                    </div>
-                </div>
                 <!-- Widget posts -->
                 <div class="widget-posts  push-down-30">
                     <h6>
-                        Popular / Recent
+                        热门文章
                     </h6>
                     <!-- Nav tabs -->
-                    <ul class="nav  nav-tabs">
+                    <!-- <ul class="nav  nav-tabs">
                         <li class="active">
                             <a data-toggle="tab" href="#recent-posts">
                                 <span class="glyphicon  glyphicon-time">
                                 </span>
-                                &nbsp;Recent Posts
+                                &nbsp;最新文章
                             </a>
                         </li>
                         <li>
                             <a data-toggle="tab" href="#popular-posts">
                                 <span class="glyphicon  glyphicon-flash">
                                 </span>
-                                &nbsp;Popular Posts
+                                &nbsp;热门文章
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div id="recent-posts" class="tab-pane  fade  in  active">
-                            <div class="push-down-15">
+                        <div id="recent-posts" class="tab-pane  fade  in  active" popular-post>
+                            <!-- <div class="push-down-15">
                                 <img width="90" height="60" alt="Posts" src="images/dummy-licensed/xblog-image-small.jpg.pagespeed.ic.xUKfO4lWHu.jpg">
                                 <h5>
                                     <a href="single-post.html">
@@ -159,7 +172,7 @@
                                 <span class="widget-posts__time">
                                     19 hours ago
                                 </span>
-                            </div>
+                            </div> -->
                         </div>
                         <div id="popular-posts" class="tab-pane  fade">
                             <div class="push-down-15">
@@ -198,27 +211,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="tags  widget-tags">
-                    <h6>
-                        Tags
-                    </h6>
-                    <hr>
-                    <a class="tags__link" href="#">
-                        Tech
-                    </a>
-                    <a class="tags__link" href="#">
-                        Web
-                    </a>
-                    <a class="tags__link" href="#">
-                        UI/UX
-                    </a>
-                    <a class="tags__link" href="#">
-                        Tutorials
-                    </a>
-                    <a class="tags__link" href="#">
-                        Workflow
-                    </a>
-                </div>
                 <!-- Widget Twitter -->
                 <!-- <div class="widget-twitter  push-down-30" data-twttr-id="twttr-sandbox-0">
                     <h6>
@@ -243,11 +235,11 @@
                         } (document, "script", "twitter-wjs");
                     </script>
                 </div> -->
-                <div class="widget-recent-comments  push-down-30">
+                <div class="widget-recent-comments  push-down-30" recent-comment>
                     <h6>
-                        Recent Comments
+                        最近评论
                     </h6>
-                    <ul>
+                    <!-- <ul>
                         <li>
                             Mihael on
                             <a href="single-post.html#comments">
@@ -267,53 +259,18 @@
                                 Everybody loves Readable
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
-                <div class="social-icons  widget-social-icons  push-down-30">
+
+                <div class="widget-facebook  push-down-30">
                     <h6>
-                        Social Icons
+                        新浪微博
                     </h6>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-facebook">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-twitter">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-skype">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-youtube">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-reddit">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-wordpress">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-bitbucket">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-github">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-html5">
-                        </span>
-                    </a>
-                    <a class="social-icons__container" href="#">
-                        <span class="zocial-meetup">
-                        </span>
-                    </a>
+                    <div id="likebox-wrapper">
+                        <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="{{frameurl}}"></iframe>
+                    </div>
                 </div>
+               
             </div>
         </div>
     </div>

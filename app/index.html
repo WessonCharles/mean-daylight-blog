@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:ng="http://angularjs.org" ng-app="base">
 <head>
-	<title>Chqiangs's Blog</title>
-    <meta name="fragment" content="!" />
+    <meta name="fragment" content="!">
     <META HTTP-EQUIV="pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
     <META HTTP-EQUIV="expires" CONTENT="">
+    <title>Charles's Blog | {{seo.pagetitle}}</title>
+    <meta name="description" content="{{ seo.des }}">
     <meta charset="utf-8">
     <base href="/">
     <!-- <link rel="shortcut icon" href="favicon.png"> -->
@@ -77,7 +78,7 @@
                             </ul>
                         </li>
                         <li class="">
-                            <a class="scroll" href="/image">映像
+                            <a class="scroll" href="/photo">映像
                             </a>
                         </li>
                         <li class="">
@@ -213,6 +214,18 @@
             </div>
         </div>
     </footer>
-    
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chqiangs"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
 </body>
 </html>

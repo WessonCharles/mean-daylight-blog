@@ -27,6 +27,7 @@ require.config({
         color:'../bower_components/jcrop/js/jquery.color',
         // color:'http://cdn.staticfile.org/jquery-jcrop/0.9.12/js/jquery.color.min',
         jcrop:'../bower_components/jcrop/js/jquery.Jcrop.min',
+        duoshuo:'http://static.duoshuo.com/embed'
         // jcrop:'http://cdn.staticfile.org/jquery-jcrop/0.9.12/js/jquery.Jcrop.min'
     },
     shim: {
@@ -45,7 +46,8 @@ require.config({
         // 'ueall':['jquery','codemirror','sh'],
         // 'uelan':['ueall'],
         'color':['jquery'],
-        'jcrop':['jquery','color']
+        'jcrop':['jquery','color'],
+        'duoshuo':['jquery']
     },
     priority: [
         'angular',
@@ -77,6 +79,7 @@ require([
     'sh',
     // 'ueall',
     'jcrop',
+    'duoshuo',
     'app',
     'dl_base/dl_base_routes',
     'dl_tech/dl_tech_routes',

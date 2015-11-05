@@ -32,6 +32,10 @@
     "gulp-rev": "^5.1.0",
     "gulp-rev-collector": "^1.0.0",
     "gulp-uglify": "^1.2.0",
-    "requirejs": "^2.1.20"
+    "requirejs": "^2.1.20",
+    "prerender-node": "latest"
+  },
+  "devDependencies": {
+    "prerender-node": "^2.1.0"
   }
 }
