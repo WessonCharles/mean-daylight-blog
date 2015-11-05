@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'],function(angular){
+define(['angular','duoshuo'],function(angular,duoshuo){
 	return angular.module('base.directive',[])
 	.directive('onview',['$timeout',function($timeout){
 		return {
@@ -48,21 +48,59 @@ define(['angular'],function(angular){
 		}
 	}
 	])
-	// .directive('comment',['$timeout',function($timeout){
-	// 	return {
-	// 		restrict:'A',
-	// 		link:function(s,e,a){
-	// 			$timeout(function(){
-	// 				var href = $(e).attr("href");
-	// 				console.log(href)
-	// 				var it = '<!-- UYAN COUNT BEGIN -->'+
-	//                             '<a href="/article/{{b._id}}#related-comment" id="uyan_count_unit">'+
-	//                             '</a>'+
-	//                             '<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2068620"></script>'+
-	//                         '<!-- UYAN COUNT END -->';
-	// 				$(e).html('<span class="fa fa-comment"></span>'+it);
-	// 			},0)
-	// 		}
-	// 	}
-	// }])
+	.directive('comment',['$timeout',function($timeout){
+	     return {
+	         restrict: 'A',
+	         link: function(scope,element,attr){
+	             console.log(attr)
+	             var article_id = attr.arid;
+	             var artitle = attr.artitle;
+	             console.log(article_id)
+	             var data_thread_key = article_id;
+	             var data_url =	window.location.href;
+	             var data_author_key = 'http:///192.168.199.153:8008/article/' + article_id;
+	             
+	             // dynamic load the duoshuo comment box
+	             var el = document.createElement('div');//该div不需要设置class="ds-thread"
+	             el.setAttribute('data-thread-key', data_thread_key);//必选参数
+	             el.setAttribute('data-url', data_url);//必选参数
+	             el.setAttribute('data-title',artitle)
+	             el.setAttribute('data-author-key', data_author_key);//可选参数
+	             DUOSHUO.EmbedThread(el);
+	             $(element).find('hr').after(el);
+	         }
+		}
+	}])
+	.directive('recentComment',['$timeout',function($timeout){
+		return {
+			restrict:'A',
+			link:function(scope,element,attr){
+				var el = document.createElement("div");
+				el.setAttribute('data-num-items',4);
+				el.setAttribute('data-show-avatars',0);
+				el.setAttribute('data-show-time',0);
+				el.setAttribute('data-show-title',1);
+				el.setAttribute('data-show-admin',1);
+				el.setAttribute('data-excerpt-length',70);
+				el.className = "ds-recent-comments";
+				DUOSHUO.RecentComments(el);
+				$(element).find("h6").after(el);
+				// <div class="ds-recent-comments" data-num-items="4" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+			}
+		}
+	}])
+	.directive('popularPost',['$timeout',function($timeout){
+		return {
+			restrict:'A',
+			link:function(scope,element,attr){
+				var el = document.createElement("ul");
+				el.setAttribute('data-range','weekly');
+				el.setAttribute('data-num-items',5);
+				el.className = "ds-top-threads";
+				DUOSHUO.TopThreads(el);
+				$(element).html(el);
+				// <ul  class="ds-top-threads" data-range="weekly" data-num-items="5"></ul>
+			}
+		}
+	}])
 })

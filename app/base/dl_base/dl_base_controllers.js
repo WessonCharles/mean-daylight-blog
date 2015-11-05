@@ -115,8 +115,11 @@ define(['angular'], function(angular){
         $scope.postcom = function(c){
             c["time"] = new Date();
             console.log(c);
-            $http.post("/api/article/comment",c).success(function(data){
-                console.log(data);
+            $http.post("/api/article/comment",{id:$scope.one._id,comment:c}).success(function(data){
+                if(data.message.code==5){
+                    if(!$scope.one.comments)$scope.one.comments = [];
+                    $scope.one.comments.push(c);
+                }
             })
         }
     }])

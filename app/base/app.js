@@ -170,6 +170,14 @@ define([
             //     });
           // });
 
+            /**
+             * get popular article
+             */
+            // $http({url:"http://api.duoshuo.com/sites/listTopThreads.json?short_name=chqiangs",
+            //         method:'get',
+            //         headers:{'CORS':{'Access-Control-Allow-Origin':'*'}}}).success(function(data){
+            //     console.log(data);
+            // })
         });
     }])
 });

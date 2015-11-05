@@ -89,14 +89,10 @@
 			<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span> </a>
 		</div> -->
 		<!-- Start of related stories -->
-		<div class="related-stories" id="related-comment" onecom>
+		<div class="related-stories" id="related-comment" data-arid="{{one._id}}" data-artitle="{{one.title}}" comment>
 			<h6>评论</h6>
 			<hr>
-			<!-- UY BEGIN 
-			<div id="uyan_frame"></div>
-			<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2068620"></script>
-			<!-- UY END -->
-			<div class="ui form" ng-init="$parent.comment={};">
+			<!-- <div class="ui form" ng-init="$parent.comment={};">
 				<div class="field">
 		          <label>昵称</label>
 		          <input type="text" ng-model="comment.name" placeholder="Name">
@@ -108,6 +104,7 @@
 				<button class="ui button" type="button" ng-click="postcom(comment)">提交</button>
 			</div>
 			<h6>评论列表</h6>
+			<hr>
 			<div class="ui relaxed divided list">
 			  <div class="item" ng-repeat="c in one.comments track by $index">
 			    <div class="content">
@@ -116,7 +113,7 @@
 			      <div class="description">{{c.content}}</div>
 			    </div>
 			  </div>
-			</div>
+			</div> -->
 		</div>
 		<!-- End of related stories -->
 		</div>

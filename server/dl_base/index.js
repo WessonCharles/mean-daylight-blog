@@ -5,6 +5,7 @@ var Blog = require(path_root+"/model/model").Blog,
 	util = require("util"),
 	imgk = require('imagemagick'),
 	uuid = require(path_root+"/api/uuid");
+var async = require("async");
   	// render = require(path_root+"/base/api/render");
 var blog = new Action(Blog);
 
@@ -45,6 +46,51 @@ exports.getone = function(req,res){
 		}
 		res.send(data);
 	})
+}
+exports.postcomm=function(req,res){
+	var id = req.body.id;
+	var comment = req.body.comment;
+	console.log(id)
+	console.log(comment)
+	// blog.getById(id,function(err,one){
+	// 	if(err)console.dir(err);
+	// 	if(!one.comments)
+	// })
+	async.waterfall([
+        function(cb){
+            blog.getById(id,function(err,one){
+            	cb(err,one)
+            })
+        },
+        function(one,cb){
+        	console.log(one);
+            if(!one.comments)one.comments = [];
+            one.comments.push(comment);
+    //         blog.update({_id:id},{$set:{"comments":one.comments}},function(err){
+    //         	if(err)console.dir(err);
+    //         	var data = {
+				// 	message:{
+				// 		content:'提交成功',
+				// 		code:5
+				// 	},
+				// }
+				// cb(err,data);
+    //         })
+            one.save(function(err){
+            	if(err)console.dir(err);
+            	var data = {
+					message:{
+						content:'提交成功',
+						code:5
+					},
+				}
+				cb(err,data);
+            })
+        }
+    ],function(err,data){
+    	console.log(data)
+        err?callback(err,null,null):res.send(data);
+    }) 
 }
 exports.remove = function(req,res){
 	var obj = {

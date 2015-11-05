@@ -5078,3 +5078,18 @@ width: 12.5%;
     color: #b3b3b3;
     background-color: #111;
 }
+/**
+ * About duoshuo
+ */
+#ds-recent-comments li.ds-comment{
+	border-top:1px solid #e2e2e2;
+}
+#ds-recent-comments li.ds-comment div {
+    display: inline;
+    margin: 0 5px;
+    padding: 0;
+}
+#ds-recent-comments li.ds-comment .ds-excerpt {
+    display: block;
+    line-height: 18px;
+}

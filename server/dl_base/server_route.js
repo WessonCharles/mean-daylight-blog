@@ -9,6 +9,7 @@ app.use(function timeLog(req, res, next) {
 })
 app.get("/all",index.getall);
 app.get("/one/:id",index.getone);
+app.post("/article/comment",index.postcomm)
 app.get("/tech/delete",index.remove);
 app.post("/common/imageupload",index.imageupload);
 app.get("/common/imagecrop",index.imagecrop);
