@@ -8,6 +8,7 @@ define([
     // 'angularResource',
     'dl_base/dl_base_controllers',
     'dl_tech/dl_tech_controllers',
+    'dl_life/dl_life_controllers',
     'dl_add/dl_add_controllers',
     'service',
     'config',
@@ -22,6 +23,7 @@ define([
         'base.directive',
         'dl_base.dl_base_controllers',
         'dl_tech.dl_tech_controllers',
+        'dl_life.dl_life_controllers',
         'dl_add.dl_add_controllers'
     ])
     .controller('baseCtrl',['$scope','$http','$rootScope','$route','$location','customExtend','$timeout',

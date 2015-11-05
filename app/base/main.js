@@ -83,6 +83,7 @@ require([
     'app',
     'dl_base/dl_base_routes',
     'dl_tech/dl_tech_routes',
+    'dl_life/dl_life_routes',
     'dl_add/dl_add_routers'
     ], function(angular) {
     angular.element().ready(function() {

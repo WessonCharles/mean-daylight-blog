@@ -13,6 +13,7 @@ exports.gettech = function(req,res){
 	// blog.getAll(function(err,list){
 	// 	res.send(list)
 	// })
+	console.log(obj)
 	blog.getPageNationQueryList(obj,function(err,list,total){
 		console.log(err)
 		console.log(list)
