@@ -5100,3 +5100,6 @@ width: 12.5%;
 .ds-top-threads li{
 	margin-bottom:10px;
 }
+#ds-recent-comments li.ds-comment .ds-meta a{
+	pointer-events: none;
+}
