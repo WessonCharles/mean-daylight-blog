@@ -71,6 +71,23 @@ define(['angular','duoshuo'],function(angular,duoshuo){
 	         }
 		}
 	}])
+	.directive('checkbox',['$timeout',function($timeout){
+		return {
+			restrict:'A',
+			link:function(scope,element,attr){
+				$timeout(function(){
+					$(element).checkbox();
+					$(element).on('change',function(){
+						if($(this).attr("id")=="lifeismine"){
+							scope.$apply(function(){
+								scope.life.ismine = !scope.life.ismine;
+							})
+						}
+					})
+				})
+			}
+		}
+	}])
 	.directive('recentComment',['$timeout',function($timeout){
 		return {
 			restrict:'A',
