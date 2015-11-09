@@ -14,16 +14,34 @@ Action.prototype.getPageNationQueryList = function(obj,callback){
         console.log(query)
     async.waterfall([
         function(cb){
-            m.count(query,function(err,total){
+            var mc = m.find(query);
+            if(obj.subtype){
+                if(obj.query.type=="life"){
+                    obj.subtype=="gossip"||obj.subtype=="article"?mc.where("subtype",{$in:["gossip","article"]}):mc.where("subtype",obj.subtype);
+                }
+            }
+            if(obj.tag){
+                mc.where("tags",{$elemMatch:{'label':obj.tag}})
+            }
+            mc.count(query).exec(function(err,total){
                 cb(err,total);
             })
         },
         function(total,cb){
             var q = m.find(query);
+            if(obj.query.type=="life"){
+                console.log("222")
+                console.log(obj.subtype)
+                obj.subtype=="gossip"||obj.subtype=="article"?q.where("subtype",{$in:["gossip","article"]}):q.where("subtype",obj.subtype);
+            }
+            if(obj.tag){
+                console.log(obj.tag)
+                q.where("tags",{$elemMatch:{'label':obj.tag}});
+            }
             q.skip((parseInt(page)-1)*count);
             q.limit(count);
             q.sort({'time':-1});
-            q.find(function(err,list){
+            q.exec(function(err,list){
                 cb(err,list,total);
             })
         }

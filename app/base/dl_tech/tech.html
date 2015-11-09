@@ -86,7 +86,7 @@
                             <ul>
                                 <li ng-repeat="t in b.tags">
                                     <div class="ui tag label">
-                                        {{t}}
+                                        {{t.label||t}}
                                     </div>
                                 </li>
                             </ul>
@@ -169,7 +169,7 @@
                             <ul>
                                 <li ng-repeat="t in b.tags">
                                     <div class="ui tag label">
-                                        {{t}}
+                                        {{t.label||t}}
                                     </div>
                                 </li>
                             </ul>

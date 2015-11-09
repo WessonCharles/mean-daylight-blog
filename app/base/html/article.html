@@ -14,7 +14,7 @@
 					</div>
 					<div class="meta__originauthor" ng-if="one.originalauthor||one.tags">
 						<span class="meta__originauthor">原作者：{{one.originalauthor.name}}</span>
-						<span class="meta__tags">标签：<a style="margin-right:10px;color:#e9322d;" ng-repeat="t in one.tags">{{t}}</a></span>
+						<span class="meta__tags">标签：<a style="margin-right:10px;color:#e9322d;" ng-repeat="t in one.tags">{{t.label||t}}</a></span>
 					</div>
 				</div>
 				<div class="col-xs-12  col-sm-4">

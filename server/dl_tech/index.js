@@ -11,14 +11,15 @@ exports.gettech = function(req,res){
 		page:req.param("page"),
 		query:{type:req.param("type")}
 	}
-	if(req.param("subtype"))obj.query['subtype'] = req.param("subtype");
+	if(req.param("subtype"))obj['subtype'] = req.param("subtype");
+	if(req.param("tag"))obj['tag'] = req.param("tag");
 	// blog.getAll(function(err,list){
 	// 	res.send(list)
 	// })
 	console.log(obj)
 	blog.getPageNationQueryList(obj,function(err,list,total){
-		console.log(err)
-		console.log(list)
+		// console.log(err)
+		// console.log(list)
 		if(err)console.dir(err);
 		var data = {
 			message:{
@@ -45,6 +46,16 @@ exports.create = function(req,res){
 	if(req.body.subtype=="pic-word"){
 		totext = true;
 	}
+
+	var arr = [],tags = req.body.tags;
+	console.log(tags)
+	if(typeof tags!="string"){
+		for(var i=0;i<tags.length;i++){
+			arr.push({label:tags[i]});
+		}
+		req.body.tags = arr;
+	}
+	
 	req.body.summary = blog.cutword(req.body.content,len,totext);
 	req.body.thumb = blog.cutimg(req.body.content);
 
