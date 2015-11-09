@@ -38,7 +38,11 @@ exports.create = function(req,res){
 	req.body.author = {name:'Chqiangs',_id:'chqiangs'};
 	req.body.time = new Date();
 	req.body.content = markdown.toHTML(req.body.content);
-	req.body.summary = blog.cutword(req.body.content);
+	var len=null,totext=null;
+	if(req.body.subtype=="pic-word"){
+		totext = true;
+	}
+	req.body.summary = blog.cutword(req.body.content,len,totext);
 	req.body.thumb = blog.cutimg(req.body.content);
 
 	blog.create(req.body,function(blog){

@@ -109,12 +109,15 @@ var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
 var blogreg = /<img[^>]+src="[^"]+"[^>]*>/g;
 var srcreg = /src="([^"]+)"/;
 
-Action.prototype.cutword =function(str,len){//截取指定长度的内容，作为预览显示
+Action.prototype.cutword =function(str,len,totext){//截取指定长度的内容，作为预览显示
     if(!str){
         return "";
     }
     if(!len){
         len = 300;
+    }
+    if(totext){
+        str = str.replace(htmltotext,"");
     }
     // str = decodeURIComponent(str);
     // str = Extend.parseContent(str);
