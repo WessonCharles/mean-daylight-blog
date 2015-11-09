@@ -61,9 +61,10 @@ define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
 		};	
 		$scope.restore();
 		$scope.addblog = function(e){
+			
+			$scope.blog["tags"] = $("#blogtags").val();
+			$scope.blog["content"] = $(e.target).serializeObject().content;
 			console.log($scope.blog)
-			$scope.blog["tags"] = $(e.target).serializeObject().tags;
-			$scope.blog["content"] = $(e.target).serializeObject().content;			
 			$http.post("/api/tech",$scope.blog).success(function(data){
 				$scope.restore();
 			});
@@ -75,7 +76,7 @@ define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
 				$scope.life[d] = datas[d];
 			}
 			// b["content"] = $(e.target).serializeObject().content;
-			// console.log(b)
+			// console.log($scope.life)
 			$http.post("/api/tech",$scope.life).success(function(data){
 				console.log(data)
 			});

@@ -6,6 +6,11 @@ define(['angular', 'app'], function(angular, app) {
             templateUrl: 'base/dl_life/life.html',
             controller: 'dllifectrl'
         })
+        $routeProvider.when('/life/:type', {
+            templateUrl: 'base/dl_life/life.html',
+            controller: 'dllifectrl'
+        })
+        //
         // $routeProvider.when('/life/weblog', {
         //     templateUrl: 'base/dl_life/life.html',
         //     controller: 'dllifectrl'
