@@ -37,12 +37,12 @@ define(['angular','duoshuo'],function(angular,duoshuo){
 				var result = a.content.match(videoreg);
 				var nresult = HtmlUtil.htmlDecode(result);
 			    // console.log(result)
-			    // console.log(nresult)
+			    console.log(nresult)
 			    var ncon = a.content.replace(videoreg,nresult)
 			    /*对video进行处理结束*/
-			    // console.log(ncon)
+			    console.log(ncon)
 				$timeout(function(){
-					if(a.content)$(e).html(ncon);
+					if(a.content)$(e).html($(ncon));
 				})
 			}
 		}
