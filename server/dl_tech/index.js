@@ -1,6 +1,8 @@
 var Blog = require(path_root+"/model/model").Blog,
 	Action = require(path_root+"/api/index"),
-    markdown = require('markdown').markdown;
+	showdown = require('showdown'),
+	converter = new showdown.Converter();
+    // markdown = require('markdown').markdown;
   	// render = require(path_root+"/base/api/render");
 var blog = new Action(Blog);
 
@@ -37,7 +39,8 @@ exports.create = function(req,res){
 	// console.log(markdown)
 	req.body.author = {name:'Chqiangs',_id:'chqiangs'};
 	req.body.time = new Date();
-	req.body.content = markdown.toHTML(req.body.content);
+	// req.body.content = markdown.toHTML(req.body.content);
+	req.body.content = converter.makeHtml(req.body.content);
 	var len=null,totext=null;
 	if(req.body.subtype=="pic-word"){
 		totext = true;

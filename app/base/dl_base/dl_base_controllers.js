@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'], function(angular){
+define(['angular','highlight'], function(angular,highlight){
 
     return angular.module('dl_base.dl_base_controllers', ['base.service'])
 	.controller('dlbasectrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','$routeParams',
@@ -110,6 +110,9 @@ define(['angular'], function(angular){
                     scrollTop:$("#"+domid)[0].offsetTop
                 });
             }
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+              });
         },500)
 
         $scope.postcom = function(c){
