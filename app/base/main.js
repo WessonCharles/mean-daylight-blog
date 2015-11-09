@@ -52,7 +52,8 @@ require.config({
     priority: [
         'angular',
         'jquery',
-    ]
+    ],
+    waitSeconds: 0
 });
 
 

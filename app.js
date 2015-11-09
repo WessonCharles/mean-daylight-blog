@@ -82,6 +82,7 @@ app.use(cookieParser());
 if(env=="development"){
     console.log("开发")
     app.use(express.static(path.join(__dirname, 'app')));
+    console.log("@@"+path.join(__dirname, 'app'))
 }else{
 //生产环境
     console.log("线上")
