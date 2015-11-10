@@ -32,6 +32,21 @@ define([
             pagetitle:"主页",
             des:"Wesson Charles的博客，前端技术，UIUE，和生活琐碎"
         }
+        if(window.location.pathname.indexOf("login")>-1){
+            $scope.login = true;
+        }else{
+            $scope.login = false;
+        }
+        /**
+         * 查看是否登陆
+         * @param  {[type]} language [description]
+         * @return {[type]}          [description]
+         */
+        if(window.getCookie("chqiangsuser")){
+          $rootScope.islogin = true;
+        }else{
+          $rootScope.islogin = false;
+        }
         $rootScope.language_switch = function(language){
             $rootScope.language = language;
         }
@@ -91,6 +106,11 @@ define([
         })
         $rootScope.$on('$routeChangeSuccess',function(){
             console.log(window.location.pathname)
+            if(window.location.pathname.indexOf("login")>-1){
+                $scope.login = true;
+            }else{
+                $scope.login = false;
+            }
             var path = window.location.pathname;
             $timeout(function(){                
                 var nav = $("#readable-navbar-collapse");
@@ -181,5 +201,34 @@ define([
             //     console.log(data);
             // })
         });
+    }])
+    .controller('loginctrl',['$scope','$http','$rootScope','$route','$location','customExtend','$timeout','$window',
+        function($scope, $http,$rootScope,$route, $location,customExtend,$timeout,$window){
+            var t = this;
+            $scope.login = function(){
+                var uname = $(".loginform input[name='username']").val();
+                var pass = $(".loginform input[name='code']").val();
+                // var tempcode = $("form input[name='code']").val();
+                console.log(uname,pass);
+                if (uname&&pass){
+                    var user_data = {"email": uname, "code": pass};
+                    $http.post("/api/login",user_data).success(function(data){
+                        if(data.code==5){
+                            window.setCookie("chqiangsuser",encodeURIComponent(data.message.userinfo.name)+new Date().getTime());
+                            $window.location.href = "/";
+                        }
+                    });
+                }
+            }
+            $scope.sendcode = function(){
+                if(!$(".loginform input[name='username']").val()||$(".loginform input[name='username']").val()!='chqiangs@gmail.com'){
+                    alert("请输入管理员邮箱");
+                    return false;
+                }
+                $http.post("/api/sendcode",{"email":"chqiangs@gmail.com"}).success(function(data){
+                    alert(data.message.content);
+                })
+            }
+            $scope.ifupperkey = false;
     }])
 });

@@ -13,5 +13,7 @@ app.post("/article/comment",index.postcomm)
 app.get("/tech/delete",index.remove);
 app.post("/common/imageupload",index.imageupload);
 app.get("/common/imagecrop",index.imagecrop);
+app.post("/sendcode",index.sendcode);
+app.post("/login",index.login)
 
 module.exports = app;

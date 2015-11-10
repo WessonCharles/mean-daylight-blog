@@ -5138,3 +5138,121 @@ table tr {
     background-color: #fff;
     border-top: 1px solid #ccc;
 }
+/**
+ * 登陆
+ */
+ .wrapper {
+    background: #58B3F9;
+    background: -webkit-linear-gradient(top left, #58B3F9 0%,#2198F3 100%);
+    /* background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%); */
+    background: linear-gradient(to bottom right, #58B3F9 0%,#2198F3 100%);
+    opacity: 1;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wrapper.form-success .login_container h1 {
+  -webkit-transform: translateY(85px);
+      -ms-transform: translateY(85px);
+          transform: translateY(85px);
+}
+/*.login_container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 80px 0;
+  height: 400px;
+  text-align: center;
+}*/
+.login_container{
+  z-index: 10;
+  max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 0;
+    height: 400px;
+    top: 50%;
+    margin-top: -200px;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    margin-left: -115px;
+}
+.login_container h1 {
+  color:#EDF0F5;
+  font-size: 40px;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: ease-in-put;
+          transition-timing-function: ease-in-put;
+  font-weight: 200;
+}
+.loginform {
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+.loginform input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 1.4);
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+.loginform input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.loginform input:focus {
+  background-color: white;
+  width: 300px;
+  color: #777;
+}
+.passp{
+  position: relative;
+}
+.passp i{
+    position: absolute;
+    right: 2px;
+    top: 4px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.loginform button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: #EDF0F5;
+  border: 0;
+  padding: 10px 15px;
+  color: #2196F3;
+  font-weight: bold;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+.loginform button:hover {
+  background-color: #f5f7f9;
+}
+
