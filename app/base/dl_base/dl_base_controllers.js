@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','highlight'], function(angular,highlight){
+define(['angular','pretty'], function(angular,pretty){
 
     return angular.module('dl_base.dl_base_controllers', ['base.service'])
 	.controller('dlbasectrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','$routeParams',
@@ -110,9 +110,11 @@ define(['angular','highlight'], function(angular,highlight){
                     scrollTop:$("#"+domid)[0].offsetTop
                 });
             }
-            $('pre code').each(function(i, block) {
-                hljs.highlightBlock(block);
+            $('pre').each(function(i, block) {
+                $(this).addClass("prettyprint");
+                // hljs.highlightBlock(block);
               });
+            prettyPrint();
         },500)
 
         $scope.postcom = function(c){

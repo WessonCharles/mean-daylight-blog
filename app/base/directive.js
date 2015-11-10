@@ -1,6 +1,17 @@
 'use strict';
 
-define(['angular','duoshuo'],function(angular,duoshuo){
+define(['angular','duoshuo',"editormd", 
+                "../bower_components/editor.md/languages/en", 
+                "../bower_components/editor.md/plugins/link-dialog/link-dialog",
+                "../bower_components/editor.md/plugins/reference-link-dialog/reference-link-dialog",
+                "../bower_components/editor.md/plugins/image-dialog/image-dialog",
+                "../bower_components/editor.md/plugins/code-block-dialog/code-block-dialog",
+                "../bower_components/editor.md/plugins/table-dialog/table-dialog",
+                "../bower_components/editor.md/plugins/emoji-dialog/emoji-dialog",
+                "../bower_components/editor.md/plugins/goto-line-dialog/goto-line-dialog",
+                "../bower_components/editor.md/plugins/help-dialog/help-dialog",
+                "../bower_components/editor.md/plugins/html-entities-dialog/html-entities-dialog", 
+                "../bower_components/editor.md/plugins/preformatted-text-dialog/preformatted-text-dialog"],function(angular,duoshuo,editormd){
 	return angular.module('base.directive',[])
 	.directive('onview',['$timeout',function($timeout){
 		return {
@@ -48,6 +59,103 @@ define(['angular','duoshuo'],function(angular,duoshuo){
 		}
 	}
 	])
+	.directive('editormd',['$timeout',function($timeout){
+		return {
+			restrict:'A',
+			link:function(s,e,a){
+				var id = $(e).attr("id");
+				var testEditor = editormd(id, {
+                        width: "100%",
+                        height: 640,
+                        path : '../lib/',
+                        syncScrolling:'single'
+                        // markdown : md,
+                        // codeFold : true,
+                        // searchReplace : true,
+                        // saveHTMLToTextarea : true,                // 保存HTML到Textarea
+                        // htmlDecode : "style,script,iframe|on*",       // 开启HTML标签解析，为了安全性，默认不开启    
+                        // emoji : true,
+                        // taskList : true,
+                        // tex : true,
+                        // tocm            : true,         // Using [TOCM]
+                        // autoLoadModules : false,
+                        // previewCodeHighlight : true,
+                        // flowChart : true,
+                        // sequenceDiagram : true,
+                        // //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+                        // //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+                        // //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+                        // //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+                        // //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+                        // imageUpload : true,
+                        // imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                        // imageUploadURL : "./php/upload.php",
+                        // onload : function() {
+                        //     console.log('onload', this);
+                        //     //this.fullscreen();
+                        //     //this.unwatch();
+                        //     //this.watch().fullscreen();
+
+                        //     //this.setMarkdown("#PHP");
+                        //     //this.width("100%");
+                        //     //this.height(480);
+                        //     //this.resize("100%", 640);
+                        // }
+                });
+				s[id] = testEditor;
+                $("#show-btn").bind('click', function(){
+                    testEditor.show();
+                });
+
+                $("#hide-btn").bind('click', function(){
+                    testEditor.hide();
+                });
+
+                $("#get-md-btn").bind('click', function(){
+                    alert(testEditor.getMarkdown());
+                });
+
+                $("#get-html-btn").bind('click', function() {
+                    alert(testEditor.getHTML());
+                });                
+
+                $("#watch-btn").bind('click', function() {
+                    testEditor.watch();
+                });                 
+
+                $("#unwatch-btn").bind('click', function() {
+                    testEditor.unwatch();
+                });              
+
+                $("#preview-btn").bind('click', function() {
+                    testEditor.previewing();
+                });
+
+                $("#fullscreen-btn").bind('click', function() {
+                    testEditor.fullscreen();
+                });
+
+                $("#show-toolbar-btn").bind('click', function() {
+                    testEditor.showToolbar();
+                });
+
+                $("#close-toolbar-btn").bind('click', function() {
+                    testEditor.hideToolbar();
+                });
+                
+                $("#toc-menu-btn").click(function(){
+                    testEditor.config({
+                        tocDropdown   : true,
+                        tocTitle      : "目录 Table of Contents",
+                    });
+                });
+                
+                $("#toc-default-btn").click(function() {
+                    testEditor.config("tocDropdown", false);
+                });
+			}
+		}
+	}])
 	.directive('comment',['$timeout',function($timeout){
 	     return {
 	         restrict: 'A',

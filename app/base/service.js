@@ -1,7 +1,7 @@
 
 'use strict';
 
-define(['angular','markdown'], function (angular,markdown) {
+define(['angular'], function (angular) {
 
     angular.module('base.service', ['ngResource'])
     .factory('AuthService',['$rootScope','$http','$window','$location', function ($rootScope, $http, $window, $location) {
@@ -293,21 +293,21 @@ define(['angular','markdown'], function (angular,markdown) {
 
 		/*********转化markdown*******/
 
-		Extend.parseContent = function(val) {
-	      var content;
+		// Extend.parseContent = function(val) {
+	 //      var content;
 
-	      // parse with supported markdown parser
+	 //      // parse with supported markdown parser
 
-	      if (typeof markdown == 'object') {
-	        content = markdown.toHTML(val);
-	      } else if (typeof marked == 'function') {
-	        content = marked(val);
-	      } else {
-	        content = val;
-	      }
+	 //      if (typeof markdown == 'object') {
+	 //        content = markdown.toHTML(val);
+	 //      } else if (typeof marked == 'function') {
+	 //        content = marked(val);
+	 //      } else {
+	 //        content = val;
+	 //      }
 
-	      return content;
-	    }
+	 //      return content;
+	 //    }
 	}])
 	.factory('Restful',['$resource',function($res){
 		return $res(url,{},{});
