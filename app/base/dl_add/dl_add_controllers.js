@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
+define(['angular'], function(angular,editormd){
 	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
 	.controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful',
@@ -24,8 +24,8 @@ define(['angular','markeditor'/*,'validate'*/], function(angular,markeditor){
 				})
 			});
 			console.log("1")
-			$("#add_wpreface").markdown({autofocus:true,savable:false,resize:'horizontal'});
-			$("#add_wlife").markdown({autofocus:false,savable:false})
+			// $("#add_wpreface").markdown({autofocus:true,savable:false,resize:'horizontal'});
+			// $("#add_wlife").markdown({autofocus:false,savable:false})
 			// UE.delEditor("add_wpreface");
 			// UE.getEditor("add_wpreface");
 			// UE.getEditor("add_wlife");

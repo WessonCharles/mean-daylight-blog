@@ -54,7 +54,8 @@
           	</div>
 	      	<div class="field">
 	        	<label>内容</label>
-	        	<textarea id="add_wpreface" name="content" data-provide="markdown" data-iconlibrary="fa">
+	        	<div id="add_wpreface" editormd >
+	        		<textarea style="display:none;" class="editormd-markdown-textarea"  name="content">
 ### 主要特性
 
 - 支持“标准”Markdown / CommonMark和Github风格的语法，也可变身为代码编辑器；
@@ -411,6 +412,7 @@ Andrew->>China: I am good thanks!
 
 
 	        	</textarea>
+	        </div>
 		        <!--<script id="add_wpreface" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
 	      	<button type="submit" class="ui submit button">Submit</button>
@@ -472,7 +474,7 @@ Andrew->>China: I am good thanks!
           	</div>
 	      	<div class="field">
 	        	<label>内容</label>
-	        	<textarea id="add_wlife" name="content" data-provide="markdown" data-iconlibrary="fa"></textarea>
+	        	<div id="add_wlife" editormd name="content" ></div>
 		        <!--<script id="add_wlife" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
 	      	<button type="submit" class="ui submit button">Submit</button>

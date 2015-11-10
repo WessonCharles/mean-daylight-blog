@@ -5104,3 +5104,37 @@ width: 12.5%;
 #ds-recent-comments li.ds-comment .ds-meta a{
 	pointer-events: none;
 }
+
+.ui.selection.active.dropdown .menu {
+    z-index: 2000;
+}
+/**
+ * table
+ */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: normal;
+    word-break: keep-all;
+    margin:20px 0;
+}
+table thead tr {
+    background-color: #F8F8F8;
+}
+table tr {
+    border-top: 1px solid #ccc;
+}
+table th{
+	font-weight:700;
+}
+table td,table th {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+table tr {
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}

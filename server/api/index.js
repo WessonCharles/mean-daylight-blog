@@ -16,7 +16,7 @@ Action.prototype.getPageNationQueryList = function(obj,callback){
         function(cb){
             var mc = m.find(query);
             if(obj.subtype){
-                if(obj.query.type=="life"){
+                if(obj.query&&obj.query.type=="life"){
                     obj.subtype=="gossip"||obj.subtype=="article"?mc.where("subtype",{$in:["gossip","article"]}):mc.where("subtype",obj.subtype);
                 }
             }
@@ -29,7 +29,7 @@ Action.prototype.getPageNationQueryList = function(obj,callback){
         },
         function(total,cb){
             var q = m.find(query);
-            if(obj.query.type=="life"){
+            if(obj.query&&obj.query.type=="life"){
                 console.log("222")
                 console.log(obj.subtype)
                 obj.subtype=="gossip"||obj.subtype=="article"?q.where("subtype",{$in:["gossip","article"]}):q.where("subtype",obj.subtype);
