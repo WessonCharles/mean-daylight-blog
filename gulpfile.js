@@ -48,8 +48,8 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
       paths: {
         angular: '../bower_components/angular/angular.min',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
-        jquery:'empty:',
-        semantic: 'empty:',
+        jquery:'../bower_components/jquery/dist/jquery.min',
+        semantic: '../bower_components/semantic-ui/dist/semantic.min',
         // nicescroll:'../bower_components/nicescroll/jquery.nicescroll.min',
         // validate:'../bower_components/validation/jqBootstrapValidation',
         angularRoute: '../bower_components/angular-route/angular-route.min',
