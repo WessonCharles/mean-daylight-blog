@@ -14,6 +14,10 @@ define(['angular', 'app'], function(angular, app) {
         	templateUrl:'base/html/article.html',
             controller:'dlarticlectrl'
         })
+        $routeProvider.when('/login', {
+            templateUrl: 'base/html/login.html',
+            controller: 'loginctrl'
+        })
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix("!");
     }]);

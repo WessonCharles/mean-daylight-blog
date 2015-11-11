@@ -6,6 +6,7 @@ global.path_core = __dirname+"/server/api/core";
 global.path_api = __dirname+"/server/api/api"
 global.BaseApi = {isDebug : true};
 global.file_url = __dirname;
+global.MailCode = "";
 
 
 var mongoose = require('mongoose')

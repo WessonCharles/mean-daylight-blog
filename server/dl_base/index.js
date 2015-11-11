@@ -4,11 +4,21 @@ var Blog = require(path_root+"/model/model").Blog,
 	path = require("path"),
 	util = require("util"),
 	imgk = require('imagemagick'),
+	nodemailer = require('nodemailer'),
 	uuid = require(path_root+"/api/uuid");
 var async = require("async");
   	// render = require(path_root+"/base/api/render");
 var blog = new Action(Blog);
-
+var user = "1635362818@qq.com";
+var transport = nodemailer.createTransport("SMTP", {
+      host: "smtp.qq.com"
+    , secureConnection:true
+    , port:465
+    , auth: {
+        user: user,
+        pass: "huiqiang02101"//若要公开代码 ，则此处并不安全
+    }
+  });
 
 exports.getall = function(req,res){
 	var obj = {
@@ -93,12 +103,21 @@ exports.postcomm=function(req,res){
     }) 
 }
 exports.remove = function(req,res){
-	var obj = {
-		tags:[]
-	}
-	console.log(obj)
-	blog.remove(obj,function(){
-		res.send({message:{content:"删除成功",code:5}});
+	// var obj = {
+	// 	tags:[]
+	// }
+	// console.log(obj)
+	// blog.remove(obj,function(){
+	// 	res.send({message:{content:"删除成功",code:5}});
+	// })
+	var id = req.param("_id");
+	blog.remove({_id:id},function(err){
+		if(err){console.log(err);
+			res.send({message:"删除失败",code:-5});
+		}else{
+			res.send({message:"删除成功",code:5});
+		}
+
 	})
 	// blog.getPageNationQueryList(obj,function(err,list){
 	// 	console.log(err)
@@ -106,6 +125,77 @@ exports.remove = function(req,res){
 	// 	if(err)console.dir(err);
 	// 	res.send(list);
 	// })
+}
+
+function createCode() {
+  var code = "";
+  var codeLength = 6;//验证码的长度  
+  var selectChar = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');//所有候选组成验证码的字符，当然也可以用中文的  
+  
+  for (var i = 0; i < codeLength; i++) {
+    var charIndex = Math.floor(Math.random() * 36);
+    code += selectChar[charIndex];
+  }
+  return code;
+}
+
+exports.sendcode = function(req,resp){
+	var email = req.body.email;
+
+	MailCode = createCode();
+transport.sendMail({
+    from    : 'Charles blog system<'+user+'>'
+  , to      : '<'+email+'>'
+  , subject : 'Charles博客管理员登陆验证码'
+  , html    : '验证码为:['+MailCode+'] <br> '
+}, function(err, res){
+		var data = {
+			message:{
+				content:"",
+				code:0,
+			},
+		}
+		if(typeof res=="undefined"){
+			console.log(err);
+			data.message.content = "发送失败";
+			data.message.code = -5;
+			resp.send(data);
+		}else{
+			if(typeof callback == "function"){
+				callback(err, res.message);
+			}
+		    if(err){
+		        console.log(err);
+		        data.message.content = "发送失败";
+				data.message.code = -5;
+				resp.send(data);
+		    }else{
+		        console.log("Message sent: " + res.message);
+		        data.message.content = "发送成功";
+				data.message.code = 5;
+				resp.send(data);
+		    }
+		}
+		
+		
+	});
+}
+
+exports.login = function(req,res){
+	var e = req.body.email;
+	var p = req.body.code;
+	if(e=="chqiangs@gmail.com"&&p==MailCode){
+		res.send({
+			message:"登陆成功",
+			code:5,
+			userinfo:{"name":"chqiangs@gmail.com"}
+		})
+	}else{
+		res.send({
+			message:"登陆失败",
+			code:-5
+		})
+	}
 }
 
 exports.imageupload = function(req,res){

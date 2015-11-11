@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','pretty'], function(angular,pretty){
+define(['angular','pretty','showdown'], function(angular,pretty,showdown){
 
     return angular.module('dl_base.dl_base_controllers', ['base.service'])
 	.controller('dlbasectrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','$routeParams',
@@ -71,7 +71,7 @@ define(['angular','pretty'], function(angular,pretty){
         // }
         
     }])
-    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$compile','$timeout',function($rootScope,$scope,$routeParams,$http,$compile,$timeout){
+    .controller('dlarticlectrl',['$rootScope','$scope','$routeParams','$http','$compile','$timeout','$location',function($rootScope,$scope,$routeParams,$http,$compile,$timeout,$location){
         console.log($routeParams)
         var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
         $rootScope.cover = true;
@@ -92,7 +92,7 @@ define(['angular','pretty'], function(angular,pretty){
             $http.get("/api/one/"+$routeParams.id).success(function(data){
                 $scope.one = data.blog;
                 console.log(data.blog)
-                var link = $compile('<div onview data-content="{{one.content}}"></div>')
+                var link = $compile('<div onview data-type="maincon" data-content="{{one.content}}"></div>')
                 var code = link($scope);
                 $("#articlecon").html(code);
                 var it = $scope.one.summary.replace(htmltotext,"");
@@ -109,12 +109,15 @@ define(['angular','pretty'], function(angular,pretty){
                 $('html,body').animate({
                     scrollTop:$("#"+domid)[0].offsetTop
                 });
+            }else{
+                $('html,body').animate({
+                    scrollTop:0
+                });
             }
             $('pre').each(function(i, block) {
                 $(this).addClass("prettyprint");
                 // hljs.highlightBlock(block);
               });
-            prettyPrint();
         },500)
 
         $scope.postcom = function(c){
@@ -126,6 +129,19 @@ define(['angular','pretty'], function(angular,pretty){
                     $scope.one.comments.push(c);
                 }
             })
+        }
+
+        $scope.edit = function(blog){
+            $location.path("/edit/"+blog._id+"?type="+blog.type);
+        }
+        $scope.remove = function(blog){
+            if(confirm("您确定要删除这篇文章吗？三思啊")){
+                $http.delete("/api/article/delete?_id="+blog._id).success(function(data){
+                    if(data.code==5){
+                        $window.location.href = "/";
+                    }
+                }) 
+            }
         }
     }])
 });
