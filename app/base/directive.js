@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','duoshuo',"editormd", 
+define(['angular','duoshuo',"editormd", "showdown","pretty",
                 "../bower_components/editor.md/languages/en", 
                 "../bower_components/editor.md/plugins/link-dialog/link-dialog",
                 "../bower_components/editor.md/plugins/reference-link-dialog/reference-link-dialog",
@@ -11,50 +11,61 @@ define(['angular','duoshuo',"editormd",
                 "../bower_components/editor.md/plugins/goto-line-dialog/goto-line-dialog",
                 "../bower_components/editor.md/plugins/help-dialog/help-dialog",
                 "../bower_components/editor.md/plugins/html-entities-dialog/html-entities-dialog", 
-                "../bower_components/editor.md/plugins/preformatted-text-dialog/preformatted-text-dialog"],function(angular,duoshuo,editormd){
+                "../bower_components/editor.md/plugins/preformatted-text-dialog/preformatted-text-dialog"],function(angular,duoshuo,editormd,showdown,pretty){
 	return angular.module('base.directive',[])
 	.directive('onview',['$timeout',function($timeout){
 		return {
 			restrict:'A',
 			link:function(s,e,a){
-				console.log(a)
-				/*对video进行处理*/
-				var HtmlUtil = {
-				    /*1.用浏览器内部转换器实现html转码*/
-				    htmlEncode:function (html){
-				        //1.首先动态创建一个容器标签元素，如DIV
-				        var temp = document.createElement ("div");
-				        //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
-				        (temp.textContent != undefined ) ? (temp.textContent = html) : (temp.innerText = html);
-				        //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
-				        var output = temp.innerHTML;
-				        temp = null;
-				        return output;
-				    },
-				    /*2.用浏览器内部转换器实现html解码*/
-				    htmlDecode:function (text){
-				        //1.首先动态创建一个容器标签元素，如DIV
-				        var temp = document.createElement("div");
-				        //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
-				        temp.innerHTML = text;
-				        //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
-				        var output = temp.innerText || temp.textContent;
-				        temp = null;
-				        return output;
-				    }
-				};
-				var videoreg = /(&lt;video.+\/video&gt;)|(&lt;embed.+\/embed&gt;)/g;//有待测试，匹配多个的时候
-																					//支持video 和 embed 等等视频
-				var result = a.content.match(videoreg);
-				var nresult = HtmlUtil.htmlDecode(result);
-			    // console.log(result)
-			    console.log(nresult)
-			    var ncon = a.content.replace(videoreg,nresult)
-			    /*对video进行处理结束*/
-			    console.log(ncon)
 				$timeout(function(){
+					console.log(a)
+					if(a.type&&a.type=="maincon"){
+						var converter = new showdown.Converter({'tables':true});
+						a.content = converter.makeHtml(a.content);
+					}
+					/*对video进行处理*/
+					var HtmlUtil = {
+					    /*1.用浏览器内部转换器实现html转码*/
+					    htmlEncode:function (html){
+					        //1.首先动态创建一个容器标签元素，如DIV
+					        var temp = document.createElement ("div");
+					        //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
+					        (temp.textContent != undefined ) ? (temp.textContent = html) : (temp.innerText = html);
+					        //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
+					        var output = temp.innerHTML;
+					        temp = null;
+					        return output;
+					    },
+					    /*2.用浏览器内部转换器实现html解码*/
+					    htmlDecode:function (text){
+					        //1.首先动态创建一个容器标签元素，如DIV
+					        var temp = document.createElement("div");
+					        //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+					        temp.innerHTML = text;
+					        //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+					        var output = temp.innerText || temp.textContent;
+					        temp = null;
+					        return output;
+					    }
+					};
+					var videoreg = /(&lt;video.+\/video&gt;)|(&lt;embed.+\/embed&gt;)/g;//有待测试，匹配多个的时候
+																						//支持video 和 embed 等等视频
+					var result = a.content.match(videoreg);
+					var nresult = HtmlUtil.htmlDecode(result);
+				    // console.log(result)
+				    console.log(nresult)
+				    var ncon = a.content.replace(videoreg,nresult)
+				    /*对video进行处理结束*/
+				    console.log(ncon)
 					if(a.content)$(e).html($(ncon));
-				})
+					setTimeout(function(){
+						if(a.type&&a.type=="maincon"){
+							console.log("it")
+							prettyPrint();
+						}
+					},500)
+						
+				},0)	
 			}
 		}
 	}
@@ -63,96 +74,98 @@ define(['angular','duoshuo',"editormd",
 		return {
 			restrict:'A',
 			link:function(s,e,a){
-				var id = $(e).attr("id");
-				var testEditor = editormd(id, {
-                        width: "100%",
-                        height: 640,
-                        path : '../lib/',
-                        syncScrolling:'single'
-                        // markdown : md,
-                        // codeFold : true,
-                        // searchReplace : true,
-                        // saveHTMLToTextarea : true,                // 保存HTML到Textarea
-                        // htmlDecode : "style,script,iframe|on*",       // 开启HTML标签解析，为了安全性，默认不开启    
-                        // emoji : true,
-                        // taskList : true,
-                        // tex : true,
-                        // tocm            : true,         // Using [TOCM]
-                        // autoLoadModules : false,
-                        // previewCodeHighlight : true,
-                        // flowChart : true,
-                        // sequenceDiagram : true,
-                        // //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
-                        // //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
-                        // //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
-                        // //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
-                        // //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
-                        // imageUpload : true,
-                        // imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                        // imageUploadURL : "./php/upload.php",
-                        // onload : function() {
-                        //     console.log('onload', this);
-                        //     //this.fullscreen();
-                        //     //this.unwatch();
-                        //     //this.watch().fullscreen();
+				$timeout(function(){
+					var id = $(e).attr("id");
+					var testEditor = editormd(id, {
+	                        width: "100%",
+	                        height: 640,
+	                        path : '../lib/',
+	                        syncScrolling:'single'
+	                        // markdown : md,
+	                        // codeFold : true,
+	                        // searchReplace : true,
+	                        // saveHTMLToTextarea : true,                // 保存HTML到Textarea
+	                        // htmlDecode : "style,script,iframe|on*",       // 开启HTML标签解析，为了安全性，默认不开启    
+	                        // emoji : true,
+	                        // taskList : true,
+	                        // tex : true,
+	                        // tocm            : true,         // Using [TOCM]
+	                        // autoLoadModules : false,
+	                        // previewCodeHighlight : true,
+	                        // flowChart : true,
+	                        // sequenceDiagram : true,
+	                        // //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+	                        // //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+	                        // //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+	                        // //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+	                        // //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+	                        // imageUpload : true,
+	                        // imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+	                        // imageUploadURL : "./php/upload.php",
+	                        // onload : function() {
+	                        //     console.log('onload', this);
+	                        //     //this.fullscreen();
+	                        //     //this.unwatch();
+	                        //     //this.watch().fullscreen();
 
-                        //     //this.setMarkdown("#PHP");
-                        //     //this.width("100%");
-                        //     //this.height(480);
-                        //     //this.resize("100%", 640);
-                        // }
-                });
-				s[id] = testEditor;
-                $("#show-btn").bind('click', function(){
-                    testEditor.show();
-                });
+	                        //     //this.setMarkdown("#PHP");
+	                        //     //this.width("100%");
+	                        //     //this.height(480);
+	                        //     //this.resize("100%", 640);
+	                        // }
+	                });
+					s[id] = testEditor;
+	                $("#show-btn").bind('click', function(){
+	                    testEditor.show();
+	                });
 
-                $("#hide-btn").bind('click', function(){
-                    testEditor.hide();
-                });
+	                $("#hide-btn").bind('click', function(){
+	                    testEditor.hide();
+	                });
 
-                $("#get-md-btn").bind('click', function(){
-                    alert(testEditor.getMarkdown());
-                });
+	                $("#get-md-btn").bind('click', function(){
+	                    alert(testEditor.getMarkdown());
+	                });
 
-                $("#get-html-btn").bind('click', function() {
-                    alert(testEditor.getHTML());
-                });                
+	                $("#get-html-btn").bind('click', function() {
+	                    alert(testEditor.getHTML());
+	                });                
 
-                $("#watch-btn").bind('click', function() {
-                    testEditor.watch();
-                });                 
+	                $("#watch-btn").bind('click', function() {
+	                    testEditor.watch();
+	                });                 
 
-                $("#unwatch-btn").bind('click', function() {
-                    testEditor.unwatch();
-                });              
+	                $("#unwatch-btn").bind('click', function() {
+	                    testEditor.unwatch();
+	                });              
 
-                $("#preview-btn").bind('click', function() {
-                    testEditor.previewing();
-                });
+	                $("#preview-btn").bind('click', function() {
+	                    testEditor.previewing();
+	                });
 
-                $("#fullscreen-btn").bind('click', function() {
-                    testEditor.fullscreen();
-                });
+	                $("#fullscreen-btn").bind('click', function() {
+	                    testEditor.fullscreen();
+	                });
 
-                $("#show-toolbar-btn").bind('click', function() {
-                    testEditor.showToolbar();
-                });
+	                $("#show-toolbar-btn").bind('click', function() {
+	                    testEditor.showToolbar();
+	                });
 
-                $("#close-toolbar-btn").bind('click', function() {
-                    testEditor.hideToolbar();
-                });
-                
-                $("#toc-menu-btn").click(function(){
-                    testEditor.config({
-                        tocDropdown   : true,
-                        tocTitle      : "目录 Table of Contents",
-                    });
-                });
-                
-                $("#toc-default-btn").click(function() {
-                    testEditor.config("tocDropdown", false);
-                });
+	                $("#close-toolbar-btn").bind('click', function() {
+	                    testEditor.hideToolbar();
+	                });
+	                
+	                $("#toc-menu-btn").click(function(){
+	                    testEditor.config({
+	                        tocDropdown   : true,
+	                        tocTitle      : "目录 Table of Contents",
+	                    });
+	                });
+	                
+	                $("#toc-default-btn").click(function() {
+	                    testEditor.config("tocDropdown", false);
+	                });
+	            },0)    
 			}
 		}
 	}])

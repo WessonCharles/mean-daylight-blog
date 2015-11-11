@@ -9,6 +9,7 @@ app.use(function timeLog(req, res, next) {
 })
 app.get('/tech', tech.gettech);
 app.post('/tech',tech.create);
+app.post('/tech/update',tech.update)
 
 
 module.exports = app;

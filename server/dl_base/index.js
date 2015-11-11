@@ -103,12 +103,21 @@ exports.postcomm=function(req,res){
     }) 
 }
 exports.remove = function(req,res){
-	var obj = {
-		tags:[]
-	}
-	console.log(obj)
-	blog.remove(obj,function(){
-		res.send({message:{content:"删除成功",code:5}});
+	// var obj = {
+	// 	tags:[]
+	// }
+	// console.log(obj)
+	// blog.remove(obj,function(){
+	// 	res.send({message:{content:"删除成功",code:5}});
+	// })
+	var id = req.param("_id");
+	blog.remove({_id:id},function(err){
+		if(err){console.log(err);
+			res.send({message:"删除失败",code:-5});
+		}else{
+			res.send({message:"删除成功",code:5});
+		}
+
 	})
 	// blog.getPageNationQueryList(obj,function(err,list){
 	// 	console.log(err)

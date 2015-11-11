@@ -27,6 +27,7 @@ require.config({
         sequenceDiagram : "../bower_components/editor.md/lib/sequence-diagram.min",
         katex           : "../bower_components/editor.md/lib/katex.min",
         editormd        : "../bower_components/editor.md/editormd.amd", // Using Editor.md amd version for Require.js
+        showdown        : "../bower_components/showdown/dist/showdown.min",
         // color:'../bower_components/jcrop/js/jquery.color',
         // color:'http://cdn.staticfile.org/jquery-jcrop/0.9.12/js/jquery.color.min',
         // jcrop:'../bower_components/jcrop/js/jquery.Jcrop.min',
@@ -53,6 +54,7 @@ require.config({
         // 'markdown':{'exports':'markdown'},
         // 'markeditor':['jquery','behave','pretty','markdown','tomark'],
         'editormd':['jquery','marked','prettify','raphael','underscore','flowchart','jqueryflowchart','sequenceDiagram','katex'],
+        'showdown':{'exports':'showdown'},
         // 'ueall':['jquery','codemirror','sh'],
         // 'uelan':['ueall'],
         // 'color':['jquery'],
@@ -84,6 +86,7 @@ require([
     // 'markdown',
     // 'markeditor',
     'editormd',
+    'showdown',
     // 'ueall',
     // 'jcrop',
     'duoshuo',

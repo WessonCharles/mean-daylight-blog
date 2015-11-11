@@ -7,5 +7,9 @@ define(['angular', 'app'], function(angular, app) {
             templateUrl: 'base/dl_add/add.html',
             controller: 'dladdctrl'
         })
+        $routeProvider.when('/edit',{
+        	templateUrl:'base/dl_add/add.html',
+        	controller:'dleditctrl'
+        })
     }]);
 });

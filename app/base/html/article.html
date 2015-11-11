@@ -21,6 +21,8 @@
 					<div class="meta__comments">
 						<span class="glyphicon glyphicon-comment"></span> &nbsp;
 						<a href="single-post.html#disqus_thread"></a>
+						<a ng-if="islogin" href="/edit?id={{one._id}}&type={{one.type}}"><span class="fa fa-edit" style="margin: 0 10px;"></span></a>
+                        <span ng-if="islogin" ng-click="remove(one)" class="fa fa-trash"></span>
 					</div>
 				</div>
 			</div>
@@ -37,7 +39,7 @@
 				</h1>
 				<!-- <h3>She had a last view back on the skyline of her hometown Bookmarksgrove. (H3)</h3> -->
 				<div id="articlecon">
-					<div onview data-content="{{one.content}}">
+					<div onview data-type="maincon" data-content="{{one.content}}">
 					</div>
 				</div>
 			</div>

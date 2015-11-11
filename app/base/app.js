@@ -214,7 +214,8 @@ define([
                     var user_data = {"email": uname, "code": pass};
                     $http.post("/api/login",user_data).success(function(data){
                         if(data.code==5){
-                            window.setCookie("chqiangsuser",encodeURIComponent(data.message.userinfo.name)+new Date().getTime());
+                            console.log("@22")
+                            window.setCookie("chqiangsuser",encodeURIComponent(data.userinfo.name)+new Date().getTime());
                             $window.location.href = "/";
                         }
                     });
