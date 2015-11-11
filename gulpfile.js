@@ -53,31 +53,44 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
         // nicescroll:'../bower_components/nicescroll/jquery.nicescroll.min',
         // validate:'../bower_components/validation/jqBootstrapValidation',
         angularRoute: '../bower_components/angular-route/angular-route.min',
-        // ueconf:'../bower_components/ueditor/ueditor.config',
-        codemirror:'empty:',
-        editor:'../bower_components/editor.md/editormd.min',
+        pretty:'../bower_components/pretty/pretty',
+        codemirror      : "../bower_components/editor.md/lib/codemirror",
+        marked          : "../bower_components/editor.md/lib/marked.min",
+        prettify        : "../bower_components/editor.md/lib/prettify.min",
+        raphael         : "../bower_components/editor.md/lib/raphael.min",
+        underscore      : "../bower_components/editor.md/lib/underscore.min",
+        flowchart       : "../bower_components/editor.md/lib/flowchart.min", 
+        jqueryflowchart : "../bower_components/editor.md/lib/jquery.flowchart.min", 
+        sequenceDiagram : "../bower_components/editor.md/lib/sequence-diagram.min",
+        katex           : "../bower_components/editor.md/lib/katex.min",
+        editormd        : "../bower_components/editor.md/editormd.amd", // Using Editor.md amd version for Require.js
+        showdown        : "../bower_components/showdown/dist/showdown.min",
         // ueall:'../bower_components/ueditor/ueditor.all',
         // uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn',
-        sh:'empty:',
-        color:'empty:',
-        jcrop:'empty:'
+        duoshuo:'empty:',
       },
       shim: {
           'angular' : {'exports' : 'angular'},
-          'jquery': {'exports': 'jquery'},
-          'angularRoute': ['angular'],
-          'angularResource':['angular'],
-          'semantic': ['jquery'],
-          // 'nicescroll':['jquery'],
-          // 'validate':['jquery'],
-          // 'ueconf':{'exports':'ueconf'},
-          'codemirror':{'exports':'codemirror'},
-          'sh':{'exports':'sh'},
-          // 'ueall':['jquery','codemirror','sh'],
-          // 'uelan':['ueall'],
-          'editor':['jquery','codemirror']
-          'color':['jquery'],
-          'jcrop':['jquery','color']
+        'jquery': {'exports': 'jquery'},
+        'angularRoute': ['angular'],
+        'angularResource':['angular'],
+        'semantic': ['jquery'],
+        'pretty':{'exports':'pretty'},
+
+        'codemirror':{'exports':'codemirror'},
+        'marked':{'exports':'marked'},
+        'prettify':{'exports':'prettify'},
+        'raphael':{'exports':'raphael'},
+        'underscore':{'exports':'underscore'},
+        'flowchart':{'exports':'flowchart'},
+        'jqueryflowchart':['flowchart'],
+        'sequenceDiagram':['raphael'],
+        'katex':{'exports':'katex'},
+        // 'markdown':{'exports':'markdown'},
+        // 'markeditor':['jquery','behave','pretty','markdown','tomark'],
+        'editormd':['jquery','marked','prettify','raphael','underscore','flowchart','jqueryflowchart','sequenceDiagram','katex'],
+        'showdown':{'exports':'showdown'},
+        'duoshuo':['jquery']
       },
 
       out: "app/min/blog.min.js",                 //输出的压缩文件
@@ -99,10 +112,12 @@ gulp.task('conmincss',['build'],function(){
   var cssc = {
         animate:'app/style/animate.css',
         fontawesome:'app/bower_components/font-awesome/css/font-awesome.css',
-        shcore:'app/bower_components/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css',
-        ueditor:'app/bower_components/ueditor/themes/default/css/ueditor.css',
-        codemirror:'app/bower_components/ueditor/third-party/codemirror/codemirror.css',
-        jcrop:'app/bower_components/jcrop/css/jquery.jcrop.min.css'
+        editor:'app/bower_components/editor.md/css/editormd.min.css',
+        prev:'app/bower_components/editor.md/css/editormd.preview.min.css',
+        codemirror:'app/bower_components/editor.md/lib/codemirror/codemirror.min.css',
+        dialog:'app/bower_components/editor.md/lib/codemirror/addon/dialog/dialog.css',
+        match:'app/bower_components/editor.md/lib/codemirror/addon/search/matchesonscrollbar.css',
+        pretty:'app/bower_components/pretty/pretty.css'
     },csscfile=[];
     for(var c in cssc){
         csscfile.push(cssc[c]);
