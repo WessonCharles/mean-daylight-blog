@@ -1,9 +1,9 @@
 <div class="col-xs-12  col-md-8">
 
 	<div class="ui top attached tabular menu" id="addsth">
-		<a data-tab="first" class="item active text-teal" ng-if="techtab">添加文章</a>
-		<a data-tab="second" class="item text-teal" ng-if="lifetab" ng-class="lifetab?'active':''">添加杂谈</a>
-		<a data-tab="third" class="item text-teal">添加图片</a>
+		<a data-tab="first" tab class="item active text-teal" ng-if="techtab">添加文章</a>
+		<a data-tab="second" tab class="item text-teal" ng-if="lifetab" ng-class="!module&&lifetab?'active':''">添加杂谈</a>
+		<a data-tab="third" tab class="item text-teal">添加图片</a>
 		<!-- <a data-tab="third" class="item">Third</a> -->
 	</div>
 	<div class="ui bottom attached tab segment active" data-tab="first" ng-if="techtab">
@@ -43,7 +43,7 @@
 	      	</div>
 	      	<div class="field">
 	          <label>标签</label>
-	          <select class="ui fluid dropdown" multiple="true" name="tags" id="blogtags" required >
+	          <select class="ui fluid dropdown" dropdown multiple="true" name="tags" id="blogtags" required >
 	            <option value="html_css">Html&Css</option>
 	            <option value="js">Javascript</option>
 	            <option value="angular">angularJs</option>
@@ -54,15 +54,15 @@
           	</div>
 	      	<div class="field">
 	        	<label>内容</label>
-	        	<div id="add_wpreface" editormd >
-	        		<textarea style="display:none;" class="editormd-markdown-textarea"  name="content">{{blog.content}}</textarea>
+	        	<div id="add_wpreface" >
+	        		<textarea uk-htmleditor  name="content">{{blog.content}}</textarea>
 	        </div>
 		        <!--<script id="add_wpreface" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
 	      	<button type="submit" class="ui submit button">Submit</button>
 		</form> 
 	</div>
-	<div class="ui bottom attached tab segment" data-tab="second" ng-if="lifetab" ng-class="lifetab?'active':''">
+	<div class="ui bottom attached tab segment" data-tab="second" ng-if="lifetab" ng-class="!module&&lifetab?'active':''">
 		<form id="add_life" class="ui form" ng-submit="add_life($event)">
 			<div class="field">
 				<label>子类型</label>
@@ -119,8 +119,8 @@
           	</div>
 	      	<div class="field">
 	        	<label>内容</label>
-	        	<div id="add_wlife" editormd name="content" >
-	        		<textarea style="display:none;" class="editormd-markdown-textarea"  name="content">{{life.content}}</textarea>
+	        	<div id="add_wlife" name="content" >
+	        		<textarea uk-htmleditor="{markdown:true}" name="content">{{life.content}}</textarea>
 	        	</div>
 		        <!--<script id="add_wlife" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
