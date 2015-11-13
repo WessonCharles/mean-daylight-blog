@@ -43,6 +43,7 @@ var app = express();
  * @type {[type]}
  */
 var env = app.get("env");
+console.log(env)
 //开发环境
 if(env=="development"){
     console.log("开发-----")

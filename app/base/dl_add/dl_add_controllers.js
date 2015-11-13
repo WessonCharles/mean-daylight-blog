@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'], function(angular,editormd){
+define(['angular'], function(angular){
 	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
 	.controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful',
@@ -8,9 +8,10 @@ define(['angular'], function(angular,editormd){
 		if(!$scope.islogin){
 			$window.location.href= "/login";
 		}
+		$scope.module = "add";
 		$scope.techtab = true;
 		$scope.lifetab = true;
-		$scope.$on("$viewContentLoaded",function(){
+		// $scope.$on("$viewContentLoaded",function(){
 			$("#addsth .item").tab();
 			$("#ismine").checkbox();
 			$("#blogtags").dropdown();
@@ -35,7 +36,7 @@ define(['angular'], function(angular,editormd){
 			// UE.getEditor("add_wpreface");
 			// UE.getEditor("add_wlife");
 			// UE.getEditor("add_wlife");
-		});
+		// });
 		$scope.tags = function(e){
             var tagdom = $("#tags");
             if(e.keyCode == 32){
