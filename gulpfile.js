@@ -104,7 +104,7 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
 gulp.task('conmincss',['build'],function(){
   var cssc = {
         animate:'app/style/animate.css',
-        fontawesome:'app/bower_components/font-awesome/css/font-awesome.css',
+        semantic:'app/bower_components/semantic-ui/dist/semantic.min.css',
         editor:'app/bower_components/editor.md/css/editormd.min.css',
         uikit:'app/bower_components/uieditor/uikit.min.css',
         codemirror:'app/bower_components/uieditor/codemirror/lib/codemirror.css',
