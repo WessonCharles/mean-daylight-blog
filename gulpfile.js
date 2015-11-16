@@ -100,7 +100,7 @@ gulp.task('conmincss',['build'],function(){
         animate:'app/style/animate.css',
         uikit:'app/bower_components/uieditor/uikit.min.css',
         codemirror:'app/bower_components/uieditor/codemirror/lib/codemirror.css',
-        htmleditor:'app/bower_components/uieditor/codemirror/lib/htmleditor.min.css',
+        // htmleditor:'app/bower_components/uieditor/codemirror/lib/htmleditor.min.css',
         pretty:'app/bower_components/pretty/pretty.css'
     },csscfile=[];
     for(var c in cssc){
