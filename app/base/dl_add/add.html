@@ -6,8 +6,8 @@
 		<a data-tab="third" tab class="item text-teal">添加图片</a>
 		<!-- <a data-tab="third" class="item">Third</a> -->
 	</div>
-	<div class="ui bottom attached tab segment active" data-tab="first" ng-if="techtab">
-		<form id="add_blog" class="ui form" ng-submit="addblog($event)">
+	<div class="ui bottom attached tab segment active" data-tab="first" ng-hide="!techtab">
+		<form id="add_blog" class="ui form">
 			<div class="field">
 				<label>标题</label>
 				<input type="text" ng-model="blog.title" placeholder="标题" required data-validation-required-message="请填写标题">
@@ -16,7 +16,7 @@
 	      	<div class="two fields">
 	        	<div class="field">
 		          	<label>是否原创</label>
-		          	<div class="ui toggle checkbox checked" id="ismine">
+		          	<div class="ui toggle checkbox checked" checkbox id="ismine">
 			          <input type="checkbox" checked="checked" ng-model="blog.ismine" ng-change="changeismine()">
 			          <label for="">默认原创</label>
 			        </div>
@@ -55,15 +55,14 @@
 	      	<div class="field">
 	        	<label>内容</label>
 	        	<div id="add_wpreface" >
-	        		<textarea uk-htmleditor  name="content">{{blog.content}}</textarea>
+	        		<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}"  name="content">{{blog.content}}</textarea>
 	        </div>
-		        <!--<script id="add_wpreface" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
-	      	<button type="submit" class="ui submit button">Submit</button>
+	      	<button type="submit" ng-click="addblog($event)" class="ui submit button">保存</button>
 		</form> 
 	</div>
-	<div class="ui bottom attached tab segment" data-tab="second" ng-if="lifetab" ng-class="!module&&lifetab?'active':''">
-		<form id="add_life" class="ui form" ng-submit="add_life($event)">
+	<div class="ui bottom attached tab segment" data-tab="second" ng-hide="!lifetab" ng-class="!module&&lifetab?'active':''">
+		<form id="add_life" class="ui form">
 			<div class="field">
 				<label>子类型</label>
 	          	<select class="ui search dropdown" id="lifesubtype" ng-model="life.subtype" required >
@@ -120,13 +119,12 @@
 	      	<div class="field">
 	        	<label>内容</label>
 	        	<div id="add_wlife" name="content" >
-	        		<textarea uk-htmleditor="{markdown:true}" name="content">{{life.content}}</textarea>
+	        		<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content">{{life.content}}</textarea>
 	        	</div>
 		        <!--<script id="add_wlife" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
-	      	<button type="submit" class="ui submit button">Submit</button>
+	      	<button type="submit" ng-click="add_life($event)" class="ui submit button">Submit</button>
 		</form>
 	</div>
-	<div class="ui bottom attached tab segment" data-tab="third"> Second </div>
-	<!-- <div class="ui bottom attached tab segment" data-tab="third"> Third </div> -->
+	<div class="ui bottom attached tab segment" data-tab="third"> thrid </div>
 </div>

@@ -21,16 +21,16 @@
     UI.component('htmleditor', {
 
         defaults: {
-            iframe       : false,
+            iframe       : true,
             mode         : 'split',
-            markdown     : false,
+            markdown     : true,
             autocomplete : true,
             height       : 500,
-            maxsplitsize : 1000,
+            maxsplitsize : 350,
             codemirror   : { mode: 'htmlmixed', lineWrapping: true, dragDrop: false, autoCloseTags: true, matchTags: true, autoCloseBrackets: true, matchBrackets: true, indentUnit: 4, indentWithTabs: false, tabSize: 4, hintOptions: {completionSingle:false} },
             toolbar      : [ 'bold', 'italic', 'strike', 'link', 'image', 'blockquote', 'listUl', 'listOl' ],
             lblPreview   : 'Preview',
-            lblCodeview  : 'HTML',
+            lblCodeview  : 'Markdown',
             lblMarkedview: 'Markdown'
         },
 

@@ -1259,6 +1259,7 @@ marked.inlineLexer = InlineLexer.output;
 
 marked.parse = marked;
 
+window.marked = marked;
 if (typeof module !== 'undefined' && typeof exports === 'object') {
   module.exports = marked;
 } else if (typeof define === 'function' && define.amd) {
