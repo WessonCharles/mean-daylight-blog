@@ -1,7 +1,7 @@
 'use strict';
 
-define(['angular','duoshuo', "showdown","pretty",'uikit','marked','htmleditor'],
-	function(angular,duoshuo,showdown,pretty,uikit,marked,htmleditor){
+define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
+	function(angular,duoshuo,showdown,pretty,uikit,htmleditor){
 	return angular.module('base.directive',[])
 	.directive('onview',['$timeout',function($timeout){
 		return {
@@ -255,9 +255,10 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','marked','htmleditor'],
 		return {
 			restrict:'A',
 			link:function(scope,element,attr){
-				console.log("it to")
-				console.log(UIkit)
-				var htmleditor = UIkit.htmleditor($(element),{mode:'split',maxsplitsize:350,lblCodeview:'Markdown',lblPreview:'Preview'});
+				$timeout(function(){
+					var htmleditor = UIkit.htmleditor($(element),{mode:'split',markdown:true,maxsplitsize:350,lblCodeview:'Markdown',lblPreview:'Preview'});
+				})
+
 			}
 		}
 	}])

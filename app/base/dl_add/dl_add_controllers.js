@@ -1,7 +1,6 @@
 'use strict';
 
 define(['angular'], function(angular){
-	// var editor = new UE.ui.Editor();
     return angular.module('dl_add.dl_add_controllers', ['base.service'])
 	.controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful',
 		function($rootScope,$scope,$http, $location, $window, $filter,$compile,Restful){
@@ -29,27 +28,18 @@ define(['angular'], function(angular){
 					$scope.life.subtype = v;
 				})
 			});
-			console.log("1")
-			// $("#add_wpreface").markdown({autofocus:true,savable:false,resize:'horizontal'});
-			// $("#add_wlife").markdown({autofocus:false,savable:false})
-			// UE.delEditor("add_wpreface");
-			// UE.getEditor("add_wpreface");
-			// UE.getEditor("add_wlife");
-			// UE.getEditor("add_wlife");
 		// });
 		$scope.tags = function(e){
             var tagdom = $("#tags");
-            if(e.keyCode == 32){
+            if(e.keyCode == 13){
             	var val = $scope.tagstr;
-                var a = $('<a class="ui label transition visible" data-value="'+val.split(" ")[0]+'">'+val.split(" ")[0]+'<i class="delete icon"></i></a>');
-                tagdom.append(a);
+             //    var a = $('<a class="ui label transition visible" data-value="'+val.split(" ")[0]+'">'+val.split(" ")[0]+'<i class="delete icon"></i></a>');
+            	// tagdom.append(a);
                 $scope.tagstr = "";
-                $(e.target).css("padding-left",a[0].offsetWidth+50);
+                // $(e.target).css("padding-left",a[0].offsetWidth+50);
+                if(!$scope.life.tags)$scope.life.tags = [];
+                $scope.life.tags.push(val.split(" ")[0]);
             }
-            $scope.life.tags = [];
-            tagdom.find("a.ui.label").each(function(){
-            	$scope.life.tags.push($(this).attr("data-value"));
-            })
         }
         $("#tags").delegate("a.ui.label .delete","click",function(){
         	var t = $(this).parent();
@@ -67,9 +57,8 @@ define(['angular'], function(angular){
 		};	
 		$scope.restore();
 		$scope.addblog = function(e){
-			
 			$scope.blog["tags"] = $("#blogtags").val();
-			$scope.blog["content"] = $(e.target).serializeObject().content;
+			$scope.blog["content"] = $(e.target).parents("form").serializeObject().content;
 			console.log($scope.blog)
 			$http.post("/api/tech",$scope.blog).success(function(data){
 				$scope.restore();
@@ -77,16 +66,18 @@ define(['angular'], function(angular){
 		}
 
 		$scope.add_life = function(e){
-			var datas =$(e.target).serializeObject();
+			var datas =$(e.target).parents("form").serializeObject();
 			for(var d in datas){
 				$scope.life[d] = datas[d];
 			}
+			console.log($scope.life)
 			// b["content"] = $(e.target).serializeObject().content;
 			// console.log($scope.life)
 			$http.post("/api/tech",$scope.life).success(function(data){
 				console.log(data)
 			});
 		}
+
     }])
 	.controller('dleditctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','Restful','$routeParams','$timeout',
 		function($rootScope,$scope,$http, $location, $window, $filter,$compile,Restful,$routeParams,$timeout){

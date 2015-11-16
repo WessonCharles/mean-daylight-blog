@@ -49,7 +49,7 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
         angular: '../bower_components/angular/angular.min',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery:'../bower_components/jquery/dist/jquery.min',
-        semantic: 'empty:',
+        semantic: '../bower_components/semantic-ui/dist/semantic.min',
         angularRoute: '../bower_components/angular-route/angular-route.min',
         pretty          :'../bower_components/pretty/pretty',
         uikit:'../bower_components/uieditor/uikit.min',
@@ -74,12 +74,6 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
         'pretty':{'exports':'pretty'},
 
         'uikit':['jquery'],
-        'codemirror':{'exports':'codemirror'},
-        'markdown':{'exports':'markdown'},
-        'overlay':{'exports':'overlay'},
-        'xml':{'exports':'xml'},
-        'gfm':{'exports':'gfm'},
-        'marked':{'exports':'marked'},
         'htmleditor':['jquery','uikit','codemirror','marked'],
         'showdown':{'exports':'showdown'},
         'duoshuo':['jquery']
@@ -104,11 +98,9 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
 gulp.task('conmincss',['build'],function(){
   var cssc = {
         animate:'app/style/animate.css',
-        semantic:'app/bower_components/semantic-ui/dist/semantic.min.css',
-        editor:'app/bower_components/editor.md/css/editormd.min.css',
         uikit:'app/bower_components/uieditor/uikit.min.css',
         codemirror:'app/bower_components/uieditor/codemirror/lib/codemirror.css',
-        htmleditor:'app/bower_components/uieditor/codemirror/lib/codemirror.css',
+        htmleditor:'app/bower_components/uieditor/codemirror/lib/htmleditor.min.css',
         pretty:'app/bower_components/pretty/pretty.css'
     },csscfile=[];
     for(var c in cssc){
