@@ -44,7 +44,8 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 					var nresult = HtmlUtil.htmlDecode(result);
 				    // console.log(result)
 				    console.log(nresult)
-				    var ncon = a.content.replace(videoreg,nresult)
+				    var ncon = a.content.replace(videoreg,nresult);
+				    ncon = ncon.replace(/<img[^>]+src="[^"]+"[^>]*>/,"");
 				    /*对video进行处理结束*/
 				    console.log(ncon)
 					if(a.content)$(e).html($(ncon));
