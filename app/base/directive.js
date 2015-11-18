@@ -184,22 +184,24 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 	     return {
 	         restrict: 'A',
 	         link: function(scope,element,attr){
-	             console.log(attr)
-	             var article_id = attr.arid;
-	             var artitle = attr.artitle;
-	             console.log(article_id)
-	             var data_thread_key = article_id;
-	             var data_url =	window.location.href;
-	             var data_author_key = 'http:///192.168.199.153:8008/article/' + article_id;
-	             
-	             // dynamic load the duoshuo comment box
-	             var el = document.createElement('div');//该div不需要设置class="ds-thread"
-	             el.setAttribute('data-thread-key', data_thread_key);//必选参数
-	             el.setAttribute('data-url', data_url);//必选参数
-	             el.setAttribute('data-title',artitle)
-	             el.setAttribute('data-author-key', data_author_key);//可选参数
-	             DUOSHUO.EmbedThread(el);
-	             $(element).find('hr').after(el);
+	         	$timeout(function(){
+	         		console.log(attr)
+		             var article_id = attr.arid;
+		             var artitle = attr.artitle;
+		             console.log(article_id)
+		             var data_thread_key = article_id;
+		             var data_url =	window.location.href;
+		             var data_author_key = 'http:///192.168.199.153:8008/article/' + article_id;
+		             
+		             // dynamic load the duoshuo comment box
+		             var el = document.createElement('div');//该div不需要设置class="ds-thread"
+		             el.setAttribute('data-thread-key', data_thread_key);//必选参数
+		             el.setAttribute('data-url', data_url);//必选参数
+		             el.setAttribute('data-title',artitle)
+		             el.setAttribute('data-author-key', data_author_key);//可选参数
+		             DUOSHUO.EmbedThread(el);
+		             $(element).find('hr').after(el);
+	         	})
 	         }
 		}
 	}])
@@ -217,6 +219,23 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 						}
 					})
 				})
+			}
+		}
+	}])
+	.directive('faComment',['$timeout',function($timeout){
+		return {
+			restrict:'C',
+			link:function(scope,element,attr){
+				$timeout(function(){
+					var id = ($(element).parent().attr("href").split("/")[$(element).parent().attr("href").split("/").length-1]).split("#")[0];
+					var el = document.createElement("span");
+					el.className = "ds-thread-count";
+					el.setAttribute("data-thread-key",id);
+					DUOSHUO.ThreadCount(el);
+					console.log(el)
+					$(element).html(el);
+				},0)
+				
 			}
 		}
 	}])

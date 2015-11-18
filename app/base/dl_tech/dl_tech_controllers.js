@@ -13,6 +13,12 @@ define(['angular'], function(angular){
 		console.log($routeParams)
 		var apiurl = "/api/tech";
 		var params = "?type=tech&page=1";
+		if($routeParams['type']=="html-css"){
+			$routeParams['type'] = "html_css";
+		}
+		if($routeParams['type']=="javascript"){
+			$routeParams['type'] = "js";
+		}
 		if($routeParams["type"])params+="&tag="+$routeParams["type"];
         $http.get(apiurl+params).success(function(data){
         	$scope.bloglists = data["list"];
