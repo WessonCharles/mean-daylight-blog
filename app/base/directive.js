@@ -222,6 +222,23 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 			}
 		}
 	}])
+	.directive('faComment',['$timeout',function($timeout){
+		return {
+			restrict:'C',
+			link:function(scope,element,attr){
+				$timeout(function(){
+					var id = ($(element).parent().attr("href").split("/")[$(element).parent().attr("href").split("/").length-1]).split("#")[0];
+					var el = document.createElement("span");
+					el.className = "ds-thread-count";
+					el.setAttribute("data-thread-key",id);
+					DUOSHUO.ThreadCount(el);
+					console.log(el)
+					$(element).html(el);
+				},0)
+				
+			}
+		}
+	}])
 	.directive('recentComment',['$timeout',function($timeout){
 		return {
 			restrict:'A',
