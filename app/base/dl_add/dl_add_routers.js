@@ -11,5 +11,9 @@ define(['angular', 'app'], function(angular, app) {
         	templateUrl:'base/dl_add/add.html',
         	controller:'dleditctrl'
         })
+        $routeProvider.when('/about-me',{
+            templateUrl:'base/dl_add/about-me.html',
+            controller:'dlaboutctrl'
+        })
     }]);
 });
