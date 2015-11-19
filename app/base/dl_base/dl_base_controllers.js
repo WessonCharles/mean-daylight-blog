@@ -143,5 +143,16 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
                 }) 
             }
         }
+
+        $scope.sharetowechat = function(imgUrl,id,desc,title){
+            WeixinJSBridge.invoke('shareTimeline',{ 
+                "img_url":imgUrl, 
+                //"img_width":"640", 
+                //"img_height":"640", 
+                "link":"/article/"+id, 
+                "desc": desc, 
+                "title":title 
+            });  
+        }
     }])
 });
