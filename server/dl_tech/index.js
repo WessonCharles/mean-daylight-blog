@@ -86,13 +86,18 @@ exports.update = function(req,res){
 	console.log(tags)
 	if(typeof tags!="string"){
 		for(var i=0;i<tags.length;i++){
-			arr.push({label:tags[i]});
+			if(!tags[i].label){
+				arr.push({label:tags[i]});
+			}else{
+				arr.push(tags[i]);
+			}
 		}
 		req.body.tags = arr;
 	}
 	
 	req.body.summary = blog.cutword(converter.makeHtml(req.body.content),len,totext);
 	req.body.thumb = blog.cutimg(converter.makeHtml(req.body.content));
+	console.log(req.body)
 	delete req.body._id;
 	blog.update({_id:id},req.body,function(err){
 		if(err){

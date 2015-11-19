@@ -29,6 +29,7 @@ define(['angular'], function(angular){
 				})
 			});
 		// });
+		// 
 		$scope.tags = function(e){
             var tagdom = $("#tags");
             if(e.keyCode == 13){
@@ -41,16 +42,41 @@ define(['angular'], function(angular){
                 $scope.life.tags.push(val.split(" ")[0]);
             }
         }
-        $("#tags").delegate("a.ui.label .delete","click",function(){
-        	var t = $(this).parent();
+        $scope.getblogeditor = function(){
+        	var html = '<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content"></textarea>';
+        	$("#add_wpreface").html($compile(html)($scope));
+        }
+        $scope.getblogeditor();
+        $scope.getlifeeditor = function(){
+        	var html = '<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content"></textarea>';
+        	$("#add_wlife").html($compile(html)($scope));
+        }
+        // $("#tags").delegate("a.ui.label .delete","click",function(){
+        // 	var t = $(this).parent();
+        // 	for(var i =0;i<$scope.life.tags.length;i++){
+        // 		if(t.attr("data-value")==$scope.life.tags[i]){
+        // 			$scope.life.tags.splice(i,1);
+        // 			t.remove();
+        // 			break;
+        // 		}
+        // 	}
+        // });
+        $scope.removetag = function(t){
         	for(var i =0;i<$scope.life.tags.length;i++){
-        		if(t.attr("data-value")==$scope.life.tags[i]){
-        			$scope.life.tags.splice(i,1);
-        			t.remove();
-        			break;
+        		var lt = $scope.life.tags[i];
+        		if(t.label){
+        			if(t.label = lt.label){
+        				$scope.life.tags.splice(i,1);
+	        			break;
+        			}
+        		}else{
+        			if(t==lt){
+        				$scope.life.tags.splice(i,1);
+	        			break;
+        			}
         		}
         	}
-        });
+        }
 		$scope.restore = function(){
 			$scope.blog = {ismine:true,type:'tech'};
 			$scope.life = {subtype:'pic-word',type:'life'};
@@ -84,32 +110,52 @@ define(['angular'], function(angular){
 		if(!$scope.islogin){
 			$window.location.href= "/login";
 		}
+		$scope.getblogeditor = function(content){
+        	var html = '<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content">'+content+'</textarea>';
+        	$("#add_wpreface").html($compile(html)($scope));
+        }
+
+        $scope.getlifeeditor = function(content){
+        	var html = '<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content">'+content+'</textarea>';
+        	$("#add_wlife").html($compile(html)($scope));
+        }
 		$http.get("/api/one/"+$routeParams.id).success(function(data){
 			if(data.blog.type=="tech"){
 				$scope.techtab = true;
 				$scope.lifetab = false;
 				$scope.blog = data.blog;
+				$scope.getblogeditor($scope.blog.content);
 			}else if(data.blog.type=="life"){
 				$scope.techtab = false;
 				$scope.lifetab = true;
 				$scope.life = data.blog;
+				$scope.getlifeeditor($scope.life.content);
 			}
+			console.log(data.blog)
 
 			$timeout(function(){
 				$("#addsth .item").tab();
 				$("#ismine").checkbox();
-				var tagarr = [];
-				for(var i=0;i<$scope.blog.tags.length;i++){
-					tagarr.push($scope.blog.tags[i].label)
-				}
-				if($scope.blog)$("#blogtags").dropdown("set selected",tagarr);
 				$("#blogtags").dropdown();
 				$("#blogtype").dropdown();
 				$("#lifetype").dropdown();
 				$("#lifesubtype").dropdown();
+
+				var tagarr = [];
+				var tas = data.blog.tags;
+				console.log(tas)
+				for(var i=0;i<tas.length;i++){
+					tagarr.push(tas[i].label)
+				}
+				if($scope.blog)$("#blogtags").dropdown("set selected",tagarr);
 				$("#ismine").on('change',function(){
 					$scope.$apply(function(){
-						$scope.blog.ismine = !$scope.blog.ismine;
+						if($scope.blog){
+							$scope.blog.ismine = !$scope.blog.ismine;
+						}else{
+							$scope.life.ismine = !$scope.life.ismine;
+						}
+						
 					})
 				});
 				$("#lifesubtype").on('change',function(){
@@ -120,38 +166,43 @@ define(['angular'], function(angular){
 				});
 			},0)
 			
-			console.log("1")
-			// $("#add_wpreface").markdown({autofocus:true,savable:false,resize:'horizontal'});
-			// $("#add_wlife").markdown({autofocus:false,savable:false})
-			// UE.delEditor("add_wpreface");
-			// UE.getEditor("add_wpreface");
-			// UE.getEditor("add_wlife");
-			// UE.getEditor("add_wlife");
         })
 		$scope.tags = function(e){
             var tagdom = $("#tags");
-            if(e.keyCode == 32){
+            if(e.keyCode == 13){
             	var val = $scope.tagstr;
-                var a = $('<a class="ui label transition visible" data-value="'+val.split(" ")[0]+'">'+val.split(" ")[0]+'<i class="delete icon"></i></a>');
-                tagdom.append(a);
-                $scope.tagstr = "";
-                $(e.target).css("padding-left",a[0].offsetWidth+50);
-            }
-            $scope.life.tags = [];
-            tagdom.find("a.ui.label").each(function(){
-            	$scope.life.tags.push($(this).attr("data-value"));
-            })
+	             $scope.tagstr = "";
+	             if(!$scope.life.tags)$scope.life.tags = [];
+	             $scope.life.tags.push(val.split(" ")[0]);
+	        }
+            
         }
-        $("#tags").delegate("a.ui.label .delete","click",function(){
-        	var t = $(this).parent();
+        // $("#tags").delegate("a.ui.label .delete","click",function(){
+        // 	var t = $(this).parent();
+        // 	for(var i =0;i<$scope.life.tags.length;i++){
+        // 		if(t.attr("data-value")==$scope.life.tags[i]){
+        // 			$scope.life.tags.splice(i,1);
+        // 			t.remove();
+        // 			break;
+        // 		}
+        // 	}
+        // });
+        $scope.removetag = function(t){
         	for(var i =0;i<$scope.life.tags.length;i++){
-        		if(t.attr("data-value")==$scope.life.tags[i]){
-        			$scope.life.tags.splice(i,1);
-        			t.remove();
-        			break;
+        		var lt = $scope.life.tags[i];
+        		if(t.label){
+        			if(t.label = lt.label){
+        				$scope.life.tags.splice(i,1);
+	        			break;
+        			}
+        		}else{
+        			if(t==lt){
+        				$scope.life.tags.splice(i,1);
+	        			break;
+        			}
         		}
         	}
-        });
+        }
 		// $scope.restore = function(){
 		// 	$scope.blog = {ismine:true,type:'tech'};
 		// 	$scope.life = {subtype:'pic-word',type:'life'};
@@ -175,9 +226,11 @@ define(['angular'], function(angular){
 				$scope.life[d] = datas[d];
 			}
 			// b["content"] = $(e.target).serializeObject().content;
-			// console.log($scope.life)
+			console.log("更新了")
 			$http.post("/api/tech/update?_id="+$scope.life._id,$scope.life).success(function(data){
-				console.log(data)
+				if(data.code==5){
+					$window.location.href = "/article/"+$scope.life._id;
+				}
 			});
 		}
 
