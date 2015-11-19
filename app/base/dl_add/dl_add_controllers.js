@@ -236,4 +236,14 @@ define(['angular'], function(angular){
 
 		
     }])
+	.controller('dlaboutctrl',['$rootScope',function($rootScope){
+		$rootScope.seo={
+            pagetitle:"关于我",
+            des:"姓名：常二狗"+
+				"坐标：北京，石景山"+
+				"兴趣：电影/锻炼/看书/旅游"+
+				"技术及发展方向：web全栈工程师"+
+				"期望：实现自我价值之外有自己的小店"
+        }
+	}])
 });            
