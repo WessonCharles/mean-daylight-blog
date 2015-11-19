@@ -8,13 +8,14 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 			restrict:'A',
 			link:function(s,e,a){
 				$timeout(function(){
-					console.log(a)
+					// console.log(a)
 					if(a.type&&a.type=="maincon"){
 						var converter = new showdown.Converter({'tables':true});
 						a.content = converter.makeHtml(a.content);
 					}
+					var _t = {};
 					/*对video进行处理*/
-					var HtmlUtil = {
+					_t.HtmlUtil = {
 					    /*1.用浏览器内部转换器实现html转码*/
 					    htmlEncode:function (html){
 					        //1.首先动态创建一个容器标签元素，如DIV
@@ -38,20 +39,18 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 					        return output;
 					    }
 					};
-					var videoreg = /(&lt;video.+\/video&gt;)|(&lt;embed.+\/embed&gt;)/g;//有待测试，匹配多个的时候
+					_t.videoreg = /(&lt;video.+\/video&gt;)|(&lt;embed.+\/embed&gt;)/g;//有待测试，匹配多个的时候
 																						//支持video 和 embed 等等视频
-					var result = a.content.match(videoreg);
-					var nresult = HtmlUtil.htmlDecode(result);
+					_t.result = a.content.match(_t.videoreg);
+					_t.nresult = _t.HtmlUtil.htmlDecode(_t.result);
 				    // console.log(result)
-				    console.log(nresult)
-				    var ncon = a.content.replace(videoreg,nresult);
-				    ncon = ncon.replace(/<img[^>]+src="[^"]+"[^>]*>/,"");
+				    _t.ncon = a.content.replace(_t.videoreg,_t.nresult);
+				    _t.ncon = _t.ncon.replace(/<img[^>]+src="[^"]+"[^>]*>/,"");
 				    /*对video进行处理结束*/
-				    console.log(ncon)
-					if(a.content)$(e).html($(ncon));
+				    // console.log(ncon)
+					if(a.content)$(e).html($(_t.ncon));
 					setTimeout(function(){
 						if(a.type&&a.type=="maincon"){
-							console.log("it")
 							prettyPrint();
 						}
 					},500)
@@ -81,105 +80,6 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 			}
 		}
 	}])
-	// .directive('editormd',['$timeout',function($timeout){
-	// 	return {
-	// 		restrict:'A',
-	// 		link:function(s,e,a){
-	// 			$timeout(function(){
-	// 				var id = $(e).attr("id");
-	// 				var testEditor = editormd(id, {
-	//                         width: "100%",
-	//                         height: 640,
-	//                         path : '../lib/',
-	//                         syncScrolling:'single'
-	//                         // markdown : md,
-	//                         // codeFold : true,
-	//                         // searchReplace : true,
-	//                         // saveHTMLToTextarea : true,                // 保存HTML到Textarea
-	//                         // htmlDecode : "style,script,iframe|on*",       // 开启HTML标签解析，为了安全性，默认不开启    
-	//                         // emoji : true,
-	//                         // taskList : true,
-	//                         // tex : true,
-	//                         // tocm            : true,         // Using [TOCM]
-	//                         // autoLoadModules : false,
-	//                         // previewCodeHighlight : true,
-	//                         // flowChart : true,
-	//                         // sequenceDiagram : true,
-	//                         // //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
-	//                         // //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
-	//                         // //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
-	//                         // //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
-	//                         // //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
-	//                         // imageUpload : true,
-	//                         // imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-	//                         // imageUploadURL : "./php/upload.php",
-	//                         // onload : function() {
-	//                         //     console.log('onload', this);
-	//                         //     //this.fullscreen();
-	//                         //     //this.unwatch();
-	//                         //     //this.watch().fullscreen();
-
-	//                         //     //this.setMarkdown("#PHP");
-	//                         //     //this.width("100%");
-	//                         //     //this.height(480);
-	//                         //     //this.resize("100%", 640);
-	//                         // }
-	//                 });
-	// 				s[id] = testEditor;
-	//                 $("#show-btn").bind('click', function(){
-	//                     testEditor.show();
-	//                 });
-
-	//                 $("#hide-btn").bind('click', function(){
-	//                     testEditor.hide();
-	//                 });
-
-	//                 $("#get-md-btn").bind('click', function(){
-	//                     alert(testEditor.getMarkdown());
-	//                 });
-
-	//                 $("#get-html-btn").bind('click', function() {
-	//                     alert(testEditor.getHTML());
-	//                 });                
-
-	//                 $("#watch-btn").bind('click', function() {
-	//                     testEditor.watch();
-	//                 });                 
-
-	//                 $("#unwatch-btn").bind('click', function() {
-	//                     testEditor.unwatch();
-	//                 });              
-
-	//                 $("#preview-btn").bind('click', function() {
-	//                     testEditor.previewing();
-	//                 });
-
-	//                 $("#fullscreen-btn").bind('click', function() {
-	//                     testEditor.fullscreen();
-	//                 });
-
-	//                 $("#show-toolbar-btn").bind('click', function() {
-	//                     testEditor.showToolbar();
-	//                 });
-
-	//                 $("#close-toolbar-btn").bind('click', function() {
-	//                     testEditor.hideToolbar();
-	//                 });
-	                
-	//                 $("#toc-menu-btn").click(function(){
-	//                     testEditor.config({
-	//                         tocDropdown   : true,
-	//                         tocTitle      : "目录 Table of Contents",
-	//                     });
-	//                 });
-	                
-	//                 $("#toc-default-btn").click(function() {
-	//                     testEditor.config("tocDropdown", false);
-	//                 });
-	//             },0)    
-	// 		}
-	// 	}
-	// }])
 	.directive('comment',['$timeout',function($timeout){
 	     return {
 	         restrict: 'A',
@@ -232,7 +132,7 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 					el.className = "ds-thread-count";
 					el.setAttribute("data-thread-key",id);
 					DUOSHUO.ThreadCount(el);
-					console.log(el)
+					// console.log(el)
 					$(element).html(el);
 				},0)
 				
@@ -276,7 +176,8 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 			restrict:'A',
 			link:function(scope,element,attr){
 				$timeout(function(){
-					var htmleditor = UIkit.htmleditor($(element),{mode:'split',markdown:true,maxsplitsize:350,lblCodeview:'Markdown',lblPreview:'Preview'});
+					console.log($(element))
+					UIkit.htmleditor($(element),{mode:'split',markdown:true,maxsplitsize:350,lblCodeview:'Markdown',lblPreview:'Preview'});
 				})
 
 			}

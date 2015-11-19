@@ -1,8 +1,8 @@
 <div class="col-xs-12  col-md-8">
 
 	<div class="ui top attached tabular menu" id="addsth">
-		<a data-tab="first" tab class="item active text-teal" ng-if="techtab">添加文章</a>
-		<a data-tab="second" tab class="item text-teal" ng-if="lifetab" ng-class="!module&&lifetab?'active':''">添加杂谈</a>
+		<a data-tab="first" tab class="item active text-teal" ng-if="techtab" ng-click="getblogeditor()">添加文章</a>
+		<a data-tab="second" tab class="item text-teal" ng-if="lifetab" ng-class="!module&&lifetab?'active':''" ng-click="getlifeeditor()">添加杂谈</a>
 		<a data-tab="third" tab class="item text-teal">添加图片</a>
 		<!-- <a data-tab="third" class="item">Third</a> -->
 	</div>
@@ -55,10 +55,10 @@
 	      	<div class="field">
 	        	<label>内容</label>
 	        	<div id="add_wpreface" >
-	        		<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}"  name="content">{{blog.content}}</textarea>
+	        		<!-- <textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}"  name="content">{{blog.content}}</textarea> -->
 	        </div>
 	      	</div>
-	      	<button type="submit" ng-click="addblog($event)" class="ui submit button">保存</button>
+	      	<button type="button" ng-click="addblog($event)" class="ui submit button">保存</button>
 		</form> 
 	</div>
 	<div class="ui bottom attached tab segment" data-tab="second" ng-hide="!lifetab" ng-class="!module&&lifetab?'active':''">
@@ -113,17 +113,17 @@
 	                <div class="ui tag label">
 	                  Tags
 	                </div>
-	                <a class="ui label transition visible" ng-repeat="t in life.tags track by $index" data-value="{{t.label||t}}">{{t.label||t}}<i class="delete icon"></i></a>
+	                <a class="ui label transition visible" ng-repeat="t in life.tags track by $index" data-value="{{t.label||t}}">{{t.label||t}}<i class="delete icon" ng-click="removetag(t)"></i></a>
               	</div>
           	</div>
 	      	<div class="field">
 	        	<label>内容</label>
-	        	<div id="add_wlife" name="content" >
-	        		<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content">{{life.content}}</textarea>
+	        	<div id="add_wlife" >
+	        		
 	        	</div>
 		        <!--<script id="add_wlife" type='text/plain' name='content' style='width:auto;height:240px;'></script>-->
 	      	</div>
-	      	<button type="submit" ng-click="add_life($event)" class="ui submit button">Submit</button>
+	      	<button type="button" ng-click="add_life($event)" class="ui submit button">Submit</button>
 		</form>
 	</div>
 	<div class="ui bottom attached tab segment" data-tab="third"> thrid </div>
