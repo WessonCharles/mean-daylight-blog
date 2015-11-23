@@ -18,9 +18,32 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
         /*
         获取所有文章
          */
+        console.log(_t.rparam)
+        
         $scope.loadall = function(){
             $http.get("/api/all").success(function(list){
                 $rootScope.bloglists = list["list"];
+            })
+            $http.get("/api/alltags").success(function(data){
+                var ts = data["tags"];
+                var arr = [];
+                for(var i=0;i<ts.length;i++){
+                    arr = arr.concat(ts[i].tags);
+                }
+                var temphash = {},realarr = [];
+                for(var i=0;i<arr.length;i++){
+                    var flag = arr[i].label?temphash[arr[i].label]:temphash[arr[i]];
+                    if(!flag&&realarr.length<16){//前15个
+                        if(arr[i].label){
+                            temphash[arr[i].label] = true;
+                            realarr.push(arr[i].label);
+                        }else{
+                            temphash[arr[i]] = true;
+                            realarr.push(arr[i]);
+                        }
+                    }
+                }
+                $rootScope.alltags = realarr;
             })
         }
         $scope.loadall();
@@ -28,7 +51,7 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
         	$http.get("/api/tech/delete").success(function(data){
         		console.log(data);
         		$http.get("/api/tech?type=tech").success(function(list){
-        			console.log(list)
+        			$rootScope.bloglists = list["query"];
         		})
         	})
         }
@@ -41,24 +64,27 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
         #_detail:右侧分类模块  通过url,来进行查询
          */
         _t.gettypedata = function(cdt){
-            $http.get("/api/type?"+cdt).success(function(list){
-
+            $http.get("/api/query?"+cdt).success(function(list){
+                console.log(list)
             })
         }
-        if(_t.url == '/type'){
-            switch(_t.rparam.keyword){
+        if(_t.rparam.query){
+            switch(_t.rparam.query){
                 case 'tech':
-                    _t.condition('type=tech&exclude=ui-ue');
+                    _t.gettypedata('type=tech&exclude=ui-ue');
                     break;
                 case 'ui-ue':
-                    _t.condition('type=tech&subtype=ui-ue');
+                    _t.gettypedata('type=tech&subtype=ui-ue');
                     break;
                 case 'pic-word':
-                    _t.condition('type=life&subtype=pic-word');
+                    _t.gettypedata('type=life&subtype=pic-word');
                     break;
                 default:
-                    _t.condition('type=life&subtype=read-and-know');
+                    _t.gettypedata('type=life&subtype=read-and-know');
             }
+        }
+        if(_t.rparam.tag){
+            _t.gettypedata('tag='+_t.rparam.tag);
         }
         
         // $scope.parseHtml= function(str){

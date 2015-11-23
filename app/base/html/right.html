@@ -13,8 +13,9 @@
                 <h4>
                     Charles
                 </h4>
-                <p>
-                    前端工程师，爱音乐，爱色彩；前端大江湖中一粒尘埃；擅长js,html5,css3,nodejs，对各类双向绑定框架如angular,ui框架如bootstrap,semantic-ui,google material 均有涉猎
+                <p style="margin-top: 15px;">
+                    前端工程师，爱音乐，爱色彩；前端大江湖中一粒尘埃；<br>
+                    我们无法阻挡生活的洪流，但我们可以主宰自己的时代
                 </p>
             </div>
         </div>
@@ -26,7 +27,7 @@
                     <h6>
                         推广
                     </h6>
-                    <a href="http://themeforest.net/user/ProteusThemes/portfolio?ref=ProteusThemes">
+                    <a >
                         <img width="300" height="250" alt="Banner ads" src="images/dummy/300x250xads-300x250.jpg.pagespeed.ic.S0egZznnN4.jpg">
                     </a>
                 </div>
@@ -37,19 +38,21 @@
                     </h6>
                     <ul>
                         <li>
-                            <a href="type?keyword=tech">
+                            <a href="?query=tech">
                                 技术 &nbsp;
                                 <span class="widget-categories__text">
                                     (16)
                                 </span>
+                                <i class="fa fa-chevron-right right-arrow"><i></i></i>
                             </a>
                         </li>
                         <li>
-                            <a href="type?keyword=ui-ue">
+                            <a href="?query=ui-ue">
                                 用户体验与交互 &nbsp;
                                 <span class="widget-categories__text">
                                     (13)
                                 </span>
+                                <i class="fa fa-chevron-right right-arrow"><i></i></i>
                             </a>
                         </li>
                         <!-- <li>
@@ -61,19 +64,21 @@
                             </a>
                         </li> -->
                         <li>
-                            <a href="type?keyword=pic-word">
+                            <a href="?query=pic-word">
                                 图文谨句 &nbsp;
                                 <span class="widget-categories__text">
                                     (23)
                                 </span>
+                                <i class="fa fa-chevron-right right-arrow"><i></i></i>
                             </a>
                         </li>
                         <li>
-                            <a href="type?keyword=read-and-know">
+                            <a href="?query=read-and-know">
                                 阅读 &amp; 书籍 &nbsp;
                                 <span class="widget-categories__text">
                                     (3)
                                 </span>
+                                <i class="fa fa-chevron-right right-arrow"><i></i></i>
                             </a>
                         </li>
                     </ul>
@@ -83,20 +88,8 @@
                         标签
                     </h6>
                     <hr>
-                    <a class="tags__link" href="#">
-                        Tech
-                    </a>
-                    <a class="tags__link" href="#">
-                        Web
-                    </a>
-                    <a class="tags__link" href="#">
-                        UI/UX
-                    </a>
-                    <a class="tags__link" href="#">
-                        Tutorials
-                    </a>
-                    <a class="tags__link" href="#">
-                        Workflow
+                    <a class="tags__link" ng-repeat="t in alltags track by $index" href="?tag={{t}}">
+                        {{t}}
                     </a>
                 </div>
                 <!-- Widget featured post -->
@@ -267,7 +260,7 @@
                         新浪微博
                     </h6>
                     <div id="likebox-wrapper">
-                        <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="{{frameurl}}"></iframe>
+                        <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2709394993&verifier=8341d7fb&colors=ffffff,ffffff,666666,0082cb,ffffff&dpc=1"></iframe>
                     </div>
                 </div>
                
@@ -275,7 +268,7 @@
         </div>
     </div>
     <div class="post-ads">
-        <a href="http://themeforest.net/user/ProteusThemes/portfolio?ref=ProteusThemes">
+        <a>
             <img width="160" height="600" alt="Ads" src="images/dummy/ads-160x600.jpg.pagespeed.ce.-I1y8wP429.jpg">
         </a>
     </div>
