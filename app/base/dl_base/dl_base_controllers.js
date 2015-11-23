@@ -51,7 +51,7 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
         	$http.get("/api/tech/delete").success(function(data){
         		console.log(data);
         		$http.get("/api/tech?type=tech").success(function(list){
-        			$rootScope.bloglists = list["query"];
+        			console.log("...");
         		})
         	})
         }
@@ -65,7 +65,7 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
          */
         _t.gettypedata = function(cdt){
             $http.get("/api/query?"+cdt).success(function(list){
-                console.log(list)
+                $rootScope.bloglists = list["query"];
             })
         }
         if(_t.rparam.query){
