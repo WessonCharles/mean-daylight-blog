@@ -211,7 +211,7 @@ define(['angular'], function(angular){
 		$scope.addblog = function(e){
 			
 			$scope.blog["tags"] = $("#blogtags").val();
-			$scope.blog["content"] = $(e.target).serializeObject().content;
+			$scope.blog["content"] = $("#add_wpreface").find("textarea").val();
 			console.log($scope.blog)
 			$http.post("/api/tech/update?_id="+$scope.blog._id,$scope.blog).success(function(data){
 				if(data.code==5){
@@ -225,6 +225,7 @@ define(['angular'], function(angular){
 			for(var d in datas){
 				$scope.life[d] = datas[d];
 			}
+			$scope.life["content"] = $("#add_wlife").find("textarea").val();
 			// b["content"] = $(e.target).serializeObject().content;
 			console.log("更新了")
 			$http.post("/api/tech/update?_id="+$scope.life._id,$scope.life).success(function(data){
@@ -239,7 +240,7 @@ define(['angular'], function(angular){
 	.controller('dlaboutctrl',['$rootScope',function($rootScope){
 		$rootScope.seo={
             pagetitle:"关于我",
-            des:"姓名：常二狗"+
+            des:"姓名：常惠强"+
 				"坐标：北京，石景山"+
 				"兴趣：电影/锻炼/看书/旅游"+
 				"技术及发展方向：web全栈工程师"+

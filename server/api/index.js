@@ -97,7 +97,6 @@ Action.prototype.getByQuery = function (query,fileds,opt,callback) {
     });
 };
 
-
 Action.prototype.getAll = function (callback) {
     this.model.find({}, function(error,model){
         if(error) return callback(error,null);

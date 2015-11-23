@@ -42,6 +42,51 @@ exports.getall = function(req,res){
 		res.send(data);
 	})
 }
+exports.getalltags = function(req,res){
+	blog.getByQuery({type:"life"},{tags:1},{},function(err,doc){
+		if(err)console.dir(err);
+		var data = {
+			message:{
+				content:'查询成功',
+				code:5,
+			},
+			tags:doc
+		}
+		res.send(data);
+	})
+}
+exports.getquery = function(req,res){
+	var type = req.param("type");
+	var subtype = req.param("subtype");
+	var ex = req.param("exclude");
+	var tag = req.param("tag");
+
+	var cond = {};
+	var query;
+	if(type){
+		if(ex){
+			cond = {type:type,subtype:{$ne:ex}};
+		}else{
+			cond = {type:type,subtype:subtype};
+		}
+		query = Blog.find(cond);
+	}else{
+		query = Blog.find({});
+		query.where("tags",{$elemMatch:{'label':tag}});
+	}
+	query.exec(function(err,list){
+		if(err)console.dir(err);
+		var data = {
+			message:{
+				content:"查询成功",
+				code:5
+			},
+			query:list
+		}
+		res.send(data);
+	});
+
+}
 exports.getone = function(req,res){
 	var id = req.param("id");
 	blog.getById(id,function(err,one){

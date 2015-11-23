@@ -156,7 +156,7 @@ define([
             }else{
                 $rootScope.cover = false;
             }
-            $route.reload();
+            // $route.reload();
         });
         
         $scope.$on("$viewContentLoaded",function(){//相当于domready

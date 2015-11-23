@@ -8,6 +8,8 @@ app.use(function timeLog(req, res, next) {
   next();
 })
 app.get("/all",index.getall);
+app.get("/alltags",index.getalltags);
+app.get("/query",index.getquery)
 app.get("/one/:id",index.getone);
 app.post("/article/comment",index.postcomm)
 // app.get("/tech/delete",index.remove);
