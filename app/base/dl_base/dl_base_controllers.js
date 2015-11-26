@@ -71,10 +71,10 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
         if(_t.rparam.query){
             switch(_t.rparam.query){
                 case 'tech':
-                    _t.gettypedata('type=tech&exclude=ui-ue');
+                    _t.gettypedata('type=tech&exclude=ui_ue');
                     break;
                 case 'ui-ue':
-                    _t.gettypedata('type=tech&subtype=ui-ue');
+                    _t.gettypedata('type=tech&subtype=ui_ue');
                     break;
                 case 'pic-word':
                     _t.gettypedata('type=life&subtype=pic-word');
