@@ -137,6 +137,7 @@ gulp.task('css',['clean','js&css'],function(){
     return gulp.src(['app/style/*.css'])
         // .pipe(rename())
         .pipe(rev())
+        .pipe(minifycss())
         .pipe(gulp.dest('dist/style'))
         .pipe(rev.manifest())
         .pipe(gulp.dest('dist/rev/css')) 
