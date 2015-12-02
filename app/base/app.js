@@ -160,6 +160,7 @@ define([
         });
         
         $scope.$on("$viewContentLoaded",function(){//相当于domready
+            bShare.init();
             $("#rebuild_image").dropdown();
             $('.browse').popup({
                 inline   : true,

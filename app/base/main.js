@@ -17,7 +17,9 @@ require.config({
         marked:'../bower_components/uieditor/marked',
         htmleditor:'../bower_components/uieditor/htmleditor',
         showdown        : "../bower_components/showdown/dist/showdown.min",
-        duoshuo:'http://static.duoshuo.com/embed'
+        duoshuo:'http://static.duoshuo.com/embed',
+        buttonlite:'http://static.bshare.cn/b/buttonLite',
+        bshare:'http://static.bshare.cn/b/bshareC2',
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -57,6 +59,8 @@ require([
     'marked',
     'htmleditor',
     'showdown',
+    'buttonlite',
+    'bshare',
     'duoshuo',
     'app',
     'dl_base/dl_base_routes',

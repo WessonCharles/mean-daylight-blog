@@ -51,7 +51,17 @@
 			<!-- Start of social icons -->
 				<div class="social-icons">
 					<a href="#" class="social-icons__container weibo"> <span class="fa fa-weibo"></span> </a>
-					<a class="social-icons__container weixin" ng-click="sharetowechat(one.thumb,one._id,one.title,one.summary)"> <span class="fa fa-weixin"></span> </a>
+					<a class="social-icons__container weixin"> <span class="fa fa-weixin"></span> </a>
+					<div class="bshare-custom">
+					   <a title="分享到" href="http://www.bshare.cn/share" id="bshare-shareto" class="bshare-more"></a>
+
+					   <a title="分享到新浪微博" class="bshare-sinaminiblog" ng-click="share($event,'sinaminiblog')"></a>
+					   <a title="分享到微信朋友圈" class="bshare-weixin" ng-click="share($event,'weixin')"></a>
+					   <!-- 在这里添加更多平台 -->
+
+					   <a title="更多平台" id="bshare-more-icon" class="bshare-more"></a>
+					</div>
+					
 					<!-- <a href="#" class="social-icons__container"> <span class="zocial-email"></span> </a> -->
 				</div>
 			<!-- End of social icons -->
