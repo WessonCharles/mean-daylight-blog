@@ -5263,3 +5263,51 @@ table tr {
     float: right;
     margin-top: 5px;
 }
+/**
+ * share button
+ */
+.bshare-custom {
+    width: 105px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    z-index: 50;
+}
+.bshare-custom a{
+	text-decoration: none;
+	zoom:1;
+	cursor: pointer;
+	vertical-align: none!important;
+	padding:none!important;
+	margin: none!important;
+}
+.bshare-sinaminiblog{
+	width: 50px;
+    height: 40px!important;
+    display: inline-block!important;
+    float: left;
+}
+.bshare-custom .bshare-sinaminiblog{
+	background:none!important;
+}
+.bshare-weixin{
+	width: 50px;
+    height: 40px!important;
+    display: inline-block!important;
+    padding:none!important;
+    margin:0!important;
+}
+.bshare-custom .bshare-weixin,.bshare-custom #bshare-more-icon, .bshare-custom .bshare-more-icon{
+	background:none!important;
+	display: none;
+}
+.bshare-custom #bshare-shareto{
+	display: none!important;
+}
+.bsBox{
+	background:none!important;
+	height:auto!important;
+	width:auto!important;
+    box-shadow: 0 1px 9px #ddd;
+    background-color:#f4f4f4;
+}

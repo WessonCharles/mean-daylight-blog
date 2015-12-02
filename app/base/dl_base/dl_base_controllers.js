@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular','pretty','showdown'], function(angular,pretty,showdown){
+define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdown,bshare){
 
     return angular.module('dl_base.dl_base_controllers', ['base.service'])
 	.controller('dlbasectrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile','$routeParams',
@@ -101,6 +101,7 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
         console.log($routeParams)
         var htmltotext = /<[^>]*>|<\/[^>]*>/gm;
         $rootScope.cover = true;
+        var originsum = "";
         if($rootScope.bloglists){//从列表而来
             for(var i=0;i<$rootScope.bloglists.length;i++){
                 if($rootScope.bloglists[i]._id == $routeParams.id){
@@ -109,6 +110,7 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
                 }
             }
             var it = $scope.one.summary.replace(htmltotext,"");
+            originsum = it;
             $rootScope.seo = {
                 pagetitle:$scope.one.title,
                 des:it
@@ -122,12 +124,26 @@ define(['angular','pretty','showdown'], function(angular,pretty,showdown){
                 var code = link($scope);
                 $("#articlecon").html(code);
                 var it = $scope.one.summary.replace(htmltotext,"");
+                originsum = it;
                 $rootScope.seo = {
                     pagetitle:$scope.one.title,
                     des:it
                 }
+                
             })
         }
+
+        $scope.share = function(e,p){
+            var obj = {
+                title: $scope.one.title,
+                url: $location.absUrl(),
+                summary: originsum,
+                pic: $scope.one.thumb
+            }
+            bShare.addEntry(obj);
+            bShare.share(e,p,bShare.entries.length-1)
+        }
+
         $timeout(function(){
             var path = window.location.href;
             if(path.indexOf("#")>-1){
