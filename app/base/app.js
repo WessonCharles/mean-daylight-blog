@@ -171,7 +171,7 @@ define([
                   hide: 800
                 }
             });
-
+            initAudio();
             $(document).scroll(function(e){
                 // $(".carousel-inner > .active > .shade").css("background-position","60% "+(200-$(this).scrollTop()/2)+"px");
                 if($(this).scrollTop()==0){
@@ -180,6 +180,7 @@ define([
                     $("#header,.slider.main").addClass("scroll");
                 }
             })
+        });
           // $(document).ready(function() {
           
             // var nice = $("html").niceScroll({mousescrollstep:100,autohidemode:false});  // The document page (body)
@@ -201,7 +202,33 @@ define([
             //         headers:{'CORS':{'Access-Control-Allow-Origin':'*'}}}).success(function(data){
             //     console.log(data);
             // })
-        });
+            
+        var audio ;
+        function initAudio(){
+            //audio =  document.createElement("audio")
+            //audio.src='Never Say Good Bye.ogg'
+            audio = document.getElementById('music');
+            audio.play();
+        }
+
+        $scope.play = function(e){
+            console.log(audio)
+            console.log(audio.paused);
+            if(audio.paused){
+                audio.play();
+                $(event.target).removeClass("fa-play").addClass("fa-pause");
+                return;
+            }
+            audio.pause();
+            $(event.target).removeClass("fa-pause").addClass("fa-play");
+            
+        }
+        $scope.stop = function(){
+            audio.pause();
+            $(event.target).find("i").attr("class","fa fa-play");
+        }
+        
+        
     }])
     .controller('loginctrl',['$scope','$http','$rootScope','$route','$location','customExtend','$timeout','$window',
         function($scope, $http,$rootScope,$route, $location,customExtend,$timeout,$window){

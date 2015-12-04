@@ -91,7 +91,7 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 		             console.log(article_id)
 		             var data_thread_key = article_id;
 		             var data_url =	window.location.href;
-		             var data_author_key = 'http:///192.168.199.153:8008/article/' + article_id;
+		             var data_author_key = 'http://www.chqiangs.com/article/' + article_id;
 		             
 		             // dynamic load the duoshuo comment box
 		             var el = document.createElement('div');//该div不需要设置class="ds-thread"
