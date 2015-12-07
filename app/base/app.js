@@ -156,7 +156,7 @@ define([
             }else{
                 $rootScope.cover = false;
             }
-            // $route.reload();
+            $route.reload();
         });
         
         $scope.$on("$viewContentLoaded",function(){//相当于domready
@@ -179,7 +179,11 @@ define([
                 }else{
                     $("#header,.slider.main").addClass("scroll");
                 }
-            })
+            });
+            $timeout(function(){
+                window.prerenderReady = true; 
+            },0)
+            
         });
           // $(document).ready(function() {
           
@@ -208,7 +212,7 @@ define([
             //audio =  document.createElement("audio")
             //audio.src='Never Say Good Bye.ogg'
             audio = document.getElementById('music');
-            audio.play();
+            // audio.play();
         }
 
         $scope.play = function(e){
@@ -216,11 +220,11 @@ define([
             console.log(audio.paused);
             if(audio.paused){
                 audio.play();
-                $(event.target).removeClass("fa-play").addClass("fa-pause");
+                $(event.target).removeClass("fa-pause").addClass("fa-play");
                 return;
             }
             audio.pause();
-            $(event.target).removeClass("fa-pause").addClass("fa-play");
+            $(event.target).removeClass("fa-play").addClass("fa-pause");
             
         }
         $scope.stop = function(){
