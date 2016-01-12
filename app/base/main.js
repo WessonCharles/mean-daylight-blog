@@ -5,7 +5,7 @@ require.config({
         angular: '../bower_components/angular/angular.min',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery: '../bower_components/jquery/dist/jquery.min',
-        semantic:'../bower_components/semantic-ui/dist/semantic.min',
+        semantic:'../bower_components/semantic/dist/semantic.min',
         angularRoute: '../bower_components/angular-route/angular-route.min',
         pretty:'../bower_components/pretty/pretty',
         uikit:'../bower_components/uieditor/uikit.min',

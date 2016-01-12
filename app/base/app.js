@@ -162,15 +162,15 @@ define([
         $scope.$on("$viewContentLoaded",function(){//相当于domready
             bShare.init();
             $("#rebuild_image").dropdown();
-            $('.browse').popup({
-                inline   : true,
-                hoverable: true,
-                position : 'bottom left',
-                delay: {
-                  show: 300,
-                  hide: 800
-                }
-            });
+            // $('.browse').popup({
+            //     inline   : true,
+            //     hoverable: true,
+            //     position : 'bottom left',
+            //     delay: {
+            //       show: 300,
+            //       hide: 800
+            //     }
+            // });
             initAudio();
             $(document).scroll(function(e){
                 // $(".carousel-inner > .active > .shade").css("background-position","60% "+(200-$(this).scrollTop()/2)+"px");
