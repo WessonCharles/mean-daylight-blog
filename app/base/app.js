@@ -84,7 +84,6 @@ define([
 
         $rootScope.$on('$locationChangeStart',function(){//每次切换导航时，执行以下选中操作
             var path = window.location.pathname;
-            console.log(path)
             $timeout(function(){                
                 var nav = $("#readable-navbar-collapse");
                 var it;
@@ -105,7 +104,6 @@ define([
             $rootScope.cover = false;
         })
         $rootScope.$on('$routeChangeSuccess',function(){
-            console.log(window.location.pathname)
             if(window.location.pathname.indexOf("login")>-1){
                 $scope.login = true;
             }else{
@@ -156,7 +154,8 @@ define([
             }else{
                 $rootScope.cover = false;
             }
-            $route.reload();
+            console.log("看看是为什么")
+            // $route.reload();
         });
         
         $scope.$on("$viewContentLoaded",function(){//相当于domready
@@ -216,8 +215,6 @@ define([
         }
 
         $scope.play = function(e){
-            console.log(audio)
-            console.log(audio.paused);
             if(audio.paused){
                 audio.play();
                 $(event.target).removeClass("fa-pause").addClass("fa-play");
@@ -241,7 +238,6 @@ define([
                 var uname = $(".loginform input[name='username']").val();
                 var pass = $(".loginform input[name='code']").val();
                 // var tempcode = $("form input[name='code']").val();
-                console.log(uname,pass);
                 if (uname&&pass){
                     var user_data = {"email": uname, "code": pass};
                     $http.post("/api/login",user_data).success(function(data){
