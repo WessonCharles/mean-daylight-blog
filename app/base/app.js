@@ -205,30 +205,6 @@ define([
             //         headers:{'CORS':{'Access-Control-Allow-Origin':'*'}}}).success(function(data){
             //     console.log(data);
             // })
-            
-        var audio ;
-        function initAudio(){
-            //audio =  document.createElement("audio")
-            //audio.src='Never Say Good Bye.ogg'
-            audio = document.getElementById('music');
-            // audio.play();
-        }
-
-        $scope.play = function(e){
-            if(audio.paused){
-                audio.play();
-                $(event.target).removeClass("fa-pause").addClass("fa-play");
-                return;
-            }
-            audio.pause();
-            $(event.target).removeClass("fa-play").addClass("fa-pause");
-            
-        }
-        $scope.stop = function(){
-            audio.pause();
-            $(event.target).find("i").attr("class","fa fa-play");
-        }
-        
         
     }])
     .controller('loginctrl',['$scope','$http','$rootScope','$route','$location','customExtend','$timeout','$window',
