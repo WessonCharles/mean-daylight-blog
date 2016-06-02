@@ -46,14 +46,14 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
       removeCombined: true,
       
       paths: {
-        angular: '../bower_components/angular/angular.min',
+        angular: 'empty:',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery:'../bower_components/jquery/dist/jquery.min',
-        semantic: '../bower_components/semantic-ui/dist/semantic.min',
+        semantic: 'empty:',
         angularRoute: '../bower_components/angular-route/angular-route.min',
         pretty          :'../bower_components/pretty/pretty',
         uikit:'../bower_components/uieditor/uikit.min',
-        codemirror:'../bower_components/uieditor/codemirror/lib/codemirror',
+        codemirror:'empty:',
         markdown:'../bower_components/uieditor/codemirror/mode/markdown/markdown',
         overlay:'../bower_components/uieditor/codemirror/addon/mode/overlay',
         xml:'../bower_components/uieditor/codemirror/mode/xml/xml',

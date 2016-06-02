@@ -2,14 +2,14 @@
 
 require.config({
     paths: {
-        angular: '../bower_components/angular/angular.min',
+        angular: 'http://7xk7lf.com1.z0.glb.clouddn.com/angular.min.js',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery: '../bower_components/jquery/dist/jquery.min',
-        semantic:'../bower_components/semantic/dist/semantic.min',
+        semantic:'http://7xk7lf.com1.z0.glb.clouddn.com/semantic.min.js',
         angularRoute: '../bower_components/angular-route/angular-route.min',
         pretty:'../bower_components/pretty/pretty',
         uikit:'../bower_components/uieditor/uikit.min',
-        codemirror:'../bower_components/uieditor/codemirror/lib/codemirror',
+        codemirror:'http://7xk7lf.com1.z0.glb.clouddn.com/codemirror.js',
         markdown:'../bower_components/uieditor/codemirror/mode/markdown/markdown',
         overlay:'../bower_components/uieditor/codemirror/addon/mode/overlay',
         xml:'../bower_components/uieditor/codemirror/mode/xml/xml',
@@ -37,6 +37,8 @@ require.config({
     priority: [
         'angular',
         'jquery',
+        'semantic',
+        'codemirror'
     ],
     waitSeconds: 0
 });
