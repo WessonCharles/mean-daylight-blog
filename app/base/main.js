@@ -2,7 +2,7 @@
 
 require.config({
     paths: {
-        angular: 'http://7xk7lf.com1.z0.glb.clouddn.com/angular.min.js',
+        angular: '../bower_components/angular/angular.min',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery: '../bower_components/jquery/dist/jquery.min',
         semantic:'http://7xk7lf.com1.z0.glb.clouddn.com/semantic.min.js',
