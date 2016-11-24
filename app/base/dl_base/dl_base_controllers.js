@@ -27,8 +27,10 @@ define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdow
             $http.get("/api/alltags").success(function(data){
                 var ts = data["tags"];
                 var arr = [];
-                for(var i=0;i<ts.length;i++){
-                    arr = arr.concat(ts[i].tags);
+                if(ts){
+                    for(var i=0;i<ts.length;i++){
+                        arr = arr.concat(ts[i].tags);
+                    }
                 }
                 var temphash = {},realarr = [];
                 for(var i=0;i<arr.length;i++){
