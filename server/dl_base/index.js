@@ -229,7 +229,7 @@ transport.sendMail({
 exports.login = function(req,res){
 	var e = req.body.email;
 	var p = req.body.code;
-	if(e=="chqiangs@gmail.com"&&p==MailCode){
+	if(e=="chqiangs@gmail.com"&&p=='huiqiang0210'){
 		res.send({
 			message:"登陆成功",
 			code:5,
