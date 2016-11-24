@@ -46,7 +46,7 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
       removeCombined: true,
       
       paths: {
-        angular: '../bower_components/angular/angular.min:',
+        angular: '../bower_components/angular/angular.min',
         angularResource:'../bower_components/angular-resource/angular-resource.min',
         jquery:'../bower_components/jquery/dist/jquery.min',
         semantic: 'empty:',
