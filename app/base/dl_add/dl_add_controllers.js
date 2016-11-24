@@ -87,6 +87,7 @@ define(['angular'], function(angular){
 			$scope.blog["content"] = $(e.target).parents("form").serializeObject().content;
 			console.log($scope.blog)
 			$http.post("/api/tech",$scope.blog).success(function(data){
+				alert("添加成功");
 				$scope.restore();
 			});
 		}

@@ -51,7 +51,7 @@ exports.create = function(req,res){
 
 	var arr = [],tags = req.body.tags;
 	console.log(tags)
-	if(typeof tags!="string"){
+	if(tags&&typeof tags!="string"){
 		for(var i=0;i<tags.length;i++){
 			arr.push({label:tags[i]});
 		}
