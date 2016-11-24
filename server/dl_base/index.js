@@ -9,7 +9,7 @@ var Blog = require(path_root+"/model/model").Blog,
 var async = require("async");
   	// render = require(path_root+"/base/api/render");
 var blog = new Action(Blog);
-var user = "1635362818@qq.com";
+var user = "603790089@qq.com";
 var transport = nodemailer.createTransport("SMTP", {
       host: "smtp.qq.com"
     , secureConnection:true
