@@ -1,7 +1,7 @@
 'use strict';
 
-define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
-	function(angular,duoshuo,showdown,pretty,uikit,htmleditor){
+define(['angular', "showdown","pretty",'uikit','htmleditor'],
+	function(angular,showdown,pretty,uikit,htmleditor){
 	return angular.module('base.directive',[])
 	.directive('onview',['$timeout',function($timeout){
 		return {
@@ -99,7 +99,7 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 		             el.setAttribute('data-url', data_url);//必选参数
 		             el.setAttribute('data-title',artitle)
 		             el.setAttribute('data-author-key', data_author_key);//可选参数
-		             DUOSHUO.EmbedThread(el);
+		             // DUOSHUO.EmbedThread(el);
 		             $(element).find('hr').after(el);
 	         	})
 	         }
@@ -131,7 +131,7 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 					var el = document.createElement("span");
 					el.className = "ds-thread-count";
 					el.setAttribute("data-thread-key",id);
-					DUOSHUO.ThreadCount(el);
+					// DUOSHUO.ThreadCount(el);
 					// console.log(el)
 					$(element).html(el);
 				},0)
@@ -151,7 +151,7 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 				el.setAttribute('data-show-admin',1);
 				el.setAttribute('data-excerpt-length',70);
 				el.className = "ds-recent-comments";
-				DUOSHUO.RecentComments(el);
+				// DUOSHUO.RecentComments(el);
 				$(element).find("h6").after(el);
 				// <div class="ds-recent-comments" data-num-items="4" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
 			}
@@ -165,7 +165,7 @@ define(['angular','duoshuo', "showdown","pretty",'uikit','htmleditor'],
 				el.setAttribute('data-range','weekly');
 				el.setAttribute('data-num-items',5);
 				el.className = "ds-top-threads";
-				DUOSHUO.TopThreads(el);
+				// DUOSHUO.TopThreads(el);
 				$(element).html(el);
 				// <ul  class="ds-top-threads" data-range="weekly" data-num-items="5"></ul>
 			}
