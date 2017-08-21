@@ -20,7 +20,7 @@ define(['angular'], function(angular){
 	        	$scope.bloglists = data["list"];
 	        	$rootScope.page = {
                     pageIndex:page,
-                    pageTotal:Math.ceil(list.count/page)
+                    pageTotal:Math.ceil(list.count/30)
                 }
 	        })
 		}

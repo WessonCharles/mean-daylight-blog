@@ -26,7 +26,7 @@ define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdow
                 $rootScope.bloglists = list["list"];
                 $rootScope.page = {
                     pageIndex:page,
-                    pageTotal:Math.ceil(list.count/page)
+                    pageTotal:Math.ceil(list.count/30)
                 }
             })
             $http.get("/api/alltags").success(function(data){
