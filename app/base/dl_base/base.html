@@ -314,6 +314,18 @@
                 <span class="post-format"></span>
             </div>   
         </div>
+        <h4 class="ui horizontal inverted divider"> </h4>
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-xs-4">
+                <button class="ui labeled icon button" ng-click="jumppage('last')"><i class="fa fa-arrow-left"></i> 上一页 </button>
+            </div>
+            <div class="col-xs-4" style="text-align:center;">
+                {{page&&page.pageIndex?page.pageIndex:'1'}}/{{page&&page.pageTotal?page.pageTotal:'1'}}
+            </div>
+            <div class="col-xs-4">
+                <button class="ui right labeled icon button pull-right" ng-click="jumppage('next')"><i class="fa fa-arrow-right"></i> 下一页 </button>
+            </div>
+        </div>
     </div>
 
 </div>

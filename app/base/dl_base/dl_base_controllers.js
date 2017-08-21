@@ -20,9 +20,14 @@ define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdow
          */
         console.log(_t.rparam)
         
-        $scope.loadall = function(){
-            $http.get("/api/all").success(function(list){
+        $scope.loadall = function(page){
+            page = page||1;
+            $http.get("/api/all?page="+page).success(function(list){
                 $rootScope.bloglists = list["list"];
+                $rootScope.page = {
+                    pageIndex:page,
+                    pageTotal:Math.ceil(list.count/page)
+                }
             })
             $http.get("/api/alltags").success(function(data){
                 var ts = data["tags"];
@@ -58,7 +63,24 @@ define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdow
         	})
         }
 
-
+        $scope.jumppage = function(p){
+            var page = 0;
+            if(p=='last'){
+                if(!$rootScope.page.pageIndex)$rootScope.page.pageIndex=1;
+                page = $rootScope.page.pageIndex-1;
+                if(page>0){
+                    $scope.loadall(page);
+                }
+            }
+            if(p=='next'){
+                if(!$rootScope.page.pageIndex)$rootScope.page.pageIndex=1;
+                if(!$rootScope.page.pageTotal)$rootScope.page.pageTotal=1;
+                page = $rootScope.page.pageIndex+1;
+                if(page>0&&page<=$rootScope.page.pageTotal){
+                    $scope.loadall(page);
+                }
+            }
+        }
         /*
         @_explain:右侧各类方法，都将在base controller实现
          */
