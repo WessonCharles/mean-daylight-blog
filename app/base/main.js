@@ -1,13 +1,6 @@
 'use strict';
 
 
-var appid = 'cytbiQFxM'; 
-var conf = 'prod_1719392116e7712b7685989f9d145d1d'; 
-var changurl = "http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile";
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width > 960) { 
-    changurl="http://changyan.sohu.com/upload/changyan";
-}
 require.config({
     paths: {
         angular: '../bower_components/angular/angular.min',
@@ -25,7 +18,7 @@ require.config({
         marked:'../bower_components/uieditor/marked',
         htmleditor:'../bower_components/uieditor/htmleditor',
         showdown        : "../bower_components/showdown/dist/showdown.min",
-        duoshuo:changurl,
+        duoshuo:(width > 960)?"http://changyan.sohu.com/upload/changyan":"http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile",
         duoshuore:"https://changyan.sohu.com/js/changyan.labs.https",
         buttonlite:'http://static.bshare.cn/b/buttonLite',
         bshare:'http://static.bshare.cn/b/bshareC2',
