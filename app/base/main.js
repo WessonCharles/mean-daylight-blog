@@ -35,7 +35,7 @@ require.config({
         'htmleditor':['jquery','uikit','codemirror','marked'],
         'showdown':{'exports':'showdown'},
         'duoshuo':['jquery'],
-        'duoshuore':['jquery','duoshuo']
+        'duoshuore':['jquery']
     },
     priority: [
         'angular',
@@ -43,7 +43,7 @@ require.config({
         'semantic',
         'codemirror'
     ],
-    urlArgs: "client_id=cytbiQFxM&appid=cytbiQFxM&conf=prod_1719392116e7712b7685989f9d145d1d",
+    // urlArgs: "client_id=cytbiQFxM&appid=cytbiQFxM&conf=prod_1719392116e7712b7685989f9d145d1d",
     waitSeconds: 0
 });
 
