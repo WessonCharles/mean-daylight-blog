@@ -1,8 +1,5 @@
 'use strict';
 
-var appid = 'cytbiQFxM'; 
-var conf = 'prod_1719392116e7712b7685989f9d145d1d'; 
-window.changyan.api.config({appid:appid,conf:conf});
 
 require.config({
     paths: {
