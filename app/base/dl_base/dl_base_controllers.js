@@ -140,7 +140,7 @@ define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdow
                 des:it
             }
         }else{//从外边来，需要走restful
-            console.log("222")
+            console.log("222");
             $http.get("/api/one/"+$routeParams.id).success(function(data){
                 $scope.one = data.blog;
                 console.log(data.blog)
@@ -156,6 +156,7 @@ define(['angular','pretty','showdown','bshare'], function(angular,pretty,showdow
                 
             })
         }
+        $rootScope.blogid = $routeParams.id;
 
         $scope.share = function(e,p){
             var obj = {
