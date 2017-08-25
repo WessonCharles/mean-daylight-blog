@@ -19,7 +19,7 @@ require.config({
         htmleditor:'../bower_components/uieditor/htmleditor',
         showdown        : "../bower_components/showdown/dist/showdown.min",
         duoshuo:"../bower_components/changyan/changyan",
-        duoshuore:"https://changyan.sohu.com/js/changyan.labs.https",
+        // duoshuore:"https://changyan.sohu.com/js/changyan.labs.https",
         buttonlite:'http://static.bshare.cn/b/buttonLite',
         bshare:'http://static.bshare.cn/b/bshareC2',
     },
@@ -35,7 +35,7 @@ require.config({
         'htmleditor':['jquery','uikit','codemirror','marked'],
         'showdown':{'exports':'showdown'},
         'duoshuo':['jquery'],
-        'duoshuore':['jquery']
+        // 'duoshuore':['jquery']
     },
     priority: [
         'angular',
@@ -68,7 +68,7 @@ require([
     'buttonlite',
     'bshare',
     'duoshuo',
-    'duoshuore',
+    // 'duoshuore',
     'app',
     'dl_base/dl_base_routes',
     'dl_tech/dl_tech_routes',
