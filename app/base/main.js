@@ -18,7 +18,7 @@ require.config({
         marked:'../bower_components/uieditor/marked',
         htmleditor:'../bower_components/uieditor/htmleditor',
         showdown        : "../bower_components/showdown/dist/showdown.min",
-        duoshuo:(width > 960)?"http://changyan.sohu.com/upload/changyan":"http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile",
+        duoshuo:"http://changyan.sohu.com/upload/changyan",
         duoshuore:"https://changyan.sohu.com/js/changyan.labs.https",
         buttonlite:'http://static.bshare.cn/b/buttonLite',
         bshare:'http://static.bshare.cn/b/bshareC2',
