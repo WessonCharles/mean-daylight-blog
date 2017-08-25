@@ -84,5 +84,5 @@
         createMobileNs(setconf);
         loadVersionJs();
            
-    },1000);
+    },200);
 }());
