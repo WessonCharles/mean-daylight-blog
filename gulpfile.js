@@ -63,7 +63,7 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
         showdown        : "../bower_components/showdown/dist/showdown.min",
         // ueall:'../bower_components/ueditor/ueditor.all',
         // uelan:'../bower_components/ueditor/lang/zh-cn/zh-cn',
-        duoshuo:"../bower_components/changyan/changyan",
+        // duoshuo:"../bower_components/changyan/changyan",
         // duoshuore:'empty:'
       },
       shim: {
@@ -77,7 +77,7 @@ gulp.task('build',['clean'] ,function(cb){//中间的字符串数组，是指当
         'uikit':['jquery'],
         'htmleditor':['jquery','uikit','codemirror','marked'],
         'showdown':{'exports':'showdown'},
-        'duoshuo':['jquery'],
+        // 'duoshuo':['jquery'],
         // 'duoshuore':['jquery','duoshuo']
       },
 
