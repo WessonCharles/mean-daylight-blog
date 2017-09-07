@@ -10,7 +10,7 @@
     mod(CodeMirror);
 })(function(CodeMirror) {
 "use strict";
-CodeMirror = window.CodeMirror||{};
+
 CodeMirror.defineMode("xml", function(config, parserConfig) {
   var indentUnit = config.indentUnit;
   var multilineTagIndentFactor = parserConfig.multilineTagIndentFactor || 1;
