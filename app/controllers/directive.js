@@ -173,9 +173,10 @@ angular.module('app').directive('onview',['$timeout',function($timeout){
 			link:function(scope,element,attr){
 				$timeout(function(){
 					console.log($(element))
-					UIkit.htmleditor($(element),{mode:'split',markdown:true,maxsplitsize:350,lblCodeview:'Markdown',lblPreview:'Preview'});
-				})
+					console.log(window.UIkit);
+					window.UIkit.htmleditor($(element),{mode:'split',markdown:true,maxsplitsize:350,lblCodeview:'Markdown',lblPreview:'Preview'});
+				},1000)
 
 			}
 		}
-	}])
+	}]);

@@ -21,12 +21,6 @@
 			          <label for="">默认原创</label>
 			        </div>
 		        </div>
-		        <div class="field">
-		          	<label>类型</label>
-		          	<select class="ui search dropdown" id="blogtype" ng-model="blog.type" required >
-			            <option value="tech" selected="selected">前端技术</option>
-			          </select>
-		        </div>
 	      	</div>
 	      	<div class="two fields" ng-if="!blog.ismine">
 	      		<div class="field">
@@ -43,7 +37,7 @@
 	      	</div>
 	      	<div class="field">
 	          <label>标签</label>
-	          <select class="ui fluid dropdown" dropdown multiple="true" name="tags" id="blogtags" required >
+	          <select class="ui fluid dropdown" dropdown multiple="true" name="temptag" ng-model="blog.temptag" name="tags" id="blogtags" required >
 	            <option value="html_css">Html&Css</option>
 	            <option value="js">Javascript</option>
 	            <option value="angular">angularJs</option>
@@ -67,8 +61,8 @@
 		<form id="add_life" class="ui form">
 			<div class="field">
 				<label>子类型</label>
-	          	<select class="ui search dropdown" id="lifesubtype" ng-model="life.subtype" required >
-		            <option value="pic-word" selected="selected">图文</option>
+	          	<select class="ui search dropdown" id="lifesubtype" name="subtype" ng-model="life.subtype" required >
+		            <option value="pic-word">图文</option>
 		            <option value="read-and-know">读而知之</option>
 		            <option value="gossip">闲言碎语</option>
 	          	</select>
@@ -85,13 +79,6 @@
 			          <input type="checkbox" checked="checked" ng-model="life.ismine" ng-change="changeismine()">
 			          <label for="">默认原创</label>
 			        </div>
-		        </div>
-		        <div class="field">
-		          	<label>类型</label>
-		          	<select class="ui search dropdown" id="lifetype" ng-model="life.type" required >
-			            <option value="life" selected="selected">启示芳华</option>
-			            <!-- <option value="pic" disabled="">影像</option> -->
-		          	</select>
 		        </div>
 	      	</div>
 	      	<div class="two fields" ng-if="!life.ismine&&life.subtype=='article'">

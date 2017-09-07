@@ -1,18 +1,4 @@
-(function(addon) {
-
-    var component;
-
-    if (window.UIkit) {
-        component = addon(UIkit);
-    }
-
-    if (typeof define == "function" && define.amd) {
-        define("uikit-htmleditor", ["uikit"], function(){
-            return component || addon(UIkit);
-        });
-    }
-
-})(function(UI) {
+(function(UI) {
 
     "use strict";
 
@@ -619,4 +605,4 @@
     });
 
     return UI.htmleditor;
-});
+})(window.UIkit);

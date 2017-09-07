@@ -57,15 +57,6 @@ angular.module('app', [
 
         $scope.frameurl = "http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2709394993&verifier=8341d7fb&colors=ffffff,ffffff,666666,0082cb,ffffff&dpc=1&_stamp="+new Date().getTime();
 
-        jQuery.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
-            var obj=new Object();  
-            $.each(this.serializeArray(),function(index,param){  
-                if(!(param.name in obj)){  
-                    obj[param.name]=param.value;  
-                }  
-            });  
-            return obj;  
-        };
         $.browser = {};
         $.browser.mozilla = /firefox/.test(navigator.userAgent.toLowerCase());
         $.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
@@ -150,7 +141,7 @@ angular.module('app', [
         
         $scope.$on("$viewContentLoaded",function(){//相当于domready
             bShare.init();
-            $("#rebuild_image").dropdown();
+            // $("#rebuild_image").dropdown();
             // $('.browse').popup({
             //     inline   : true,
             //     hoverable: true,

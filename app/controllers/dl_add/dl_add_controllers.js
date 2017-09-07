@@ -1,5 +1,15 @@
 'use strict';
 
+$.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
+    var obj=new Object();  
+    $.each(this.serializeArray(),function(index,param){  
+        if(!(param.name in obj)){  
+            obj[param.name]=param.value;  
+        }  
+    });  
+    return obj;  
+};
+
 angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile',
 		function($rootScope,$scope,$http, $location, $window, $filter,$compile){
 		if(!$scope.islogin){
@@ -76,13 +86,15 @@ angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$lo
         	}
         }
 		$scope.restore = function(){
-			$scope.blog = {ismine:true,type:'tech'};
-			$scope.life = {subtype:'pic-word',type:'life'};
+			$scope.blog = {title:"",ismine:true,type:'tech',originalauthor:{url:"",name:""},temptag:[]};
+			$scope.life = {subtype:'pic-word',type:'life',title:"",originalauthor:{url:"",name:""}};
+			$scope.tagstr = "";
 		};	
 		$scope.restore();
 		$scope.addblog = function(e){
 			$scope.blog["tags"] = $("#blogtags").val();
-			$scope.blog["content"] = $(e.target).parents("form").serializeObject().content;
+			console.log($("#add_blog"));
+			$scope.blog["content"] = $("#add_blog").serializeObject().content;
 			console.log($scope.blog)
 			$http.post(APIS+"/api/tech",$scope.blog).then(function(data){
 				alert("添加成功");
@@ -202,11 +214,12 @@ angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$lo
         		}
         	}
         }
-		// $scope.restore = function(){
-		// 	$scope.blog = {ismine:true,type:'tech'};
-		// 	$scope.life = {subtype:'pic-word',type:'life'};
-		// };	
-		// $scope.restore();
+		$scope.restore = function(){
+			$scope.blog = {title:"",ismine:true,type:'tech',originalauthor:{url:"",name:""},temptag:[]};
+			$scope.life = {subtype:'pic-word',type:'life',title:"",originalauthor:{url:"",name:""}};
+			$scope.tagstr = "";
+		};	
+		$scope.restore();
 		$scope.addblog = function(e){
 			
 			$scope.blog["tags"] = $("#blogtags").val();
@@ -220,7 +233,7 @@ angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$lo
 		}
 
 		$scope.add_life = function(e){
-			var datas =$(e.target).serializeObject();
+			var datas =$("#add_blog").serializeObject();
 			for(var d in datas){
 				$scope.life[d] = datas[d];
 			}
