@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" ng-app="base">
+<html xmlns:ng="http://angularjs.org" ng-app="app">
 <head>
     <meta name="fragment" content="!">
     <META HTTP-EQUIV="pragma" CONTENT="no-cache">
@@ -15,17 +15,10 @@
     <link rel="prefetch" href="imgs/back2.png">
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bower_components/semantic/dist/semantic.min.css" rel="stylesheet">
-    <!-- <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link href="styles/semantic.min.css" rel="stylesheet">
 
-    <!-- build:css -->
-    <link href="style/animate.css" rel="stylesheet">
-    <link rel="stylesheet" href="bower_components/uieditor/uikit.min.css">
-    <link rel="stylesheet" href="bower_components/uieditor/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" href="bower_components/pretty/pretty.css">
-    <!--endbuild-->
-    <link rel="stylesheet" href="style/template.css">
+    <link rel="stylesheet" href="styles/blog.min.css">
+    <link rel="stylesheet" href="styles/template.css">
 </head>
 <body class="height:auto!important" ng-controller="baseCtrl">
     <header id="header">
@@ -81,17 +74,10 @@
                                 <li><a href="/life/gossip">闲言碎语</a></li>
                             </ul>
                         </li>
-                        <!-- <li class="">
-                            <a class="scroll" href="/photo">映像
-                            </a>
-                        </li> -->
                         <li class="">
                             <a class="scroll" href="/about-me">关于我
                             </a>
                         </li>
-                        <!-- <li>
-                            <a class="scroll" href="/add">增加</a>
-                        </li> -->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
@@ -126,12 +112,6 @@
                     <h3>To see the world, things dangerous to come to,to see behind walls, to draw closer,to find each other and to feel ,that is the Purpose of LIFE.</h3>
                     <p>开拓视野，冲破艰险，看见世界，身临其境， 贴近彼此，感受生活， 这就是生活的目的</p>
                 </blockquote>
-                    <!-- <div class="slider__container">
-                    <h3 class="slider__subtitle">We are not just bloggers</h3>
-                    <h1 class="slider__title">We will change the world</h1>
-                    <a class="btn  btn-primary" href="http://themeforest.net/item/readable-blog-template-focused-on-readability/7499064?ref=ProteusThemes">Buy Theme</a> &nbsp; &nbsp;
-                    <a class="btn  btn-transparent" href="features.html">Read More</a>
-                    </div> -->
                     <div class="ball">
                     <ul style="list-style:none;">
                       <li style="background-color:#D82120;"></li>
@@ -159,12 +139,8 @@
     </div>
     <div class="container">
         <div class="row">
-            <div ng-include="base_tmp">
-                <!-- build:require -->
-                <script src="base/require.js" defer async="true" data-main="base/main"></script>
-                <!-- endbuild -->
-            </div>
-            <div ng-include src="'base/html/right.html'"></div>
+            <div ui-view></div>
+            <div ng-include src="'controllers/html/right.html'"></div>
         </div>
         
     </div>
@@ -232,45 +208,76 @@
             </div>
         </div>
     </footer>
-    <div ng-include src="base/html/login.html" ng-if="login"></div>
-<script type="text/javascript">
-window.setCookie =function(name,value,d){
-var Days = d||30;
-var exp = new Date();
-exp.setTime(exp.getTime() + Days*24*60*60*1000);
-document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/;";
-}
-//读取cookies
-window.getCookie=function(name){
-var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-if(arr=document.cookie.match(reg)) return unescape(arr[2]);
-else return null;
-}
-//删除cookies
-window.delCookie=function(name){
-var exp = new Date();
-exp.setTime(exp.getTime() - 1);
-var cval=window.getCookie(name);
-if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/;";
-}  
-</script>
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<div id="SOHUCS" style="display: none;"></div>
-<script type="text/javascript">
-/**
-var duoshuoQuery = {short_name:"chqiangs"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    **/
+    <div ng-include src="controllers/html/login.html" ng-if="login"></div>
+    <!-- build:js js/ts-web-vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/es5-shim/es5-shim.js" charset="utf-8"></script>
+    <script src="../bower_components/es6-shim/es6-shim.js" charset="utf-8"></script>
+    <script src="../bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="../bower_components/angular/angular.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js" charset="utf-8"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="http://7xk7lf.com1.z0.glb.clouddn.com/semantic.min.js"></script>
+    <script src="http://static.bshare.cn/b/buttonLite.js"></script>
+    <script src="http://static.bshare.cn/b/bshareC2.js"></script>
+    <!-- build:js({app,.tmp}) js/ts-web-app.js -->
+    <!-- inject:app:js -->
+    <script src="animations/ease.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <script src="configs/run.js" charset="utf-8"></script>
+    <script src="controllers/config.js" charset="utf-8"></script>
+    <script src="controllers/directive.js" charset="utf-8"></script>
+    <script src="controllers/dl_add/dl_add_controllers.js" charset="utf-8"></script>
+    <script src="controllers/dl_add/dl_add_routers.js" charset="utf-8"></script>
+    <script src="controllers/dl_base/dl_base_controllers.js" charset="utf-8"></script>
+    <script src="controllers/dl_life/dl_life_controllers.js" charset="utf-8"></script>
+    <script src="controllers/dl_tech/dl_tech_controllers.js" charset="utf-8"></script>
+    <script src="controllers/service.js" charset="utf-8"></script>
+    <script src="decorators/index.js" charset="utf-8"></script>
+    <script src="libraries/angular-route.min.js" charset="utf-8"></script>
+    <script src="libraries/changyan.js" charset="utf-8"></script>
+    <script src="libraries/codemirror.js" charset="utf-8"></script>
+    <script src="libraries/gfm.js" charset="utf-8"></script>
+    <script src="libraries/htmleditor.js" charset="utf-8"></script>
+    <script src="libraries/markdown.js" charset="utf-8"></script>
+    <script src="libraries/marked.js" charset="utf-8"></script>
+    <script src="libraries/overlay.js" charset="utf-8"></script>
+    <script src="libraries/pretty.js" charset="utf-8"></script>
+    <script src="libraries/showdown.min.js" charset="utf-8"></script>
+    <script src="libraries/uikit.min.js" charset="utf-8"></script>
+    <script src="libraries/xml.js" charset="utf-8"></script>
+    <!-- endinject -->
+    <!-- build:js({app,.tmp/shadow}) js/ts-web-tpl.js -->
+    <script src="templates.js" charset="utf-8"></script>
+    <!-- endbuild -->
+    <script type="text/javascript">
+        window.setCookie =function(name,value,d){
+            var Days = d||30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days*24*60*60*1000);
+            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/;";
+        }
+        //读取cookies
+        window.getCookie=function(name){
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+            else return null;
+        }
+        //删除cookies
+        window.delCookie=function(name){
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval=window.getCookie(name);
+            if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/;";
+        }  
     </script>
-    <script> window.prerenderReady = false; </script>
-<!-- 多说公共JS代码 end -->
-
+    <div id="SOHUCS" style="display:none;"></div> 
 </body>
 </html>

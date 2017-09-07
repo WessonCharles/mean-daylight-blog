@@ -1,0 +1,217 @@
+<div class="col-xs-12  col-md-8">
+    <div class="dl_list_all">
+        <div class="dl_list_one" ng-repeat="b in bloglists track by $index">
+            <div class="boxed  push-down-45 image" ng-if="b.thumb&&b.subtype!='pic-word'">
+                <div class="meta">
+                    <div class="wrap_post_image">
+                        <img ng-src="{{b.thumb}}" class="wp-post-image" alt="">  
+                    </div>
+                    <div class="meta__container">
+                        <div class="row">
+                            <div class="col-xs-12  col-sm-8">
+                                <div class="meta__info">
+                                    <span class="meta__author">
+                                        <img width="30" height="30" alt="Meta avatar" src="images/dummy/avator.png">
+                                        <a href="#">
+                                            Charles
+                                        </a>
+                                        <a href="#">
+                                        </a>
+                                    </span>
+                                    <span class="meta__date">
+                                        <span class="fa fa-calendar-o">
+                                        </span>
+                                        &nbsp; {{b.time | date:"MM/dd/yyyy 'at' h:mma"}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12  col-sm-4">
+                                <div class="meta__comments">
+                                   <a href="/article/{{b._id}}#related-comment">
+                                        <span class="fa fa-comment">
+                                            {{b.comments.length}}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-11  col-xs-offset-0">
+                        <div class="post-content--front-page">
+                            <h2 class="front-page-title">
+                                <a href="/article/{{b._id}}">
+                                    {{b.title}}
+                                </a>
+                            </h2>
+                            <p onview data-content="{{b.summary}}">
+                                
+                            </p>
+                        </div>
+                        <div class="post-content-tags">
+                            <ul>
+                                <li ng-repeat="t in b.tags">
+                                    <div class="ui tag label">
+                                        {{t.label||t}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/article/{{b._id}}">
+                            <div class="read-more">
+                                阅读更多
+                                <div class="read-more__arrow">
+                                    <span class="fa  fa-chevron-right">
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <span class="post-format"></span>
+            </div>
+            <div class="post-ads" ng-if="$index==0">
+                <a>
+                    <!-- <img width="728" height="90" alt="Ads" src="images/dummy/xads-728x90.jpg.pagespeed.ic.Dg8PWwa1gE.jpg"> -->
+                </a>
+            </div>
+            <div class="boxed  push-down-45 pic-word" ng-if="b.subtype&&b.subtype=='pic-word'">
+                <!-- Featured image and meta start -->
+                <div class="meta" style="margin-bottom:0;">
+                    <!-- <img width="748" height="324" alt="Blog image" src="images/dummy/748x324xblog-image-4.jpg.pagespeed.ic.zbhJ3l0AsC.jpg"
+                    class="wp-post-image"> -->
+                    <img ng-src="{{b.thumb}}" class="wp-post-image" alt=""> 
+                    <q class="meta__quote">
+                        {{b.summary}}
+                    </q>
+                    <div class="meta__container">
+                        <div class="row">
+                            <div class="col-xs-12  col-sm-8">
+                                <div class="meta__info">
+                                    <span class="meta__author">
+                                        <img width="30" height="30" alt="Meta avatar" src="images/dummy/avator.png">
+                                        <a href="#">
+                                            Charles
+                                        </a>
+                                        in
+                                        <a href="#">
+                                            {{one.area||'北京'}}
+                                        </a>
+                                    </span>
+                                    <span class="meta__date">
+                                        <span class="fa fa-calendar-o">
+                                        </span>
+                                        &nbsp; {{b.time | date:"MM/dd/yyyy 'at' h:mma"}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12  col-sm-4">
+                                <div class="meta__comments">
+                                    <a href="/article/{{b._id}}#related-comment">
+                                        <span class="fa fa-comment">
+                                            {{b.comments.length}}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="post-format"></span>
+            </div>
+            <!-- 纯文字 -->
+            <div class="boxed  push-down-45 word"  ng-if="!b.thumb"><!--ng-if="!blogaction.cutimg(b.content)"-->
+                <!-- Meta without image start (Needed for WP theme)-->
+                <div class="row">
+                    <div class="meta__container--without-image">
+                        <div class="row">
+                            <div class="col-xs-12  col-sm-8">
+                                <div class="meta__info">
+                                    <span class="meta__author">
+                                        <img width="30" height="30" alt="Meta avatar" src="images/dummy/avator.png">
+                                        <a href="#">
+                                            Charles
+                                        </a>
+                                        in
+                                        <a href="#">
+                                            {{one.area||'北京'}}
+                                        </a>
+                                    </span>
+                                    <span class="meta__date">
+                                        <span class="fa fa-calendar-o">
+                                        </span>
+                                        &nbsp; {{b.time | date:"MM/dd/yyyy 'at' h:mma"}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12  col-sm-4">
+                                <div class="meta__comments">
+                                    <a href="/article/{{b._id}}#related-comment">
+                                        <span class="fa fa-comment">
+                                            {{b.comments.length}}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Meta without image end -->
+                <!-- Start of the blogpost -->
+                <div class="row">
+                    <div class="col-xs-11  col-xs-offset-0">
+                        <!-- Start of the content -->
+                        <div class="post-content--front-page">
+                            <h2 class="front-page-title">
+                                <a href="/article/{{b._id}}">
+                                    {{b.title}}
+                                </a>
+                            </h2>
+                            <!-- <h3>
+                                She had a last view back on the skyline of her hometown Bookmarksgrove.
+                                (H3)
+                            </h3> -->
+                            <p onview data-content="{{b.summary}}">
+                                
+                            </p>
+                        </div>
+                        <!-- End of the content -->
+                        <div class="post-content-tags">
+                            <ul>
+                                <li ng-repeat="t in b.tags">
+                                    <div class="ui tag label">
+                                        {{t.label||t}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/article/{{b._id}}">
+                            <div class="read-more">
+                                阅读更多
+                                <div class="read-more__arrow">
+                                    <span class="fa  fa-chevron-right">
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <span class="post-format"></span>
+            </div>   
+        </div>
+        <h4 class="ui horizontal inverted divider"> </h4>
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-xs-4">
+                <button class="ui labeled icon button" ng-click="jumppage('last')"><i class="fa fa-chevron-left icon"></i> 上一页 </button>
+            </div>
+            <div class="col-xs-4" style="text-align:center;line-height: 30px;">
+                {{page&&page.pageIndex?page.pageIndex:'1'}}/{{page&&page.pageTotal?page.pageTotal:'1'}}
+            </div>
+            <div class="col-xs-4">
+                <button class="ui right labeled icon button pull-right" ng-click="jumppage('next')"><i class="fa fa-chevron-right icon"></i> 下一页 </button>
+            </div>
+        </div>
+    </div>
+
+</div>
