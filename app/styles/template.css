@@ -1752,6 +1752,12 @@ input[type="button"].btn-block,input[type="reset"].btn-block,input[type="submit"
 .collapse.in {
 	display:block;
 }
+#header.sticky .collapse{
+	display: block;
+}
+#header.sticky .navbar-default .navbar-nav>.active>a,#header.sticky  .navbar-default .navbar-nav>.active>a:focus,#header.sticky  .navbar-default .navbar-nav>.active>a:hover{
+	color:#50B9EB;
+}
 .collapsing {
 	position:relative;
 	height:0;

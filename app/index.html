@@ -19,6 +19,32 @@
 
     <link rel="stylesheet" href="styles/blog.min.css">
     <link rel="stylesheet" href="styles/template.css">
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js" async></script>
+    <!-- build:js js/ts-web-vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/es5-shim/es5-shim.js" charset="utf-8"></script>
+    <script src="../bower_components/es6-shim/es6-shim.js" charset="utf-8"></script>
+    <script src="../bower_components/angular/angular.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js" charset="utf-8"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js" charset="utf-8"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script charset="utf-8">
+        $.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
+            var obj=new Object();  
+            $.each(this.serializeArray(),function(index,param){  
+                if(!(param.name in obj)){  
+                    obj[param.name]=param.value;  
+                }  
+            });  
+            return obj;  
+        };
+    </script>
 </head>
 <body class="height:auto!important" ng-controller="baseCtrl">
     <header id="header">
@@ -28,7 +54,6 @@
                     Charles
                 </a>
             </div>
-        <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" id="head-menu" ng-click="toggleheader()">
                 <button data-target="#readable-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -38,7 +63,6 @@
                 </button>
             </div>
             <nav role="navigation" class="navbar  navbar-default">
-            <!-- Collect the nav links, forms, and other content for toggling -->
                 <div id="readable-navbar-collapse" class="collapse  navbar-collapse">
                     <ul class="navigation nav navbar-nav navbar-right">
                         <li class="active">
@@ -209,21 +233,6 @@
         </div>
     </footer>
     <div ng-include src="controllers/html/login.html" ng-if="login"></div>
-    <!-- build:js js/ts-web-vendor.js -->
-    <!-- bower:js -->
-    <script src="../bower_components/es5-shim/es5-shim.js" charset="utf-8"></script>
-    <script src="../bower_components/es6-shim/es6-shim.js" charset="utf-8"></script>
-    <script src="../bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
-    <script src="../bower_components/angular/angular.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-cookies/angular-cookies.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-sanitize/angular-sanitize.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-resource/angular-resource.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js" charset="utf-8"></script>
-    <script src="../bower_components/angular-touch/angular-touch.js" charset="utf-8"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
     <script src="http://7xk7lf.com1.z0.glb.clouddn.com/semantic.min.js"></script>
     <script src="http://static.bshare.cn/b/buttonLite.js"></script>
     <script src="http://static.bshare.cn/b/bshareC2.js"></script>
@@ -232,19 +241,7 @@
     <script src="animations/ease.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
     <script src="configs/run.js" charset="utf-8"></script>
-    <script src="controllers/alib/a_pretty.js" charset="utf-8"></script>
-    <script src="controllers/alib/b_uikit.min.js" charset="utf-8"></script>
-    <script src="controllers/alib/c_codemirror.js" charset="utf-8"></script>
-    <script src="controllers/alib/changyan.js" charset="utf-8"></script>
-    <script src="controllers/alib/d_markdown.js" charset="utf-8"></script>
-    <script src="controllers/alib/e_overlay.js" charset="utf-8"></script>
-    <script src="controllers/alib/f_xml.js" charset="utf-8"></script>
-    <script src="controllers/alib/gfm.js" charset="utf-8"></script>
-    <script src="controllers/alib/h_marked.js" charset="utf-8"></script>
-    <script src="controllers/alib/i_htmleditor.js" charset="utf-8"></script>
-    <script src="controllers/alib/showdown.min.js" charset="utf-8"></script>
     <script src="controllers/config.js" charset="utf-8"></script>
-    <script src="controllers/directive.js" charset="utf-8"></script>
     <script src="controllers/dl_add/dl_add_controllers.js" charset="utf-8"></script>
     <script src="controllers/dl_add/dl_add_routers.js" charset="utf-8"></script>
     <script src="controllers/dl_base/dl_base_controllers.js" charset="utf-8"></script>
@@ -252,6 +249,16 @@
     <script src="controllers/dl_tech/dl_tech_controllers.js" charset="utf-8"></script>
     <script src="controllers/service.js" charset="utf-8"></script>
     <script src="decorators/index.js" charset="utf-8"></script>
+    <script src="libraries/a_pretty.js" charset="utf-8"></script>
+    <script src="libraries/b_uikit.min.js" charset="utf-8"></script>
+    <script src="libraries/c_codemirror.js" charset="utf-8"></script>
+    <script src="libraries/d_markdown.js" charset="utf-8"></script>
+    <script src="libraries/e_overlay.js" charset="utf-8"></script>
+    <script src="libraries/f_xml.js" charset="utf-8"></script>
+    <script src="libraries/gfm.js" charset="utf-8"></script>
+    <script src="libraries/h_marked.js" charset="utf-8"></script>
+    <script src="libraries/i_htmleditor.js" charset="utf-8"></script>
+    <script src="libraries/showdown.min.js" charset="utf-8"></script>
     <!-- endinject -->
     <!-- build:js({app,.tmp/shadow}) js/ts-web-tpl.js -->
     <script src="templates.js" charset="utf-8"></script>

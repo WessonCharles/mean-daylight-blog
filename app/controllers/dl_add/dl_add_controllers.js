@@ -1,15 +1,5 @@
 'use strict';
 
-$.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
-    var obj=new Object();  
-    $.each(this.serializeArray(),function(index,param){  
-        if(!(param.name in obj)){  
-            obj[param.name]=param.value;  
-        }  
-    });  
-    return obj;  
-};
-
 angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$location','$window','$filter','$compile',
 		function($rootScope,$scope,$http, $location, $window, $filter,$compile){
 		if(!$scope.islogin){
@@ -93,7 +83,7 @@ angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$lo
 		$scope.restore();
 		$scope.addblog = function(e){
 			$scope.blog["tags"] = $("#blogtags").val();
-			console.log($("#add_blog"));
+			console.log($("#add_blog").serialize());
 			$scope.blog["content"] = $("#add_blog").serializeObject().content;
 			console.log($scope.blog)
 			$http.post(APIS+"/api/tech",$scope.blog).then(function(data){
