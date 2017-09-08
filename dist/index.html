@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="app">
+<head>
+    <meta name="fragment" content="!">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="">
+    <meta name="baidu-site-verification" content="4ZIvPUUSuc" />
+    <title ng-cloak>{{seo.pagetitle}} | Charles's Blog</title>
+    <meta name="description" content="{{ seo.des }}">
+    <meta charset="utf-8">
+    <meta property="wb:webmaster" content="93dfdaa13b36159a"/>
+    <base href="/">
+    <link rel="dns-prefetch" href="//chqiangs.com">
+    <link rel="prefetch" href="imgs/back2.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/semantic.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/blog.min.css">
+    <link rel="stylesheet" href="styles/template.css">
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js" async></script>
+    <script src="js/ts-web-vendor-8b774a1ba6.js"></script>
+    <script charset="utf-8">
+        $.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
+            var obj=new Object();  
+            $.each(this.serializeArray(),function(index,param){  
+                if(!(param.name in obj)){  
+                    obj[param.name]=param.value;  
+                }  
+            });  
+            return obj;  
+        };
+    </script>
+</head>
+<body class="height:auto!important" ng-controller="baseCtrl">
+    <header id="header">
+        <div class="container">
+            <div class="logo  pull-left">
+                <a href="/" style="text-decoration:none;">
+                    Charles
+                </a>
+            </div>
+            <div class="navbar-header" id="head-menu" ng-click="toggleheader()">
+                <button data-target="#readable-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav role="navigation" class="navbar  navbar-default">
+                <div id="readable-navbar-collapse" class="collapse  navbar-collapse">
+                    <ul class="navigation nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a class="scroll" href="/">首页
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/front-end">前端技术
+                                <span class="sub-arrow">
+                                    <i class="fa fa-chevron-down"></i>
+                                </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/front-end/html-css">Html&Css</a></li>
+                                <li><a href="/front-end/javascript">Javascript</a></li>
+                                <li><a href="/front-end/angularjs">AngularJs</a></li>
+                                <li><a href="/front-end/nodejs">NodeJs</a></li>
+                                <li><a href="/front-end/mongodb">Mongodb</a></li>
+                                <li><a href="/front-end/ionic">Ionic</a></li>
+                                <li><a href="/front-end/ui-ue">UI&UE</a></li>
+                                <li><a href="/front-end/php">PHP</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/life">生活杂谈
+                                <span class="sub-arrow">
+                                    <i class="fa fa-chevron-down"></i>
+                                </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <!-- <li><a href="/life/pic-word">图文</a></li> -->
+                                <li><a href="/life/read-and-know">读而知之</a></li>
+                                <li><a href="/life/gossip">闲言碎语</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="scroll" href="/about-me">关于我
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+            <div class="hidden-xs  hidden-sm">
+                <a class="search__container  js--toggle-search-mode" href="#"> <span class="fa fa-search"></span> </a>
+                <div class="social">
+                    <a class="social__container" href="#"> <span class="fa fa-heart"></span> </a>
+                    <ul class="social__dropdown">
+                        <li>
+                            <a class="social__container" target="_blank" href="https://www.facebook.com/ProteusThemes"> <span class="zocial-facebook"></span> </a>
+                        </li>
+                        <li>
+                            <a class="social__container" target="_blank" href="https://twitter.com/ProteusNetCom"> <span class="zocial-twitter"></span> </a>
+                        </li>
+                        <li>
+                            <a class="social__container" target="_blank" href="http://www.specificfeeds.com/follow"> <span class="zocial-rss"></span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="slider main">
+        <div class="carousel">
+        <div class="carousel-inner">
+            <!-- <div class="item active {{cover?'blur':''}}"> -->
+                <div class="item active" ng-if="!cover">
+                <div class="shade  widget-author__avatar--blurred"></div>
+                <div class="shade2" ng-if="cover"></div>
+                <div class="carousel-caption">
+                <blockquote class="blockquote__alternative">
+                    <h3>To see the world, things dangerous to come to,to see behind walls, to draw closer,to find each other and to feel ,that is the Purpose of LIFE.</h3>
+                    <p>开拓视野，冲破艰险，看见世界，身临其境， 贴近彼此，感受生活， 这就是生活的目的</p>
+                </blockquote>
+                    <div class="ball">
+                    <ul style="list-style:none;">
+                      <li style="background-color:#D82120;"></li>
+                      <li style="background-color:#E56F1F"></li>
+                      <li style="background-color:#D1D137"></li>
+                      <li style="background-color:#88C431"></li>
+                    </ul>
+                    <div class="left-cover"></div>
+                    <div class="right-cover"></div>
+                    <div class="bottom-cover">
+                        <div class="line"></div>
+                        <div class="line two"></div>
+                        <div class="line three"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <div id="ctrlmusic" style="font-size:20px;">
+                    <a style="margin:0 20px;color:#fff;" ng-click="play($event)"><i class="fa fa-play"></i></a>
+                    <a style="margin:0 20px;color:#fff;" ng-click="stop();"><i class="fa fa-stop"></i></a>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div ui-view></div>
+            <div ng-include src="'controllers/html/right.html'"></div>
+        </div>
+        
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="col-xs-12  col-md-3">
+                <div class="widget-about  push-down-30">
+                    <div class="logo">
+                        <a>Charles</a>
+                    </div>
+                    <br>
+                    <span class="footer__text">Wesson Charles的个人博客</span>
+                    <br>
+                    <span class="footer__text">非学术型选手</span>
+                    <br>
+                    <span class="footer__text">业务才是王道</span>
+                    <br>
+                    <script src="http://s95.cnzz.com/z_stat.php?id=1256923753&web_id=1256923753" language="JavaScript"></script>
+                    <!-- <div class="social-icons  widget-social-icons">
+                        <a href="#" class="social-icons__container"> <span class="zocial-facebook"></span> </a>
+                        <a href="#" class="social-icons__container"> <span class="zocial-twitter"></span> </a>
+                        <a href="#" class="social-icons__container"> <span class="zocial-youtube"></span> </a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-xs-12  col-md-3">
+                <div class="tags  widget-tags">
+                    <h6>友情链接</h6>
+                    <hr>
+                    <a href="http://mcolor.sinaapp.com/" >在线配色</a><br>
+                    <a href="http://blog.coocla.org/">牛*的曹大人</a>
+                </div>
+            </div>
+            <div class="col-xs-12  col-md-3">
+                <nav class="widget-navigation  push-down-30">
+                    <h6>网站信息</h6>
+                    <hr>
+                    <br>本网站使用mongodb+angular+express+nodejs构建
+                    <br>
+                    <br>备案号：<a href="http://www.miitbeian.gov.cn/">京ICP备15062350号-1</a>
+                    <br> 
+                    <br>
+                    <!-- <ul class="navigation">
+                        <li> <a href="index.html">Home</a> </li>
+                        <li> <a href="single-post.html">Post Formats</a> </li>
+                        <li> <a href="elements.html">Elements</a> </li>
+                        <li> <a href="about-us.html">About</a> </li>
+                        <li> <a href="contact.html">Contact</a> </li>
+                    </ul> -->
+                    <span>Copyright © 2015 Wesson Charles. All rights reserved.</span>
+                </nav>
+            </div>
+            <div class="col-xs-12  col-md-3">
+                <div class="widget-contact  push-down-30">
+                    <h6>联系我</h6>
+                    <hr>
+                    <span class="widget-contact__text">
+                        <span class="widget-contact__title">email:chqiangs@gmail.com</span>
+                        <br> 
+                        <br>Tencent:603790089
+                        <br>
+                        <br>如有任何意见或者建议，请联系我
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div ng-include src="controllers/html/login.html" ng-if="login"></div>
+    <script src="http://7xk7lf.com1.z0.glb.clouddn.com/semantic.min.js"></script>
+    <script src="http://static.bshare.cn/b/buttonLite.js"></script>
+    <script src="http://static.bshare.cn/b/bshareC2.js"></script>
+    <script src="js/ts-web-app-d211ab2065.js"></script>
+    <script src="js/ts-web-tpl-7c9221dd73.js"></script>
+    <script type="text/javascript">
+        window.setCookie =function(name,value,d){
+            var Days = d||30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days*24*60*60*1000);
+            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/;";
+        }
+        //读取cookies
+        window.getCookie=function(name){
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+            else return null;
+        }
+        //删除cookies
+        window.delCookie=function(name){
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval=window.getCookie(name);
+            if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/;";
+        }  
+    </script>
+    <div id="SOHUCS" style="display:none;"></div> 
+</body>
+</html>
