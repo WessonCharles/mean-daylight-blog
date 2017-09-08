@@ -1,5 +1,9 @@
 @charset "utf-8";
 
 
+@import "./semantic";//定义公共变量
+@import "./blog";//css reset
+@import "./animate";//animate
+@import "./template";//ie低版本
 //业务流css 自动化工具自动添加
 @import "app";//app

@@ -3501,10 +3501,9 @@ body.active li ul.sub-menu li.active a{
 }
 #header ul.sub-menu > li > a {
     background-color: transparent;
-    /*color: #555 !important;*/
     display: block;
     font-size: 1em;
-    15px 39px 15px 28px !important
+    padding:15px 39px 15px 28px !important;
 }
 #header ul.sub-menu > li > a {
     background-color: #f6f6f6;
@@ -4914,16 +4913,15 @@ body.search-mode .search-panel {
 .nicescroll-cursors{
 	background-color: rgb(170,170,171)!important;
 }
-/************ball***********/
 @keyframes floage{
-    0% { margin:5% 0% 5% 68%;} /* 添加旋转角度，以下类似 */
-    10% { margin:5% 0% 5% 84%%; }
+    0% { margin:5% 0% 5% 68%;} 
+    10% { margin:5% 0% 5% 84%; }
     20% { margin:5% 0% 5% 100%; }
     30% { margin:5% 0% 5% 88%; }
     40% { margin:5% 0% 5% 68%; }
     50% { margin:5% 0% 5% 48%; }
     60% { margin:5% 0% 5% 68%; }
-    70% { margin:5% 0% 5% 88%%; }
+    70% { margin:5% 0% 5% 88%; }
     80% { margin:5% 0% 5% 108%; }
 	90% { margin:5% 0% 5% 88%;}
 }
