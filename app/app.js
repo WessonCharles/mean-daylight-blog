@@ -18,6 +18,15 @@ angular.module('app', [
 	'ui.bootstrap', //bootstrap
 ]).controller('baseCtrl',['$scope','$http','$rootScope','$state','$location','$timeout',
      function($scope, $http,$rootScope,$route, $location,$timeout) {
+        $.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
+            var obj=new Object();  
+            $.each(this.serializeArray(),function(index,param){  
+                if(!(param.name in obj)){  
+                    obj[param.name]=param.value;  
+                }  
+            });  
+            return obj;  
+        };
         $rootScope.seo={
             pagetitle:"主页",
             des:"Wesson Charles的博客，前端技术，UIUE，和生活琐碎"

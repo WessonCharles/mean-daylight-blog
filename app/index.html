@@ -37,17 +37,6 @@
     <script src="../bower_components/angular-touch/angular-touch.js" charset="utf-8"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <script charset="utf-8">
-        $.prototype.serializeObject=function(){//扩展jquery的格式化表单为json的方法
-            var obj=new Object();  
-            $.each(this.serializeArray(),function(index,param){  
-                if(!(param.name in obj)){  
-                    obj[param.name]=param.value;  
-                }  
-            });  
-            return obj;  
-        };
-    </script>
 </head>
 <body class="height:auto!important" ng-controller="baseCtrl">
     <header id="header">

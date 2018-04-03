@@ -120,7 +120,9 @@ angular.module('app').controller('dladdctrl',['$rootScope','$scope','$http','$lo
         	var html = '<textarea data-uk-htmleditor="{maxsplitsize:350,markdown:true}" name="content">'+content+'</textarea>';
         	$("#add_wlife").html($compile(html)($scope));
         }
-		$http.get(APIS+"/api/one/"+$state.params.id).then(function(data){
+        var idstr = location.search.split("?")[1].split("&")[0],id = idstr.split("=")[1];
+
+		$http.get(APIS+"/api/one/"+id).then(function(data){
 			if(data.blog.type=="tech"){
 				$scope.techtab = true;
 				$scope.lifetab = false;
